@@ -63,7 +63,8 @@ recipes.each do |recipe|
     description: recipe["summary"],
     instructions: instructions_string,
     servings: recipe["servings"],
-    source: recipe["creditsText"]
+    source: recipe["creditsText"],
+    image: recipe["image"]
   )
   puts "Recipe #{recipe_counter} created"
   recipe_counter += 1
