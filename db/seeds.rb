@@ -32,10 +32,11 @@ courses = ["starter", "main", "desert"]
 5.times do |i|
   recipe = Recipe.new(
     title: Faker::Food.dish,
-    cusine: Faker::Food.ethnic_category.split.first,
+    cuisine: Faker::Food.ethnic_category.split.first,
     course: courses.sample,
     instructions: Faker::Food.description,
-    cooktime: rand(1..60)
+    cooktime: rand(1..60),
+    description: Faker::Food.description
   )
   recipe.save!
   puts "Recipe #{i} created"
