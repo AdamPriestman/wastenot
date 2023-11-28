@@ -1,0 +1,11 @@
+<div class="container">
+  <div class="d-flex justify-content-around">
+    <i class="fa-solid fa-arrow-down-wide-short"></i>
+    <i class="fa-solid fa-filter"></i>
+  </div>
+  <% @recipes.each do |recipe| %>
+    <%= link_to recipe_path(recipe), class: "text-decoration-none" do %>
+      <%= render "recipe_card", recipe:recipe %>
+    <% end %>
+  <% end %>
+</div>
