@@ -1,0 +1,22 @@
+.recipe-card {
+  height: 150px;
+  border: 1px solid black;
+  border-radius: 5px;
+  margin: 16px auto;
+  display: flex;
+  align-items: center;
+  color: black;
+}
+
+.recipe-card img {
+  width: 120px;
+  height: 120px;
+}
+
+.recipe-card h2 {
+  font-size: 16px;
+}
+
+.recipe-card p {
+  font-size: 12px;
+}
