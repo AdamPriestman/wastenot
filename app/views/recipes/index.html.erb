@@ -1,4 +1,8 @@
 <div class="container">
+  <div class="d-flex justify-content-around">
+    <%= image_tag "sort.png" %>
+    <%= image_tag "filter.png" %>
+  </div>
   <% @recipes.each do |recipe| %>
     <%= render "recipe_card", recipe:recipe %>
   <% end %>
