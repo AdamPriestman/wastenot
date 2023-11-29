@@ -1,0 +1,11 @@
+<div>
+
+  <% if @bookmarks.any?  %>
+    <% @bookmarks.each do |bookmark| %>
+      <%= bookmark.recipe.title %>
+    <% end %>
+  <% else %>
+    <p>...No bookmarks yet</p>
+  <% end %>
+
+</div>
