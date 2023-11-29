@@ -20,19 +20,47 @@
   justify-content: center;
 }
 
-.home-h4 {
+.home-community-text {
   width: 300px;
   margin: 0 auto;
-  padding-top: 24px;
-  // padding-bottom: 50px;
-}
-
-.banner {
-  img {
-    height: 150px;
-  }
+  padding-bottom: 50px;
 }
 
 #carouselExampleSlidesOnly {
-  padding-bottom: 50px;
+  padding-bottom: 16px;
+}
+
+.carousel-item {
+  height: 340px;
+}
+
+.landing-page-content {
+  position: absolute;
+  z-index: 1;
+  text-align: center;
+  color: white;
+  h1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    margin-bottom: 20px;
+  }
+  .btn-home {
+    width: 275px;
+    margin: 0 auto;
+    color: white;
+    padding: 8px 24px;
+    .btn {
+      border-radius: 10px;
+    }
+
+    :hover {
+      background: rgb(17, 128, 17);
+    }
+  }
+}
+
+.home-community-text{
+  text-align: center;
 }
