@@ -1,19 +1,7 @@
-<div class="container">
+<div class="container search-container">
 
   <h1 class="text-center">Build Your Recipe</h1>
 
-  <div data-controller="search-form">
-    <%= form_with url: recipes_path, method: :get, class: "d-flex flex-column" do |f| %>
-      <%= label_tag("Ingredients") %>
-      <p class="mb-3">TBD</p>
-      <%= f.select :ingredient_id, @ingredients.order(:name).map { |ingredient| [ingredient.name, ingredient.id]}, prompt: "Choose your ingredient" %>
-      <%= label_tag("Max Cooktime") %>
-      <input type="range" id="cooktime" name="cooktime" min="0" max="100" data-search-form-target="cooktimeInput" data-action="input->search-form#displayCooktime">
-      <p data-search-form-target="cooktimeValue" class="mb-3"></p>
-      <%= label_tag("Servings") %>
-      <input type="range" id="servings" name="servings" min="1" max="8" data-search-form-target="servingsInput" data-action="input->search-form#displayServings">
-      <p data-search-form-target="servingsValue"></p>
-      <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
-    <% end %>
-  </div>
+
+  <%= render "shared/search_form", ingredients:@ingredients %>
 </div>
