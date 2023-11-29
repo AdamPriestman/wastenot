@@ -1,3 +1,80 @@
-<h1><%= @recipe.title %></h1>
 <%# Link added to navigate on localhost, please change as needed %>
-<%= link_to "Back to recipes", recipes_path %>
+<div class="show-container">
+  <%= link_to recipes_path, :class => "back-link" do  %>
+    <i class="fa-solid fa-arrow-left"></i>
+  <% end %>
+    <div class="recipe-info-card row">
+      <h1><%= @recipe.title %></h1>
+      <div class="d-flex justify-content-between">
+        <div class="col-sm-6 col-lg-6">
+          <p class="fw-bold"><%= "Rating" %> 4.2 ⭐️</p>
+        </div>
+        <div class="col-sm-6 col-lg-6">
+          <p class="text-end"><i class="fa-regular fa-bookmark"></i></p>
+        </div>
+      </div>
+      <p><%= image_tag((@recipe.image), :class => "responsive") %></p>
+    </div>
+
+    <p class="pt-2"><%= "Recipe Description" %></p>
+
+    <div class="recipe-key-details-card d-flex justify-content-between">
+        <div class="col-sm-6 col-lg-6">
+          <p class="left-align"> Preparation time: </p>
+          <p class="fw-bold" > <%=@recipe.preptime %> mins </p>
+          <br>
+          <br>
+          <p class="left-align"> Servings: </p>
+          <p class="fw-bold"> <%=@recipe.servings %> people </p>
+        </div>
+        <div class="col-sm-6 col-lg-6 text-end">
+          <p> Cooking time: </p>
+          <p class="fw-bold"> <%=@recipe.cooktime %> mins </p>
+        </div>
+    </div>
+
+    <div class="Ingredient-card d-flex justify-content-between">
+      <div class="col-sm-9 col-lg-9">
+        <p> Ingredients</p>
+        <p class="info"> egg </p>
+      </div>
+      <div class="col-sm-3 col-lg-3">
+        <p> Nutritional info </p>
+        <p class="info"> protein </p>
+      </div>
+    </div>
+
+    <%# accordion bootstrap for instruction. instruction not listed yet. still a string %>
+    <div class="accordion" id="accordion">
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingOne">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+            Cooking Instructions
+          </button>
+        </h2>
+        <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordion">
+          <div class="accordion-body">
+            <p> <%= @recipe.instructions %> </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="other-recipes-cards">
+    <h5>Other Resipes you might enjoy </h5>
+      <div class="cards d-flex justify-content-between">
+        <div class="card-category d-flex flex-column col-sm-4 col-lg-4">
+          <%= image_tag((@other_recipes.first.image), :class => "responsive") %>
+          <div><%= @other_recipes.first.title %></div>
+        </div>
+        <div class="card-category d-flex flex-column col-sm-4 col-lg-4">
+          <%= image_tag((@other_recipes.second.image), :class => "responsive") %>
+          <div><%= @other_recipes.second.title %></div>
+        </div>
+        <div class="card-category d-flex flex-column col-sm-4 col-lg-4">
+          <%= image_tag((@other_recipes.third.image), :class => "responsive") %>
+          <div><%= @other_recipes.third.title %></div>
+        </div>
+      </div>
+    </div>
+</div>
