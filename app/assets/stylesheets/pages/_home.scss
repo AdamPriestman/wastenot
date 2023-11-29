@@ -45,6 +45,7 @@
     align-items: center;
     height: 200px;
     margin-bottom: 20px;
+    text-shadow: 2px 2px 3px grey;
   }
   .btn-home {
     width: 275px;
@@ -53,6 +54,7 @@
     padding: 8px 24px;
     .btn {
       border-radius: 10px;
+      color: white;
     }
 
     :hover {
