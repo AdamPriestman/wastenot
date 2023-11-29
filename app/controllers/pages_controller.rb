@@ -5,5 +5,6 @@ class PagesController < ApplicationController
   end
 
   def search
+    @ingredients = Ingredient.all
   end
 end
