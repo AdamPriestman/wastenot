@@ -20,7 +20,8 @@ class RecipesController < ApplicationController
   end
 
   def show
-    @recipe
+    @recipes = Recipe.all
+    @other_recipes = @recipes.sample(3)
   end
 
   private

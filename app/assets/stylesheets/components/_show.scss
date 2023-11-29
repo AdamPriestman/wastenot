@@ -1,5 +1,5 @@
 .show-container{
-  margin: 6px 30px 12px;
+  margin: 6px 30px 50px 30px;
 
   .back-link {
     color: gray;
@@ -20,10 +20,52 @@
     color: white;
     line-height: 10px;
     // text-shadow: 0 0 5px gray;
-    padding: 30px;
+    padding: 15px;
     padding-top: 15px;
     background-color: rgb(109,211,119);
     border-radius: 5px;
+    margin-bottom: 15px;
+  }
 
+  .info{
+    height: 150px;
+    width: 150px;
+    font-size: 14px;
+    color: white;
+    line-height: 10px;
+    background-color: rgb(109,211,119);
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+  }
+  .other-recipes-cards{
+    margin-top: 15px
+  }
+
+  .card-category{
+    background-size: cover;
+    background-position: center;
+    background-color: rgb(109,211,119);
+    background: linear-gradient(to right bottom, #30A712, #b1c9ab);
+    padding: 5px;
+
+    height: 100px;
+    width: 100px;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    color: white;
+    font-size: 10px;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+    border-radius: 5px;
+    box-shadow: 0 0 15px rgba(98, 97, 97, 0.2);
+
+    .responsive{
+      width: 100%;
+      height: auto;
+      border-radius: 5px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+
+    }
   }
 }
