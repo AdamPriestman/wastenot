@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="search-form"
 export default class extends Controller {
-  static targets = ["servingsInput", "servingsValue", "cooktimeInput", "cooktimeValue", "ingredientInput", "ingredientForm", "ingredientButton"]
+  static targets = ["servingsInput", "servingsValue", "cooktimeInput", "cooktimeValue", "ingredientInput", "ingredientFormTwo", "ingredientFormThree", "ingredientButtonTwo", "ingredientButtonThree"]
 
   connect() {
     this.servingsValueTarget.innerText = this.servingsInputTarget.value
@@ -17,12 +17,21 @@ export default class extends Controller {
     this.cooktimeValueTarget.innerText = `${event.target.value} minutes`
   }
 
-  addIngredient() {
-    this.ingredientInputTarget.insertAdjacentHTML("beforeend", this.ingredientFormTarget.outerHTML)
-    this.ingredientButtonTarget.classList.add("d-none")
+  addIngredientTwo() {
+    this.ingredientButtonTwoTarget.classList.add("d-none")
+    this.ingredientFormTwoTarget.classList.remove("d-none")
   }
 
-  revealButton() {
-    this.ingredientButtonTarget.classList.remove("d-none")
+  addIngredientThree() {
+    this.ingredientButtonThreeTarget.classList.add("d-none")
+    this.ingredientFormThreeTarget.classList.remove("d-none")
+  }
+
+  revealButtonTwo() {
+    this.ingredientButtonTwoTarget.classList.remove("d-none")
+  }
+
+  revealButtonThree() {
+    this.ingredientButtonThreeTarget.classList.remove("d-none")
   }
 }
