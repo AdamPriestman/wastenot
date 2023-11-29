@@ -12,6 +12,8 @@ class RecipesController < ApplicationController
     elsif params[:servings].present?
       @recipes = Recipe.where("serving = #{params[:servings]}")
     end
+
+    raise
   end
 
   def show

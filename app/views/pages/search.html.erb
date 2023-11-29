@@ -3,9 +3,12 @@
   <h1 class="text-center">Build Your Recipe</h1>
 
   <div data-controller="search-form">
-    <%= form_with url: recipes_path, method: :get, class: "d-flex flex-column" do %>
+    <%= form_with url: recipes_path, method: :get, class: "d-flex flex-column" do |f| %>
       <%= label_tag("Ingredients") %>
       <p class="mb-3">TBD</p>
+      <%= f.fields_for :ingredients do |ingredients_subform| %>
+        <%= ingredients_subform.select :name, @ingredient_names, prompt: "Choose your ingredient" %>
+      <% end %>
       <%= label_tag("Max Cooktime") %>
       <input type="range" id="cooktime" name="cooktime" min="0" max="100" data-search-form-target="cooktimeInput" data-action="input->search-form#displayCooktime">
       <p data-search-form-target="cooktimeValue" class="mb-3"></p>

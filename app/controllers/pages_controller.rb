@@ -6,5 +6,6 @@ class PagesController < ApplicationController
 
   def search
     @ingredients = Ingredient.all
+    @ingredient_names = Ingredient.order(:name).map { |ingredient| ingredient.name }
   end
 end
