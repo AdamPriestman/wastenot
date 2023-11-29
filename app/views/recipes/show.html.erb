@@ -63,18 +63,27 @@
     <div class="other-recipes-cards">
     <h5>Other Resipes you might enjoy </h5>
       <div class="cards d-flex justify-content-between">
-        <div class="card-category d-flex flex-column col-sm-4 col-lg-4">
-          <%= image_tag((@other_recipes.first.image), :class => "responsive") %>
-          <div><%= @other_recipes.first.title %></div>
-        </div>
-        <div class="card-category d-flex flex-column col-sm-4 col-lg-4">
-          <%= image_tag((@other_recipes.second.image), :class => "responsive") %>
-          <div><%= @other_recipes.second.title %></div>
-        </div>
-        <div class="card-category d-flex flex-column col-sm-4 col-lg-4">
-          <%= image_tag((@other_recipes.third.image), :class => "responsive") %>
-          <div><%= @other_recipes.third.title %></div>
-        </div>
+
+        <%= link_to recipe_path(@other_recipes.first) do %>
+          <div class="card-category d-flex flex-column col-sm-4 col-lg-4">
+            <%= image_tag((@other_recipes.first.image), :class => "responsive") %>
+            <div><%= @other_recipes.first.title %></div>
+          </div>
+        <% end %>
+
+        <%= link_to recipe_path(@other_recipes.second) do %>
+          <div class="card-category d-flex flex-column col-sm-4 col-lg-4">
+            <%= image_tag((@other_recipes.second.image), :class => "responsive") %>
+            <div><%= @other_recipes.second.title %></div>
+          </div>
+        <% end %>
+
+        <%= link_to recipe_path(@other_recipes.third) do %>
+          <div class="card-category d-flex flex-column col-sm-4 col-lg-4">
+            <%= image_tag((@other_recipes.third.image), :class => "responsive") %>
+            <div><%= @other_recipes.third.title %></div>
+          </div>
+        <% end %>
       </div>
     </div>
 </div>
