@@ -1,7 +1,10 @@
 <%= form_with url: recipes_path, method: :get, class: "d-flex flex-column" do |f| %>
   <%= label_tag("Ingredients") %>
   <p class="mb-3">TBD</p>
+  <div class="d-flex flex-column" data-search-form-target="ingredientInput">
   <%= f.select :ingredient_id, ingredients.order(:name).map { |ingredient| [ingredient.name, ingredient.id]}, prompt: "Choose your ingredient" %>
+  </div>
+  <a href="#" data-action="click->search-form#addIngredient">Add another ingredient</a>
   <%= label_tag("Max Cooktime") %>
   <input type="range" id="cooktime" name="cooktime" min="0" max="100" data-search-form-target="cooktimeInput" data-action="input->search-form#displayCooktime">
   <p data-search-form-target="cooktimeValue" class="mb-3"></p>

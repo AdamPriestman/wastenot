@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="search-form"
 export default class extends Controller {
-  static targets = ["servingsInput", "servingsValue", "cooktimeInput", "cooktimeValue"]
+  static targets = ["servingsInput", "servingsValue", "cooktimeInput", "cooktimeValue", "ingredientInput"]
 
   connect() {
     this.servingsValueTarget.innerText = this.servingsInputTarget.value
@@ -15,5 +15,9 @@ export default class extends Controller {
 
   displayCooktime(event) {
     this.cooktimeValueTarget.innerText = `${event.target.value} minutes`
+  }
+
+  addIngredient() {
+    console.log(this.ingredientInputTarget)
   }
 }
