@@ -1,11 +1,22 @@
-<div class="container">
-  <div class="filters">
-    <i class="fa-solid fa-arrow-down-wide-short"></i>
-    <i class="fa-solid fa-filter"></i>
+<div class="container" data-controller="modal">
+  <div class="filter_icons">
+    <i class="fa-solid fa-arrow-down-wide-short" data-action="click->modal#sort"></i>
+    <i class="fa-solid fa-filter" data-action="click->modal#filters"></i>
   </div>
-  <% @recipes.each do |recipe| %>
-    <%= link_to recipe_path(recipe), class: "text-decoration-none" do %>
-      <%= render "recipe_card", recipe:recipe %>
-    <% end %>
-  <% end %>
+  <div class="d-flex justify-content-center">
+    <div>
+      <% @recipes.each do |recipe| %>
+        <%= link_to recipe_path(recipe), class: "text-decoration-none", data: {modal_target: "card"} do %>
+          <%= render "recipe_card", recipe:recipe %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+  <div class="filters" data-modal-target="filters">
+    <div class="d-flex justify-content-between">
+      <h3 class="my-0">Filters</h3>
+      <i class="fa-solid fa-xmark" data-action="click->modal#closeFilters"></i>
+    </div>
+    <%= render "shared/search_form", ingredients:@ingredients %>
+  </div>
 </div>
