@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="search-form"
 export default class extends Controller {
-  static targets = ["servingsInput", "servingsValue", "cooktimeInput", "cooktimeValue", "ingredientInput", "ingredientForm"]
+  static targets = ["servingsInput", "servingsValue", "cooktimeInput", "cooktimeValue", "ingredientInput", "ingredientForm", "ingredientButton"]
 
   connect() {
     this.servingsValueTarget.innerText = this.servingsInputTarget.value
@@ -18,8 +18,11 @@ export default class extends Controller {
   }
 
   addIngredient() {
-    const ingredientForm = this.ingredientFormTarget.innerHTML
-    console.log(ingredientForm)
-    this.ingredientInputTarget.insertAdjacentHTML("beforeend", ingredientForm)
+    this.ingredientInputTarget.insertAdjacentHTML("beforeend", this.ingredientFormTarget.outerHTML)
+    this.ingredientButtonTarget.classList.add("d-none")
+  }
+
+  revealButton() {
+    this.ingredientButtonTarget.classList.remove("d-none")
   }
 }
