@@ -1,17 +1,19 @@
-<%= form_with url: recipes_path, method: :get, class: "d-flex flex-column" do |f| %>
-  <%= label_tag("Ingredients") %>
-  <p class="mb-3">TBD</p>
-  <div class="d-flex flex-column" data-search-form-target="ingredientInput">
-  <div class="d-flex flex-column" data-search-form-target="ingredientForm">
-  <%= f.select :ingredient_id, ingredients.order(:name).map { |ingredient| [ingredient.name, ingredient.id]}, prompt: "Choose your ingredient" %>
-  </div>
-  </div>
-  <p class="btn btn-secondary" data-action="click->search-form#addIngredient">Add another ingredient</p>
-  <%= label_tag("Max Cooktime") %>
-  <input type="range" id="cooktime" name="cooktime" min="0" max="100" data-search-form-target="cooktimeInput" data-action="input->search-form#displayCooktime">
-  <p data-search-form-target="cooktimeValue" class="mb-3"></p>
-  <%= label_tag("Servings") %>
-  <input type="range" id="servings" name="servings" min="1" max="8" data-search-form-target="servingsInput" data-action="input->search-form#displayServings">
-  <p data-search-form-target="servingsValue"></p>
-  <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
-<% end %>
+<div data-controller="search-form">
+  <%= form_with url: recipes_path, method: :get, class: "d-flex flex-column" do |f| %>
+    <%= label_tag("Ingredients") %>
+    <p class="mb-3">TBD</p>
+    <div class="d-flex flex-column" data-search-form-target="ingredientInput">
+    <div class="d-flex flex-column" data-search-form-target="ingredientForm">
+    <%= f.select :ingredient_id, ingredients.order(:name).map { |ingredient| [ingredient.name, ingredient.id]}, prompt: "Choose your ingredient" %>
+    </div>
+    </div>
+    <p class="btn btn-secondary" data-action="click->search-form#addIngredient">Add another ingredient</p>
+    <%= label_tag("Max Cooktime") %>
+    <input type="range" id="cooktime" name="cooktime" min="0" max="100" data-search-form-target="cooktimeInput" data-action="input->search-form#displayCooktime">
+    <p data-search-form-target="cooktimeValue" class="mb-3"></p>
+    <%= label_tag("Servings") %>
+    <input type="range" id="servings" name="servings" min="1" max="8" data-search-form-target="servingsInput" data-action="input->search-form#displayServings">
+    <p data-search-form-target="servingsValue"></p>
+    <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
+  <% end %>
+</div>
