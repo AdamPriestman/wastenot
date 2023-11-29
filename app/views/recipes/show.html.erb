@@ -1,3 +1,20 @@
-<h1><%= @recipe.title %></h1>
 <%# Link added to navigate on localhost, please change as needed %>
-<%= link_to "Back to recipes", recipes_path %>
+<div class="show-container">
+  <%= link_to recipes_path, :class => "back-link" do  %>
+    <i class="fa-solid fa-arrow-left"></i>
+  <% end %>
+    <div class="recipe-info-card row">
+      <h1><%= @recipe.title %></h1>
+      <div class="d-flex justify-content-between">
+        <div class="col-sm-6 col-lg-12">
+          <%= "Rating" %>
+        </div>
+        <div class="col-sm-6 col-lg-12">
+          <%= "Bookmark" %>
+        </div>
+      </div>
+      <div class="images">
+        <div class="img"></div>
+      </div>
+    </div>
+</div>
