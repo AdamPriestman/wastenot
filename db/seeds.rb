@@ -15,6 +15,8 @@ require 'net/http'
 puts "Deleting all users"
 User.destroy_all
 puts "Deleting all recipes"
+RecipeIngredient.destroy_all
+Ingredient.destroy_all
 Recipe.destroy_all
 
 5.times do |i|
@@ -63,7 +65,8 @@ recipes.each do |recipe|
     description: recipe["summary"],
     instructions: instructions_string,
     servings: recipe["servings"],
-    source: recipe["creditsText"]
+    source: recipe["creditsText"],
+    image: recipe["image"]
   )
   puts "Recipe #{recipe_counter} created"
   recipe_counter += 1

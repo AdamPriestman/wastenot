@@ -1,7 +1,13 @@
 <div class="recipe-card">
-  <img src="https://lovefoodnotcooking.com/wp-content/uploads/2022/09/air-fryer-pizza-l-200x200.jpg" alt="placeholder_image">
-  <div>
+  <img src=<%= recipe.image %> alt=<%= recipe.title %>>
+  <div class="card-content">
     <h2><%= recipe.title %></h2>
-    <p>Something description will go here, TBD</p>
+    <div class="card-details">
+      <p class="card-description"><%= recipe.description.truncate(100) %></p>
+      <div class="rating_bookmark">
+        <p>4.2 ⭐️</p>
+        <i class="fa-regular fa-bookmark"></i>
+      </div>
+    </div>
   </div>
 </div>
