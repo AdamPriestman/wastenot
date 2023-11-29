@@ -19,6 +19,7 @@ export default class extends Controller {
 
   addIngredient() {
     const ingredientForm = this.ingredientFormTarget.innerHTML
+    console.log(ingredientForm)
     this.ingredientInputTarget.insertAdjacentHTML("beforeend", ingredientForm)
   }
 }
