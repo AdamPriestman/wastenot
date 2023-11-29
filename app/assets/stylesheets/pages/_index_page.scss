@@ -1,6 +1,21 @@
-.filters {
+.filter_icons {
   display: flex;
   justify-content: space-around;
   margin-top: 8px;
   margin-bottom: -8px;
+  font-size: 125%;
+}
+
+.filters {
+  display: none;
+  z-index: 3;
+  top: 68px;
+  height: 100%;
+  position: absolute;
+  z-index: 3;
+  background: #bad5ff;
+  left: 50px;
+  top: 69px;
+  padding: 16px;
+  width: 90%;
 }

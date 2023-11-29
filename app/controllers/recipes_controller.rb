@@ -4,6 +4,7 @@ class RecipesController < ApplicationController
 
   def index
     @recipes = Recipe.all
+    @ingredients = Ingredient.all
 
     if params[:cooktime].present? && params[:servings].present?
       @recipes = Recipe.where("cooktime <= #{params[:cooktime]} AND servings = #{params[:servings]}")
