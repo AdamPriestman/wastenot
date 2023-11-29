@@ -15,6 +15,8 @@ require 'net/http'
 puts "Deleting all users"
 User.destroy_all
 puts "Deleting all recipes"
+RecipeIngredient.destroy_all
+Ingredient.destroy_all
 Recipe.destroy_all
 
 5.times do |i|

@@ -13,7 +13,10 @@ class RecipesController < ApplicationController
       @recipes = Recipe.where("serving = #{params[:servings]}")
     end
 
-    raise
+    if params[:ingredient_id].present?
+      @ingredient = Ingredient.find(params[:ingredient_id])
+      @recipes = @recipes.select { |recipe| recipe.ingredients.include?(@ingredient) }
+    end
   end
 
   def show
