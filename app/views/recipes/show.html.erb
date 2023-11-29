@@ -6,15 +6,37 @@
     <div class="recipe-info-card row">
       <h1><%= @recipe.title %></h1>
       <div class="d-flex justify-content-between">
-        <div class="col-sm-6 col-lg-12">
-          <%= "Rating" %>
+        <div class="col-sm-6 col-lg-6">
+          <p class="fw-bold"><%= "Rating" %> 4.2 ⭐️</p>
         </div>
-        <div class="col-sm-6 col-lg-12">
-          <%= "Bookmark" %>
+        <div class="col-sm-6 col-lg-6">
+          <p class="text-end"><i class="fa-regular fa-bookmark"></i></p>
         </div>
       </div>
-      <div class="images">
-        <div class="img"></div>
+      <p>
+        <%= image_tag((@recipe.image), :class => "responsive") %>
+      </p>
       </div>
-    </div>
+      <p class="pt-2"><%= "Recipe Description" %></p>
+      <div class="recipe-key-details-card d-flex justify-content-between">
+          <div class="col-sm-6 col-lg-6">
+            <p class="left-align"> Preparation time: </p>
+            <p class="fw-bold" > <%=@recipe.preptime %> mins </p>
+            <br>
+            <br>
+            <p class="left-align"> Servings: </p>
+            <p class="fw-bold"> <%=@recipe.servings %> people </p>
+          </div>
+          <div class="col-sm-6 col-lg-6 text-end">
+            <p> Cooking time: </p>
+            <p class="fw-bold"> <%=@recipe.cooktime %> mins </p>
+          </div>
+      </div>
+      <div>
+        <p class="fw-bold">
+          Ingredients
+        </p>
+        </div>
+          <p class="fw-bold"> Nutritional info: </p>
+        </div> %>
 </div>

@@ -6,6 +6,24 @@
   }
 
   .recipe-info-card{
+    .responsive{
+      width: 100%;
+      height: auto;
+      border-radius: 5px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+      padding: 0px;
+    }
+  }
+  .recipe-key-details-card{
+    height: 150px;
+    font-size: 14px;
+    color: white;
+    line-height: 10px;
+    // text-shadow: 0 0 5px gray;
+    padding: 30px;
+    padding-top: 15px;
+    background-color: rgb(109,211,119);
+    border-radius: 5px;
 
   }
 }
