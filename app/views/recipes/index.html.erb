@@ -1,4 +1,4 @@
-<div class="container" data-controller="modal">
+<div class="container" data-controller="modal index-filter  ">
   <div class="filter_icons">
     <i class="fa-solid fa-arrow-down-wide-short" data-action="click->modal#sort"></i>
     <i class="fa-solid fa-filter" data-action="click->modal#filters"></i>
@@ -6,9 +6,11 @@
   <div class="d-flex justify-content-center">
     <div>
       <% @recipes.each do |recipe| %>
-        <%= link_to recipe_path(recipe), class: "text-decoration-none", data: {modal_target: "card"} do %>
-          <%= render "recipe_card", recipe:recipe %>
-        <% end %>
+        <div data-index-filter-target="result" data-id=<%= recipe.id %>>
+          <%= link_to recipe_path(recipe), class: "text-decoration-none", data: {modal_target: "card"} do %>
+            <%= render "recipe_card", recipe:recipe %>
+          <% end %>
+        </div>
       <% end %>
     </div>
   </div>
@@ -17,6 +19,6 @@
       <h3 class="my-0">Filters</h3>
       <i class="fa-solid fa-xmark" data-action="click->modal#closeFilters"></i>
     </div>
-    <%= render "shared/search_form", ingredients:@ingredients %>
+    <%= render "filters", ingredients:@ingredients %>
   </div>
 </div>
