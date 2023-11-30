@@ -1,7 +1,7 @@
 class BookmarksController < ApplicationController
 
   def index
-    @bookmarks = Bookmark.all
+    @bookmarks = current_user.bookmarks
   end
 
   def new
@@ -9,12 +9,19 @@ class BookmarksController < ApplicationController
   end
 
   def create
-    @user = current_user
-    @bookmarks = @user.bookmarks
     @recipe = Recipe.find(params[:recipe_id])
-    @bookmark = Bookmark.new(recipe: @recipe, user: @user )
-    if @bookmark.save
-      redirect_to recipe_path(@recipe)
-    end
+    @bookmark = Bookmark.new
+    @bookmark.user = current_user
+    @bookmark.recipe = @recipe
+      if @bookmark.save
+        redirect_to bookmarks_path
+        # this path need to be changed to re-render the same page
+      end
+  end
+
+  def destroy
+    @bookmark = Bookmark.find(params[:id])
+    @bookmark.destroy
+    redirect_to bookmarks_path(@bookmark), status: :see_other
   end
 end
