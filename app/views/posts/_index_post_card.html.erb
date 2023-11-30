@@ -2,10 +2,10 @@
   <% @posts.each do |post| %>
     <div class="post-card">
 
-      <p class="post-info">
+      <h6 class="post-info">
         <%= image_tag "post_user.png", class: "post-avatar" %>
         <%= post.user.username %>
-      </p>
+      </h6>
         <%= link_to recipe_path(post.recipe) do  %>
           <i class="fa-solid fa-link"></i>
         <% end %>
