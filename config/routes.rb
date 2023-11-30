@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get "search", to: "pages#search"
   resources :recipes, only: [:index, :show] do
     resources :bookmarks, only: [:index, :new, :create]
+    resources :posts, only: [:new, :create]
   end
-  resources :posts, only: [:index, :new, :create, :edit, :update, :delete]
+  resources :posts, only: [:index, :edit, :update, :delete]
 end
