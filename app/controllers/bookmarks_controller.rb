@@ -12,7 +12,7 @@ class BookmarksController < ApplicationController
     @user = current_user
     @bookmarks = @user.bookmarks
     @recipe = Recipe.find(params[:recipe_id])
-    @bookmark = Bookmark.new(recipe: @recipe, user: @user )
+    @bookmark = Bookmark.new(recipe: @recipe, user: @user)
     if @bookmark.save
       redirect_to recipe_path(@recipe)
     end
