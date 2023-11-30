@@ -12,10 +12,14 @@
   top: 68px;
   height: 100%;
   position: absolute;
-  background: rgba(51, 170, 51, .95);
+  background: linear-gradient(to right bottom, rgba(48, 167, 18, 0.95), rgba(144, 208, 128, 0.95));
   left: 0px;
   right: 0px;
   top: 69px;
   padding: 16px;
   width: 100%;
+  h3 {
+    margin-top: 0px;
+    margin-bottom: 0px;
+  }
 }

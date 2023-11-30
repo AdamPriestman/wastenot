@@ -6,13 +6,13 @@ static targets = ["servingsInput", "cooktimeInput", "servingsValue", "cooktimeVa
 
   connect() {
     this.servingsValueTarget.innerText = this.servingsInputTarget.value
-    this.cooktimeValueTarget.innerText = `${this.cooktimeInputTarget.value} minutes`
+    this.cooktimeValueTarget.innerText = `<${this.cooktimeInputTarget.value} minutes`
   }
 
   filterIndex(event) {
     let selectedFilters = {}
     if (event.target === this.cooktimeInputTarget) {
-      this.cooktimeValueTarget.innerText = `${event.target.value} minutes`
+      this.cooktimeValueTarget.innerText = `<${event.target.value} minutes`
       selectedFilters["cooktime"] =  event.target.value
       selectedFilters["servings"] =  this.servingsInputTarget.value
     } else {
