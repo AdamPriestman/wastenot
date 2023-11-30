@@ -10,6 +10,7 @@
         </div>
         <%# linked the boookmark icon to the bookmark path %>
         <div class="col-sm-6 col-lg-6">
+
           <%= link_to recipe_bookmarks_path(@recipe), data: { turbo_method: :post } do  %>
             <i class="fa-regular fa-bookmark"></i>
           <% end %>
