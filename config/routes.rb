@@ -12,5 +12,6 @@ Rails.application.routes.draw do
   get "search", to: "pages#search"
   resources :recipes, only: [:index, :show] do
     post 'filter', on: :collection
+    resources :bookmarks, only: [:index, :new, :create]
   end
 end

@@ -10,7 +10,11 @@ export default class extends Controller {
   }
 
   displayServings(event) {
-    this.servingsValueTarget.innerText = event.target.value
+    if (event.target.value === "8") {
+      this.servingsValueTarget.innerText = "8+"
+    } else {
+      this.servingsValueTarget.innerText = event.target.value
+    }
   }
 
   displayCooktime(event) {
@@ -18,12 +22,12 @@ export default class extends Controller {
   }
 
   addIngredientTwo() {
-    this.ingredientButtonTwoTarget.classList.add("d-none")
+    this.ingredientButtonTwoTarget.outerHTML = ""
     this.ingredientFormTwoTarget.classList.remove("d-none")
   }
 
   addIngredientThree() {
-    this.ingredientButtonThreeTarget.classList.add("d-none")
+    this.ingredientButtonThreeTarget.outerHTML = ""
     this.ingredientFormThreeTarget.classList.remove("d-none")
   }
 
