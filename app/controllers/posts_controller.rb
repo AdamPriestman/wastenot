@@ -12,6 +12,7 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.recipe = @recipe
+    @post.user = current_user
     # redirects to index page of the post
     if @post.save
       redirect_to posts_path
