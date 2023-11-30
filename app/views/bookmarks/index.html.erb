@@ -2,7 +2,8 @@
 
   <% if @bookmarks.any?  %>
     <% @bookmarks.each do |bookmark| %>
-      <%= bookmark.recipe.title %>
+      <li><%= bookmark.recipe.title %></li>
+      <%= link_to "Delete", bookmark_path(bookmark), data: { turbo_method: :delete , turbo_confirm: "Are you sure?"} %>
     <% end %>
   <% else %>
     <p>...No bookmarks yet</p>

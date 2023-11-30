@@ -11,8 +11,10 @@ Rails.application.routes.draw do
   # root "posts#index"
   get "search", to: "pages#search"
   resources :recipes, only: [:index, :show] do
-    resources :bookmarks, only: [:index, :new, :create]
+    resources :bookmarks, only: [:create]
     resources :posts, only: [:new, :create]
   end
+  resources :bookmarks, only: [:index, :new, :destroy]
   resources :posts, only: [:index, :edit, :update, :delete]
+
 end
