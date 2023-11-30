@@ -22,12 +22,12 @@ export default class extends Controller {
   }
 
   addIngredientTwo() {
-    this.ingredientButtonTwoTarget.classList.add("d-none")
+    this.ingredientButtonTwoTarget.outerHTML = ""
     this.ingredientFormTwoTarget.classList.remove("d-none")
   }
 
   addIngredientThree() {
-    this.ingredientButtonThreeTarget.classList.add("d-none")
+    this.ingredientButtonThreeTarget.outerHTML = ""
     this.ingredientFormThreeTarget.classList.remove("d-none")
   }
 

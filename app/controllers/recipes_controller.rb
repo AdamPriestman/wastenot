@@ -11,7 +11,7 @@ class RecipesController < ApplicationController
     end
 
     if params[:servings].present? && params[:servings].to_i < 8
-      @recipes = Recipe.where("serving <= #{params[:servings]}")
+      @recipes = Recipe.where("servings <= #{params[:servings]}")
     end
 
     if params[:ingredient1].present?
