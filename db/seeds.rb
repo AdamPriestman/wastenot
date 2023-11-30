@@ -66,7 +66,11 @@ recipes.each do |recipe|
     instructions: instructions_string,
     servings: recipe["servings"],
     source: recipe["creditsText"],
-    image: recipe["image"]
+    image: recipe["image"],
+    vegan: recipe["vegan"],
+    vegetarian: recipe["vegetarian"],
+    gluten_free: recipe["glutenFree"],
+    dairy_free: recipe["dairyFree"]
   )
   puts "Recipe #{recipe_counter} created"
 
