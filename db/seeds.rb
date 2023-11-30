@@ -56,7 +56,7 @@ recipes.each do |recipe|
       instructions_string.push("#{step['number']}.#{step['step']}")
     end
   end
-  Recipe.create(
+  local_recipe = Recipe.create(
     title: recipe["title"],
     preptime: recipe["preparationMinutes"],
     cooktime: recipe["cookingMinutes"],
@@ -69,5 +69,26 @@ recipes.each do |recipe|
     image: recipe["image"]
   )
   puts "Recipe #{recipe_counter} created"
+
+  instructions.each do |instruction|
+    steps = instruction["steps"]
+    steps.each do |step|
+      ingredients = step["ingredients"]
+      ingredients.each do |ingredient|
+        existing_ingredients = Ingredient.where("name=?", ingredient["name"])
+        if existing_ingredients.empty?
+          local_ingredient = Ingredient.create(name: ingredient["name"])
+        else
+          local_ingredient = existing_ingredients.first
+        end
+        recipe_ingredient = RecipeIngredient.new
+        recipe_ingredient.ingredient = local_ingredient
+        recipe_ingredient.recipe = local_recipe
+        recipe_ingredient.save!
+      end
+    end
+    puts "Ingredients added to recipe #{recipe_counter}"
+  end
+
   recipe_counter += 1
 end
