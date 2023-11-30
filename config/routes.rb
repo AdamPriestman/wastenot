@@ -13,4 +13,5 @@ Rails.application.routes.draw do
   resources :recipes, only: [:index, :show] do
     resources :bookmarks, only: [:index, :new, :create]
   end
+  resources :posts, only: [:index, :new, :create, :edit, :update, :delete]
 end
