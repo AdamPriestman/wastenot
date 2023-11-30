@@ -5,44 +5,39 @@ export default class extends Controller {
 static targets = ["servingsInput", "cooktimeInput", "servingsValue", "cooktimeValue", "recipeFilter", "result"]
 
   connect() {
-    console.log("index filter connected")
+    // console.log("index filter connected")
     this.servingsValueTarget.innerText = this.servingsInputTarget.value
     this.cooktimeValueTarget.innerText = `${this.cooktimeInputTarget.value} minutes`
   }
 
   filterIndex(event) {
-    let selectedFilters = []
+    let selectedFilters = {}
     if (event.target === this.cooktimeInputTarget) {
       this.cooktimeValueTarget.innerText = `${event.target.value} minutes`
-      selectedFilters.push({ cooktime:event.target.value })
-      selectedFilters.push({ servings:this.servingsInputTarget.value })
+      selectedFilters["cooktime"] =  event.target.value
+      selectedFilters["servings"] =  this.servingsInputTarget.value
     } else {
       this.servingsValueTarget.innerText = event.target.value
-      selectedFilters.push({ servings: event.target.value })
-      selectedFilters.push({ cooktime: this.cooktimeInputTarget.value })
+      selectedFilters["servings"] = event.target.value
+      selectedFilters["cooktime"] =  this.cooktimeInputTarget.value
     }
     console.log("-----Applied filters-----")
-    console.log(selectedFilters)
-    console.log(selectedFilters.constructor === Array)
-    console.log(selectedFilters[0].constructor === Object)
 
-    if (selectedFilters.length > 0) {
+    if (selectedFilters) {
       this.fetchResults(selectedFilters);
     } else {
       this.fetchResults();
     }
   }
 
-  fetchResults(filters = []) {
-
-    const filtersObj = {filtersKey: filters}
+  fetchResults(filters) {
     fetch("recipes/filter", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         "X-CSRF-Token": document.querySelector("meta[name=csrf-token]").content,
       },
-      body: JSON.stringify({ filtersObj }),
+      body: JSON.stringify({ filtersObj: filters} ),
     })
       .then((response) => response.json())
       .then((data) => {
@@ -53,9 +48,10 @@ static targets = ["servingsInput", "cooktimeInput", "servingsValue", "cooktimeVa
 
   renderResults(data) {
     console.log(data)
+    console.log(this.resultTargets)
     this.resultTargets.forEach((result) => {
-      const shouldShow = data.length === 0 || data.includes(parseInt(result.dataset.id, 10));
-      result.style.display = shouldShow ? "block" : "none";
+      const shouldShow = (data.length === 0 || data.includes(parseInt(result.dataset.id, 10)));
+      shouldShow ? result.style.display = "block" : result.style.display = "none";
     });
   }
 }
