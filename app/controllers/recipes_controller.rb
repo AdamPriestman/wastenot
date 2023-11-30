@@ -28,6 +28,22 @@ class RecipesController < ApplicationController
       @ingredient = Ingredient.find(params[:ingredient3])
       @recipes = @recipes.select { |recipe| recipe.ingredients.include?(@ingredient) }
     end
+
+    if params[:vegan] == "1"
+      @recipes = @recipes.select { |recipe| recipe.vegan? }
+    end
+
+    if params[:vegetarian] == "1"
+      @recipes = @recipes.select { |recipe| recipe.vegetarian? }
+    end
+
+    if params[:gluten_free] == "1"
+      @recipes = @recipes.select { |recipe| recipe.gluten_free? }
+    end
+
+    if params[:dairy_free] == "1"
+      @recipes = @recipes.select { |recipe| recipe.dairy_free? }
+    end
   end
 
   def show

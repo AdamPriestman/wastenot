@@ -7,7 +7,7 @@ export default class extends Controller {
 
   connect() {
     this.servingsValueTarget.innerText = this.servingsInputTarget.value
-    this.cooktimeValueTarget.innerText = `${this.cooktimeInputTarget.value} minutes`
+    this.cooktimeValueTarget.innerText = `<${this.cooktimeInputTarget.value} minutes`
     new TomSelect("#ingredient1",{
       create: false,
       sortField: {
@@ -42,7 +42,7 @@ export default class extends Controller {
   }
 
   displayCooktime(event) {
-    this.cooktimeValueTarget.innerText = `${event.target.value} minutes`
+    this.cooktimeValueTarget.innerText = `<${event.target.value} minutes`
   }
 
   addIngredientTwo() {
