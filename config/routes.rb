@@ -16,5 +16,4 @@ Rails.application.routes.draw do
   end
   resources :bookmarks, only: [:index, :new, :destroy]
   resources :posts, only: [:index, :edit, :update, :delete]
-
 end

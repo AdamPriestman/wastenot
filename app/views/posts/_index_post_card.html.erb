@@ -1,0 +1,17 @@
+<ul class="list-group">
+  <% @posts.each do |post| %>
+    <div class="post-card">
+
+      <p class="post-info">
+        <%= image_tag "post_user.png", class: "post-avatar" %>
+        <%= post.user.username %>
+      </p>
+        <%= link_to recipe_path(post.recipe) do  %>
+          <i class="fa-solid fa-link"></i>
+        <% end %>
+      <p class="post-info"><%= post.title %></p>
+      <p class="post-info"><%= post.description %></p>
+    </div>
+  <% end %>
+</ul>
+<br>

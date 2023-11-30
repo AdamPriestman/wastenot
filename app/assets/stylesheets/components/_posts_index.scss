@@ -1,0 +1,49 @@
+.posts-index-container{
+  background: rgba(109, 211, 119, 0.2);
+  margin-top: none;
+}
+.posts{
+  margin: 0px 30px 50px 30px;
+
+  .header{
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+    padding-top: 15px;
+    background-color: transparent;
+  }
+  .post-card{
+    width: 300px;
+    height: 450px;
+    background: white;
+    border: gray;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(98, 97, 97, 0.2);
+  }
+}
+.fa-circle-user{
+  color: gray;
+  width: 50px;
+  height: 50px;
+
+}
+.post-avatar{
+  width: 25px;
+  height: 20px;
+  border-radius: 50%;
+
+  // .large {
+  //   width: 56px;
+  //   border-radius: 50%;
+  // }
+  // .bordered {
+  //   width: 40px;
+  //   border-radius: 50%;
+  //   box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+  //   border: white 1px solid;
+  // }
+  // .square {
+  //   width: 40px;
+  //   border-radius: 0px;
+  //   box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+  //   border: white 1px solid;
+  // }
+}
