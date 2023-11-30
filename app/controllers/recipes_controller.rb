@@ -6,11 +6,11 @@ class RecipesController < ApplicationController
     @recipes = Recipe.all
     @ingredients = Ingredient.all
 
-    if params[:cooktime].present? && params[:servings].present?
-      @recipes = Recipe.where("cooktime <= #{params[:cooktime]} AND servings <= #{params[:servings]}")
-    elsif params[:cooktime].present?
+    if params[:cooktime].present?
       @recipes = Recipe.where("cooktime <= #{params[:cooktime]}")
-    elsif params[:servings].present?
+    end
+
+    if params[:servings].present? && params[:servings].to_i < 8
       @recipes = Recipe.where("serving <= #{params[:servings]}")
     end
 

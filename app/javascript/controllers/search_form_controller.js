@@ -10,7 +10,11 @@ export default class extends Controller {
   }
 
   displayServings(event) {
-    this.servingsValueTarget.innerText = event.target.value
+    if (event.target.value === "8") {
+      this.servingsValueTarget.innerText = "8+"
+    } else {
+      this.servingsValueTarget.innerText = event.target.value
+    }
   }
 
   displayCooktime(event) {
