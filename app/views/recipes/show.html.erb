@@ -1,6 +1,4 @@
 <%# Link added to navigate on localhost, please change as needed %>
-<%= link_to "Back to recipes", recipes_path %>
-
 
 <%# <%= link_to "Bookmark this Recipe", recipes_path %>
   <%= link_to "Bookmark this recipe", recipe_bookmarks_path(@recipe), data: { turbo_method: :post } %>
