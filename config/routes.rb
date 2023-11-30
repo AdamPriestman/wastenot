@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   # root "posts#index"
   get "search", to: "pages#search"
   resources :recipes, only: [:index, :show] do
+    post 'filter', on: :collection
     resources :bookmarks, only: [:create]
     resources :posts, only: [:new, :create]
   end

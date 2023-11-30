@@ -1,0 +1,12 @@
+<div class="search-container">
+  <%= form_with url: recipes_path, method: :get, class: "d-flex flex-column" do |f| %>
+    <p class="btn btn-secondary d-none" data-action="click->search-form#addIngredientTwo" data-search-form-target="ingredientButtonTwo">Add another ingredient</p>
+    <p class="btn btn-secondary d-none" data-action="click->search-form#addIngredientThree" data-search-form-target="ingredientButtonThree">Add another ingredient</p>
+    <h3>Max Cooktime</h3>
+    <input type="range" id="cooktime" name="cooktime" min="0" max="100" data-index-filter-target="cooktimeInput" data-index-filter-target="recipeFilter" data-action="input->index-filter#filterIndex">
+    <p data-index-filter-target="cooktimeValue" class="mb-3"></p>
+    <h3>Servings</h3>
+    <input type="range" id="servings" name="servings" min="1" max="8" data-index-filter-target="servingsInput" data-index-filter-target="recipeFilter" data-action="input->index-filter#filterIndex">
+    <p data-index-filter-target="servingsValue"></p>
+  <% end %>
+</div>
