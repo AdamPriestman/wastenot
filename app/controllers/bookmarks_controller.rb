@@ -14,7 +14,7 @@ class BookmarksController < ApplicationController
     @bookmark.user = current_user
     @bookmark.recipe = @recipe
       if @bookmark.save
-        redirect_to bookmarks_path
+        redirect_to recipe_path(@recipe)
         # this path need to be changed to re-render the same page
       end
   end

@@ -1,8 +1,3 @@
-<%# Link added to navigate on localhost, please change as needed %>
-
-<%# <%= link_to "Bookmark this Recipe", recipes_path %>
-  <%= link_to "Bookmark this recipe", recipe_bookmarks_path(@recipe), data: { turbo_method: :post } %>
-  <br>
 <div class="show-container">
   <%= link_to recipes_path, :class => "back-link" do  %>
     <i class="fa-solid fa-arrow-left"></i>
@@ -13,9 +8,14 @@
         <div class="col-sm-6 col-lg-6">
           <p class="fw-bold"><%= "Rating" %> 4.2 ⭐️</p>
         </div>
+        <%# linked the boookmark icon to the bookmark path %>
         <div class="col-sm-6 col-lg-6">
-          <p class="text-end"><i class="fa-regular fa-bookmark"></i></p>
+
+          <%= link_to recipe_bookmarks_path(@recipe), data: { turbo_method: :post } do  %>
+            <i class="fa-regular fa-bookmark"></i>
+          <% end %>
         </div>
+
       </div>
       <p><%= image_tag((@recipe.image), :class => "responsive") %></p>
     </div>
