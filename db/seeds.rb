@@ -53,7 +53,7 @@ recipes.each do |recipe|
   instructions.each do |recipe_instructions|
     steps = recipe_instructions["steps"]
     steps.each do |step|
-      instructions_string.push("#{step['number']}.#{step['step']}")
+      instructions_string.push("#{step['number']}.#{step['step'].gsub(/<\/?.>/, '')}")
     end
   end
   local_recipe = Recipe.create(
@@ -62,11 +62,15 @@ recipes.each do |recipe|
     cooktime: recipe["cookingMinutes"],
     cuisine: recipe["cuisines"].join(", "),
     course: recipe["dishTypes"].join(", "),
-    description: recipe["summary"],
+    description: recipe["summary"].gsub(/<\/?.>/, ""),
     instructions: instructions_string,
     servings: recipe["servings"],
     source: recipe["creditsText"],
-    image: recipe["image"]
+    image: recipe["image"],
+    vegan: recipe["vegan"],
+    vegetarian: recipe["vegetarian"],
+    gluten_free: recipe["glutenFree"],
+    dairy_free: recipe["dairyFree"]
   )
   puts "Recipe #{recipe_counter} created"
 
