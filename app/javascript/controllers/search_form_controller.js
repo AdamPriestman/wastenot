@@ -1,4 +1,5 @@
 import { Controller } from "@hotwired/stimulus"
+import TomSelect from "tom-select"
 
 // Connects to data-controller="search-form"
 export default class extends Controller {
@@ -6,7 +7,30 @@ export default class extends Controller {
 
   connect() {
     this.servingsValueTarget.innerText = this.servingsInputTarget.value
-    this.cooktimeValueTarget.innerText = `${this.cooktimeInputTarget.value} minutes`
+    this.cooktimeValueTarget.innerText = `<${this.cooktimeInputTarget.value} minutes`
+    new TomSelect("#ingredient1",{
+      create: false,
+      sortField: {
+        field: "text",
+        direction: "asc"
+      }
+    });
+
+    new TomSelect("#ingredient2",{
+      create: false,
+      sortField: {
+        field: "text",
+        direction: "asc"
+      }
+    });
+
+    new TomSelect("#ingredient3",{
+      create: false,
+      sortField: {
+        field: "text",
+        direction: "asc"
+      }
+    });
   }
 
   displayServings(event) {
@@ -18,7 +42,7 @@ export default class extends Controller {
   }
 
   displayCooktime(event) {
-    this.cooktimeValueTarget.innerText = `${event.target.value} minutes`
+    this.cooktimeValueTarget.innerText = `<${event.target.value} minutes`
   }
 
   addIngredientTwo() {

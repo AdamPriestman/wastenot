@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_11_28_173035) do
+ActiveRecord::Schema[7.1].define(version: 2023_11_30_162309) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -77,6 +77,10 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_28_173035) do
     t.integer "servings"
     t.string "source"
     t.string "image"
+    t.boolean "vegetarian"
+    t.boolean "vegan"
+    t.boolean "gluten_free"
+    t.boolean "dairy_free"
   end
 
   create_table "users", force: :cascade do |t|
