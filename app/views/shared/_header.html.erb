@@ -8,17 +8,31 @@
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
           <a hfef="#" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
-            <%= image_tag "https://www.clipartkey.com/mpngs/m/209-2095552_profile-picture-placeholder-png.png", class: "avatar" %>
+            <% if current_user.photo.attached? %>
+              <%= cl_image_tag current_user.photo.key, class: "avatar" %>
+            <% else %>
+              <%= image_tag "https://www.clipartkey.com/mpngs/m/209-2095552_profile-picture-placeholder-png.png", class: "avatar" %>
+            <% end %>
           </a>
           <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
             <div class="offcanvas-header">
-              <%= image_tag "https://www.clipartkey.com/mpngs/m/209-2095552_profile-picture-placeholder-png.png", class: "avatar" %>
+              <div>
+                <% if current_user.photo.attached? %>
+                  <%= cl_image_tag current_user.photo.key, class: "avatar" %>
+                <% else %>
+                  <%= image_tag "https://www.clipartkey.com/mpngs/m/209-2095552_profile-picture-placeholder-png.png", class: "avatar" %>
+                <% end %>
+                <%= current_user.username %>
+              </div>
               <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
             <div class="offcanvas-body">
               <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                 <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="#">Profile?</a>
+                  <a class="nav-link active" aria-current="page" href="/bookmarks">Saved Recipes</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="/">Browse All</a>
                 </li>
                 <li class="nav-item">
                   <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "nav-link" %>
