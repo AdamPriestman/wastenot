@@ -3,25 +3,43 @@
   justify-content: space-around;
   margin-top: 8px;
   margin-bottom: -8px;
-  font-size: 125%;
+  i {
+    font-size: 125%;
+    padding: 4px;
+  }
 }
 
 .filters {
-  display: none;
+  display: block;
   z-index: 3;
   top: 68px;
   height: 100%;
-  position: absolute;
+  position: fixed;
   background: linear-gradient(to right bottom, rgba(48, 167, 18, 0.95), rgba(144, 208, 128, 0.95));
-  left: 0px;
   right: 0px;
   top: 69px;
   padding: 16px;
   width: 100%;
+  transition: right, 0.5s;
+
   h3 {
     margin-top: 0px;
     margin-bottom: 0px;
   }
+
+  .checkbox-field {
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 24px 0px 24px;
+  }
+
+  // .checkbox {
+  //   margin-right: 16px;
+  // }
+}
+
+.closed {
+  right: -375px;
 }
 
 .no-results {
