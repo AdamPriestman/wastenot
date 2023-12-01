@@ -6,7 +6,7 @@
       <h1><%= @recipe.title %></h1>
       <div class="d-flex justify-content-between">
         <div class="col-sm-6 col-lg-6">
-          <p class="fw-bold"><%= "Rating" %> 4.2 ⭐️</p>
+          <p class="fw-bold"><%= "Rating" %> <%= @recipe.average_rating %> ⭐️</p>
         </div>
         <%# linked the boookmark icon to the bookmark path %>
         <div class="col-sm-6 col-lg-6">
