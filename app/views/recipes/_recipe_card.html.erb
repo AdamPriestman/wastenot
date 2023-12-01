@@ -6,6 +6,7 @@
       <p class="card-description"><%= recipe.description.truncate(100) %></p>
       <div class="rating_bookmark" data-controller="toggle">
         <p><%= recipe.average_rating %> ⭐️</p>
+        <%# need to add link to bookmark%>
         <i class="fa-regular fa-bookmark" data-toggle-target="bookmarkFalse" data-action="click->toggle#bookmark"></i>
         <i class="fa-solid fa-bookmark d-none" data-toggle-target="bookmarkTrue" data-action="click->toggle#bookmark"></i>
       </div>
