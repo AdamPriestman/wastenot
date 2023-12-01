@@ -55,6 +55,7 @@ static targets = ["servingsInput", "cooktimeInput", "servingsValue", "cooktimeVa
     this.resultTargets.forEach((result) => {
       const shouldShow = (data.length === 0 || data.includes(parseInt(result.dataset.id, 10)));
       shouldShow ? result.style.display = "block" : result.style.display = "none";
+      // console.log(result)
     });
   }
 }
