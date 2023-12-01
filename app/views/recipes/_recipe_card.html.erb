@@ -1,5 +1,5 @@
 <div class="recipe-card">
-  <img src=<%= recipe.image %> alt=<%= recipe.title %>>
+  <%= cl_image_tag recipe.photo.key %>
   <div class="card-content">
     <h2><%= recipe.title %></h2>
     <div class="card-details">
