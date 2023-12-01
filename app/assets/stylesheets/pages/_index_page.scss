@@ -21,7 +21,7 @@
   padding: 16px;
   width: 100%;
   transition: right, 0.5s;
-
+  // opacity: 1;
   h3 {
     margin-top: 0px;
     margin-bottom: 0px;
@@ -33,13 +33,12 @@
     padding: 0px 24px 0px 24px;
   }
 
-  // .checkbox {
-  //   margin-right: 16px;
-  // }
 }
 
 .closed {
-  right: -375px;
+  right: -1455px;
+  opacity: 0;
+  background-color: blue !important;
 }
 
 .no-results {
