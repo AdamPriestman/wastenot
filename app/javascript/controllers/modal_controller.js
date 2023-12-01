@@ -8,16 +8,16 @@ export default class extends Controller {
   }
 
   filters() {
-    this.filtersTarget.style.display = "block"
+    // this.filtersTarget.style.display = "block"
+    this.filtersTarget.classList.toggle("closed")
     this.cardTargets.forEach(element => {
       element.style.pointerEvents = "none";
     });
-
-
   }
 
   closeFilters() {
-    this.filtersTarget.style.display = "none"
+    // this.filtersTarget.style.display = "none"
+    this.filtersTarget.classList.toggle("closed")
     this.cardTargets.forEach(element => {
       element.style.pointerEvents = "auto";
     });

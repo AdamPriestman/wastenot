@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="index-filter"
 export default class extends Controller {
-static targets = ["servingsInput", "cooktimeInput", "servingsValue", "cooktimeValue", "recipeFilter", "result"]
+static targets = ["servingsInput", "cooktimeInput", "servingsValue", "cooktimeValue", "recipeFilter", "result", "checkbox"]
 
   connect() {
     this.servingsValueTarget.innerText = this.servingsInputTarget.value
@@ -15,7 +15,7 @@ static targets = ["servingsInput", "cooktimeInput", "servingsValue", "cooktimeVa
       this.cooktimeValueTarget.innerText = `<${event.target.value} minutes`
       selectedFilters["cooktime"] =  event.target.value
       selectedFilters["servings"] =  this.servingsInputTarget.value
-    } else {
+    } else if (event.target === this.servingsInputTarget) {
       if (event.target.value >= 8) {
         this.servingsValueTarget.innerText = "8+"
       } else {
@@ -23,7 +23,17 @@ static targets = ["servingsInput", "cooktimeInput", "servingsValue", "cooktimeVa
       }
       selectedFilters["servings"] = event.target.value
       selectedFilters["cooktime"] =  this.cooktimeInputTarget.value
+    } else {
+      selectedFilters["servings"] =  this.servingsInputTarget.value
+      selectedFilters["cooktime"] =  this.cooktimeInputTarget.value
+      const checkboxes = this.checkboxTargets
+      checkboxes.forEach((checkbox) => {
+        if (checkbox.checked) {
+          selectedFilters[`${checkbox.value}`] = true
+        }
+      })
     }
+
     console.log(selectedFilters)
     console.log("-----Applied filters-----")
 
@@ -53,8 +63,9 @@ static targets = ["servingsInput", "cooktimeInput", "servingsValue", "cooktimeVa
   renderResults(data) {
     console.log(data)
     this.resultTargets.forEach((result) => {
-      const shouldShow = (data.length === 0 || data.includes(parseInt(result.dataset.id, 10)));
+      const shouldShow = (data.includes(parseInt(result.dataset.id, 10)));
       shouldShow ? result.style.display = "block" : result.style.display = "none";
+      // console.log(result)
     });
   }
 }
