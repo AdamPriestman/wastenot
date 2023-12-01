@@ -48,12 +48,57 @@ class RecipesController < ApplicationController
 
   def filter
     filters = filter_params || []
-    p filters[:servings]
-    if filters[:servings].to_i <= 8
-      @filtered_ids = Recipe.where("cooktime <= #{filters[:cooktime]}").and(Recipe.where("servings <= #{filters[:servings]}")).pluck(:id)
+    p filters
+
+    # if filters[:vegan].present? && filters[:vegan] == true
+    #   if filters[:servings].to_i <= 8
+    #     @filtered_ids = Recipe.where("cooktime <= #{filters[:cooktime]}").and(Recipe.where("vegan = true")).and(Recipe.where("servings <= #{filters[:servings]}")).pluck(:id)
+    #   else
+    #     @filtered_ids = Recipe.where("cooktime <= #{filters[:cooktime]}").and(Recipe.where("vegan = true")).pluck(:id)
+    #   end
+    # end
+
+  queries = []
+  filters.each do |key, value|
+    if value.class == TrueClass
+      queries << "#{key} = #{value}" unless (key == "servings" && value == 8)
     else
-      @filtered_ids = Recipe.where("cooktime <= #{filters[:cooktime]}").pluck(:id)
+      queries << "#{key} <= #{value}"
     end
+  end
+
+  case queries.length
+  when 1
+    @filtered_ids = Recipe.where("#{queries[0]}")
+  when 2
+    @filtered_ids = Recipe.where("#{queries[0]}").and(Recipe.where("#{queries[1]}")).pluck(:id)
+  when 3
+    @filtered_ids = Recipe.where("#{queries[0]}").and(Recipe.where("#{queries[1]}")).and(Recipe.where("#{queries[2]}")).pluck(:id)
+  when 4
+    @filtered_ids = Recipe.where("#{queries[0]}").and(Recipe.where("#{queries[1]}")).and(Recipe.where("#{queries[2]}")).and(Recipe.where("#{queries[3]}")).pluck(:id)
+  when 5
+    @filtered_ids = Recipe.where("#{queries[0]}").and(Recipe.where("#{queries[1]}")).and(Recipe.where("#{queries[2]}")).and(Recipe.where("#{queries[3]}")).and(Recipe.where("#{queries[4]}")).pluck(:id)
+  when 6
+    @filtered_ids = Recipe.where("#{queries[0]}").and(Recipe.where("#{queries[1]}")).and(Recipe.where("#{queries[2]}")).and(Recipe.where("#{queries[3]}")).and(Recipe.where("#{queries[4]}"))..and(Recipe.where("#{queries[5]}")).pluck(:id)
+  end
+
+    # if filters[:vegatarian].present?
+
+    # end
+
+    # if filters[:glutenFree].present?
+
+    # end
+
+    # if filters[:dairyFree].present?
+
+    # end
+
+    # if filters[:servings].to_i <= 7
+    #   @filtered_ids = Recipe.where("cooktime <= #{filters[:cooktime]}").and(Recipe.where("servings <= #{filters[:servings]}")).pluck(:id)
+    # else
+    #   @filtered_ids = Recipe.where("cooktime <= #{filters[:cooktime]}").pluck(:id)
+    # end
 
     respond_to do |format|
       format.json { render json: @filtered_ids }
@@ -68,7 +113,7 @@ class RecipesController < ApplicationController
   private
 
   def filter_params
-    params.require(:filtersObj).permit(:cooktime, :servings, :vegan, :vegetarian, :glutenFree, :dairyFree)
+    params.require(:filtersObj).permit(:cooktime, :servings, :vegan, :vegetarian, :gluten_free, :dairy_free)
   end
 
   def set_recipe

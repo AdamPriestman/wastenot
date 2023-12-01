@@ -184,11 +184,9 @@ GEM
       net-protocol
     netrc (0.11.0)
     nio4r (2.7.0)
-<<<<<<< HEAD
     nokogiri (1.15.5-arm64-darwin)
-=======
+      racc (~> 1.4)
     nokogiri (1.15.5-x86_64-darwin)
->>>>>>> 6e88146bd0bab142b7c82d15b4616e20487aedb6
       racc (~> 1.4)
     nokogiri (1.15.5-x86_64-linux)
       racc (~> 1.4)
@@ -303,6 +301,7 @@ GEM
     zeitwerk (2.6.12)
 
 PLATFORMS
+  arm64-darwin-22
   x86_64-darwin-21
   x86_64-linux
 

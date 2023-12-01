@@ -29,7 +29,7 @@ static targets = ["servingsInput", "cooktimeInput", "servingsValue", "cooktimeVa
       const checkboxes = this.checkboxTargets
       checkboxes.forEach((checkbox) => {
         if (checkbox.checked) {
-          selectedFilters[`${checkbox.name}`] = true
+          selectedFilters[`${checkbox.value}`] = true
         }
       })
     }
@@ -61,9 +61,9 @@ static targets = ["servingsInput", "cooktimeInput", "servingsValue", "cooktimeVa
   }
 
   renderResults(data) {
-    // console.log(data)
+    console.log(data)
     this.resultTargets.forEach((result) => {
-      const shouldShow = (data.length === 0 || data.includes(parseInt(result.dataset.id, 10)));
+      const shouldShow = (data.includes(parseInt(result.dataset.id, 10)));
       shouldShow ? result.style.display = "block" : result.style.display = "none";
       // console.log(result)
     });
