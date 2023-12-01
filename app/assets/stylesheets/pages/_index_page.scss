@@ -27,6 +27,15 @@
     margin-bottom: 0px;
   }
 
+  .checkbox-field {
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 24px 0px 24px;
+  }
+
+  // .checkbox {
+  //   margin-right: 16px;
+  // }
 }
 
 .closed {

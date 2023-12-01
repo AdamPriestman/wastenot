@@ -9,6 +9,22 @@
       <h3>Servings</h3>
       <input type="range" id="servings" name="servings" min="1" max="8" data-index-filter-target="servingsInput" data-index-filter-target="recipeFilter" data-action="input->index-filter#filterIndex">
       <p data-index-filter-target="servingsValue"></p>
+      <div class="checkbox-field">
+        <label for="vegan">Vegan</label>
+        <input type="checkbox" name="vegan" value="vegan" class="checkbox" data-action="click->index-filter#filterIndex" data-index-filter-target="checkbox">
+      </div>
+      <div class="checkbox-field">
+        <label for="vegatarian">Vegatarian</label>
+        <input type="checkbox" name="vegatarian" value="vegatarian" class="checkbox" data-action="click->index-filter#filterIndex" data-index-filter-target="checkbox">
+      </div>
+      <div class="checkbox-field">
+        <label for="gluten-free">Gluten Free</label>
+        <input type="checkbox" name="glutenFree" value="gluten-free" class="checkbox" data-action="click->index-filter#filterIndex" data-index-filter-target="checkbox">
+      </div>
+      <div class="checkbox-field">
+        <label for="dairy-free">Dairy Free</label>
+        <input type="checkbox" name="dairyFree" value="dairy-free" class="checkbox" data-action="click->index-filter#filterIndex" data-index-filter-target="checkbox">
+      </div>
     <% end %>
   </div>
 </div>

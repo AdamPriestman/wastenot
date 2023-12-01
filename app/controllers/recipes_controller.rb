@@ -68,7 +68,7 @@ class RecipesController < ApplicationController
   private
 
   def filter_params
-    params.require(:filtersObj).permit(:cooktime, :servings)
+    params.require(:filtersObj).permit(:cooktime, :servings, :vegan, :vegetarian, :glutenFree, :dairyFree)
   end
 
   def set_recipe
