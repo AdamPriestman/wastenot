@@ -1,5 +1,5 @@
 <div class="bookmark-card">
-  <img src=<%= bookmark.recipe.image %> alt=<%= bookmark.recipe.title %>>
+  <%= cl_image_tag bookmark.recipe.photo.key %>
   <div class="card-content">
     <h2><%= bookmark.recipe.title %></h2>
     <div class="card-details">
