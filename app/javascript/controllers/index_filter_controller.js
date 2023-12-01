@@ -5,22 +5,26 @@ export default class extends Controller {
 static targets = ["servingsInput", "cooktimeInput", "servingsValue", "cooktimeValue", "recipeFilter", "result"]
 
   connect() {
-    // console.log("index filter connected")
     this.servingsValueTarget.innerText = this.servingsInputTarget.value
-    this.cooktimeValueTarget.innerText = `${this.cooktimeInputTarget.value} minutes`
+    this.cooktimeValueTarget.innerText = `<${this.cooktimeInputTarget.value} minutes`
   }
 
   filterIndex(event) {
     let selectedFilters = {}
     if (event.target === this.cooktimeInputTarget) {
-      this.cooktimeValueTarget.innerText = `${event.target.value} minutes`
+      this.cooktimeValueTarget.innerText = `<${event.target.value} minutes`
       selectedFilters["cooktime"] =  event.target.value
       selectedFilters["servings"] =  this.servingsInputTarget.value
     } else {
-      this.servingsValueTarget.innerText = event.target.value
+      if (event.target.value >= 8) {
+        this.servingsValueTarget.innerText = "8+"
+      } else {
+        this.servingsValueTarget.innerText = event.target.value
+      }
       selectedFilters["servings"] = event.target.value
       selectedFilters["cooktime"] =  this.cooktimeInputTarget.value
     }
+    console.log(selectedFilters)
     console.log("-----Applied filters-----")
 
     if (selectedFilters) {
@@ -48,7 +52,6 @@ static targets = ["servingsInput", "cooktimeInput", "servingsValue", "cooktimeVa
 
   renderResults(data) {
     console.log(data)
-    console.log(this.resultTargets)
     this.resultTargets.forEach((result) => {
       const shouldShow = (data.length === 0 || data.includes(parseInt(result.dataset.id, 10)));
       shouldShow ? result.style.display = "block" : result.style.display = "none";

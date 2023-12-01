@@ -48,11 +48,13 @@ class RecipesController < ApplicationController
 
   def filter
     filters = filter_params || []
-    p filters
-    # change to accomodate for filters being a hash instead of an array for cooktime and servings
-    # filters.each
-    @filtered_ids = Recipe.where("cooktime <= #{filters[:cooktime]}").and(Recipe.where("servings <= #{filters[:servings]}")).pluck(:id)
-    p @filtered_ids
+    p filters[:servings]
+    if filters[:servings].to_i <= 8
+      @filtered_ids = Recipe.where("cooktime <= #{filters[:cooktime]}").and(Recipe.where("servings <= #{filters[:servings]}")).pluck(:id)
+    else
+      @filtered_ids = Recipe.where("cooktime <= #{filters[:cooktime]}").pluck(:id)
+    end
+
     respond_to do |format|
       format.json { render json: @filtered_ids }
     end
