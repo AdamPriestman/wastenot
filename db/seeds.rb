@@ -20,6 +20,7 @@ Ingredient.destroy_all
 Recipe.destroy_all
 
 5.times do |i|
+  photo = URI.open("https://i.pinimg.com/236x/6d/a4/de/6da4de74f8540aaa6c83804434e64687.jpg")
   user = User.new(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
@@ -27,6 +28,7 @@ Recipe.destroy_all
     email: "chef#{i + 1}@email.com",
     password: "password"
   )
+  user.photo.attach(io: photo, filename: "profile.png", content_type: "image/png")
   user.save!
   puts "User #{i + 1} created"
 end
@@ -72,6 +74,11 @@ recipes.each do |recipe|
     gluten_free: recipe["glutenFree"],
     dairy_free: recipe["dairyFree"]
   )
+
+  photo = URI.open(recipe["image"])
+  local_recipe.photo.attach(io: photo, filename: "food.png", content_type: "image/png")
+  local_recipe.save!
+
   puts "Recipe #{recipe_counter} created"
 
   instructions.each do |instruction|
