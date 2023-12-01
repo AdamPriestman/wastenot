@@ -1,17 +1,24 @@
-<ul class="list-group">
+<div class="all-the-posts">
   <% @posts.each do |post| %>
-    <div class="post-card">
+    <div class="posts-container">
+      <div class="post-card-category">
+        <div class="card-content">
+          <div class="post-info">
+            <h6><%= image_tag "post_user.png", class: "post-avatar" %></h6>
+            <p><%= post.user.username %></p>
+          </div>
 
-      <h6 class="post-info">
-        <%= image_tag "post_user.png", class: "post-avatar" %>
-        <%= post.user.username %>
-      </h6>
-        <%= link_to recipe_path(post.recipe) do  %>
-          <i class="fa-solid fa-link"></i>
-        <% end %>
-      <p class="post-info"><%= post.title %></p>
-      <p class="post-info"><%= post.description %></p>
+          <%= image_tag "favicon_logo.png", class: "post-image" %>
+
+          <div>
+            <%= link_to recipe_path(post.recipe) do  %>
+              <i class="fa-solid fa-link"></i>
+            <% end %>
+          </div>
+          <p class="post-info"><%= post.title %></p>
+          <p class="post-info"><%= post.description %></p>
+        </div>
+      </div>
     </div>
   <% end %>
-</ul>
-<br>
+</div>
