@@ -5,15 +5,18 @@
 
   .post-card-category{
     // width: 300px;
+    padding: 20px;
     height: 450px;
     background: white;
     border: gray;
     border-radius: 10px;
     box-shadow: 0 0 15px rgba(98, 97, 97, 0.2);
-    .content{
-      margin: 15px;
-    }
-    .post-image{
+
+    .responsive{
+      width: 100%;
+      height: auto;
+      border-radius: 5px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
 
     }
   }

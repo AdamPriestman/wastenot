@@ -1,13 +1,24 @@
 <div class="show-container">
-  <%= link_to recipes_path, :class => "back-link" do  %>
-    <i class="fa-solid fa-arrow-left"></i>
-  <% end %>
+<%# added icon link to post form %>
+  <div class="d-flex justify-content-between">
+    <div class="col-sm-6 col-lg-6">
+      <%= link_to recipes_path, :class => "back-link" do  %>
+        <i class="fa-solid fa-arrow-left"></i>
+      <% end %>
+    </div>
+
+    <div class="col-sm-6 col-lg-6">
+      <%= link_to new_recipe_post_path(@recipe), :class => "back-link" do  %>
+        <i class="fa-regular fa-comment"></i>
+      <% end %>
+    </div>
+  </div>
+
     <div class="recipe-info-card row">
       <h1><%= @recipe.title %></h1>
       <div class="d-flex justify-content-between">
         <div class="col-sm-6 col-lg-6">
           <p class="fw-bold"><%= "Rating" %> 4.2 ⭐️</p>
-          <p class="fw-bold"><%= "Rating" %> <%= @recipe.rating %></p>
         </div>
         <%# linked the boookmark icon to the bookmark path %>
         <div class="col-sm-6 col-lg-6">
