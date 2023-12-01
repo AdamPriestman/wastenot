@@ -33,73 +33,122 @@ Recipe.destroy_all
   puts "User #{i + 1} created"
 end
 
-url = URI("https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/complexSearch?query=pasta&cuisine=italian&instructionsRequired=true&fillIngredients=false&addRecipeInformation=true&ignorePantry=true&number=30&limitLicense=false")
+def get_recipes(url)
+  http = Net::HTTP.new(url.host, url.port)
+  http.use_ssl = true
 
-# 30 pasta results no ingredients passed
+  request = Net::HTTP::Get.new(url)
+  request["X-RapidAPI-Key"] = ENV["X_RapidAPI_Key"]
+  request["X-RapidAPI-Host"] = ENV["X_RapidAPI_Host"]
 
-http = Net::HTTP.new(url.host, url.port)
-http.use_ssl = true
+  response = http.request(request)
+  recipes_json = JSON.parse(response.read_body)
+  recipes = recipes_json["results"]
 
-request = Net::HTTP::Get.new(url)
-request["X-RapidAPI-Key"] = ENV["X_RapidAPI_Key"]
-request["X-RapidAPI-Host"] = ENV["X_RapidAPI_Host"]
-
-response = http.request(request)
-recipes_json = JSON.parse(response.read_body)
-recipes = recipes_json["results"]
-
-recipe_counter = 1
-recipes.each do |recipe|
-  instructions_string = []
-  instructions = recipe["analyzedInstructions"]
-  instructions.each do |recipe_instructions|
-    steps = recipe_instructions["steps"]
-    steps.each do |step|
-      instructions_string.push("#{step['number']}.#{step['step'].gsub(/<\/?.>/, '')}")
-    end
-  end
-  local_recipe = Recipe.create(
-    title: recipe["title"],
-    preptime: recipe["preparationMinutes"],
-    cooktime: recipe["cookingMinutes"],
-    cuisine: recipe["cuisines"].join(", "),
-    course: recipe["dishTypes"].join(", "),
-    description: recipe["summary"].gsub(/<\/?.>/, ""),
-    instructions: instructions_string,
-    servings: recipe["servings"],
-    source: recipe["creditsText"],
-    image: recipe["image"],
-    vegan: recipe["vegan"],
-    vegetarian: recipe["vegetarian"],
-    gluten_free: recipe["glutenFree"],
-    dairy_free: recipe["dairyFree"]
-  )
-
-  photo = URI.open(recipe["image"])
-  local_recipe.photo.attach(io: photo, filename: "food.png", content_type: "image/png")
-  local_recipe.save!
-
-  puts "Recipe #{recipe_counter} created"
-
-  instructions.each do |instruction|
-    steps = instruction["steps"]
-    steps.each do |step|
-      ingredients = step["ingredients"]
-      ingredients.each do |ingredient|
-        existing_ingredients = Ingredient.where("name=?", ingredient["name"])
-        if existing_ingredients.empty?
-          local_ingredient = Ingredient.create(name: ingredient["name"])
-        else
-          local_ingredient = existing_ingredients.first
-        end
-        recipe_ingredient = RecipeIngredient.new
-        recipe_ingredient.ingredient = local_ingredient
-        recipe_ingredient.recipe = local_recipe
-        recipe_ingredient.save!
+  recipe_counter = 1
+  recipes.each do |recipe|
+    instructions_array = []
+    instructions = recipe["analyzedInstructions"]
+    instructions.each do |recipe_instructions|
+      steps = recipe_instructions["steps"]
+      steps.each do |step|
+        instructions_array.push("#{step['number']}.#{step['step'].gsub(/<\/?.>/, '')}")
       end
     end
-    puts "Ingredients added to recipe #{recipe_counter}"
-  end
+    local_recipe = Recipe.create(
+      title: recipe["title"],
+      preptime: recipe["preparationMinutes"],
+      cooktime: recipe["cookingMinutes"],
+      cuisine: recipe["cuisines"].join(", "),
+      course: recipe["dishTypes"].join(", "),
+      description: recipe["summary"].gsub(/<\/?.>/, ""),
+      instructions: instructions_array.join,
+      servings: recipe["servings"],
+      source: recipe["creditsText"],
+      image: recipe["image"],
+      vegan: recipe["vegan"],
+      vegetarian: recipe["vegetarian"],
+      gluten_free: recipe["glutenFree"],
+      dairy_free: recipe["dairyFree"],
+      average_rating: rand(3.2..5.0).floor(1)
+    )
 
-  recipe_counter += 1
+    photo = URI.open(recipe["image"])
+    local_recipe.photo.attach(io: photo, filename: "food.png", content_type: "image/png")
+    local_recipe.save!
+
+    puts "Recipe #{recipe_counter} created"
+
+    # instructions.each do |instruction|
+    #   steps = instruction["steps"]
+    #   steps.each do |step|
+    #     ingredients = step["ingredients"]
+    #     ingredients.each do |ingredient|
+    #       existing_ingredients = Ingredient.where("name=?", ingredient["name"])
+    #       if existing_ingredients.empty?
+    #         local_ingredient = Ingredient.create(name: ingredient["name"])
+    #       else
+    #         local_ingredient = existing_ingredients.first
+    #       end
+    #       recipe_ingredient = RecipeIngredient.new
+    #       recipe_ingredient.ingredient = local_ingredient
+    #       recipe_ingredient.recipe = local_recipe
+    #       recipe_ingredient.save!
+    #     end
+    #   end
+    #   puts "Ingredients added to recipe #{recipe_counter}"
+    # end
+
+    ingredients = recipe["extendedIngredients"]
+    ingredients.each do |ingredient|
+      existing_ingredients = Ingredient.where("name=?", ingredient["nameClean"])
+      if existing_ingredients.empty?
+        local_ingredient = Ingredient.create(name: ingredient["nameClean"])
+      else
+        local_ingredient = existing_ingredients.first
+      end
+      recipe_ingredient = RecipeIngredient.new(
+        quantity: ingredient["measures"]["metric"]["amount"].floor(1),
+        units: ingredient["measures"]["metric"]["unitShort"]
+      )
+      recipe_ingredient.ingredient = local_ingredient
+      recipe_ingredient.recipe = local_recipe
+      recipe_ingredient.save!
+    end
+    puts "Ingredients added to recipe #{recipe_counter}"
+
+    recipe_counter += 1
+  end
 end
+
+url = URI("https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/complexSearch?query=pasta&cuisine=italian&instructionsRequired=true&fillIngredients=true&addRecipeInformation=true&ignorePantry=true&number=30&limitLicense=false")
+
+# 30 pasta results no ingredients passed
+puts "Pasta time"
+puts "_____________"
+puts "_____________"
+get_recipes(url)
+
+url = URI("https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/complexSearch?query=rice&instructionsRequired=true&fillIngredients=true&addRecipeInformation=true&ignorePantry=true&number=40&limitLicense=false")
+
+# 40 rice recipes
+puts "Rice rice baby"
+puts "_____________"
+puts "_____________"
+get_recipes(url)
+
+url = URI("https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/complexSearch?query=chicken&instructionsRequired=true&fillIngredients=true&addRecipeInformation=true&ignorePantry=true&number=40&limitLicense=false")
+
+# 40 chicken recipes
+puts "Chicken, cluck, cluck"
+puts "_____________"
+puts "_____________"
+get_recipes(url)
+
+puts "Deleting negative cooktime recipes"
+bad_seeds = Recipe.where("cooktime<0")
+bad_seeds.each(&:destroy)
+
+puts "Deleting empty ingredients"
+bad_seeds = Ingredient.select { |ingredient| ingredient.name.nil? }
+bad_seeds.each(&:destroy)
