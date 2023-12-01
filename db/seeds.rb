@@ -103,17 +103,17 @@ def get_recipes(url)
   end
 end
 
-url = URI("https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/complexSearch?query=pasta&cuisine=italian&instructionsRequired=true&fillIngredients=false&addRecipeInformation=true&ignorePantry=true&number=30&limitLicense=false")
+url = URI("https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/complexSearch?query=pasta&cuisine=italian&instructionsRequired=true&fillIngredients=true&addRecipeInformation=true&ignorePantry=true&number=30&limitLicense=false")
 
 # 30 pasta results no ingredients passed
 get_recipes(url)
 
-url = URI("https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/complexSearch?query=rice&instructionsRequired=true&fillIngredients=false&addRecipeInformation=true&ignorePantry=true&number=40&limitLicense=false")
+url = URI("https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/complexSearch?query=rice&instructionsRequired=true&fillIngredients=true&addRecipeInformation=true&ignorePantry=true&number=40&limitLicense=false")
 
 # 40 rice recipes
 get_recipes(url)
 
-url = URI("https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/complexSearch?query=chicken&instructionsRequired=true&fillIngredients=false&addRecipeInformation=true&ignorePantry=true&number=40&limitLicense=false")
+url = URI("https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/complexSearch?query=chicken&instructionsRequired=true&fillIngredients=true&addRecipeInformation=true&ignorePantry=true&number=40&limitLicense=false")
 
 # 40 chicken recipes
 
