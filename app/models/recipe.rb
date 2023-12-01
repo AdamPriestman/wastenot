@@ -13,4 +13,5 @@ class Recipe < ApplicationRecord
   #   end
   #   ratings_array.all / ratings_array.length
   # end
+  has_one_attached :photo
 end

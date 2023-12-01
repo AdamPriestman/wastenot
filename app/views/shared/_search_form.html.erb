@@ -20,23 +20,23 @@
     <h3>Servings</h3>
     <input type="range" id="servings" name="servings" min="1" max="8" data-search-form-target="servingsInput" data-action="input->search-form#displayServings">
     <p data-search-form-target="servingsValue"></p>
-    <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
     <h3>Filters</h3>
     <div class="d-flex">
       <%= f.check_box :vegan %>
-      <%= f.label :vegan, "Vegan" %>
+      <%= f.label :vegan, "Vegan", class: "mx-2" %>
     </div>
     <div class="d-flex">
       <%= f.check_box :vegetarian %>
-      <%= f.label :vegetarian, "Vegetarian" %>
+      <%= f.label :vegetarian, "Vegetarian", class: "mx-2" %>
     </div>
     <div class="d-flex">
       <%= f.check_box :gluten_free %>
-      <%= f.label :gluten_free, "Gluten Free" %>
+      <%= f.label :gluten_free, "Gluten Free", class: "mx-2" %>
     </div>
     <div class="d-flex">
       <%= f.check_box :dairy_free %>
-      <%= f.label :dairy_free, "Dairy Free" %>
+      <%= f.label :dairy_free, "Dairy Free", class: "mx-2" %>
     </div>
+    <%= submit_tag "Search", name: "", class: "btn btn-primary mt-4" %>
   <% end %>
 </div>
