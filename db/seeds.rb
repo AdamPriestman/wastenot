@@ -47,12 +47,12 @@ def get_recipes(url)
 
   recipe_counter = 1
   recipes.each do |recipe|
-    instructions_string = []
+    instructions_array = []
     instructions = recipe["analyzedInstructions"]
     instructions.each do |recipe_instructions|
       steps = recipe_instructions["steps"]
       steps.each do |step|
-        instructions_string.push("#{step['number']}.#{step['step'].gsub(/<\/?.>/, '')}")
+        instructions_array.push("#{step['number']}.#{step['step'].gsub(/<\/?.>/, '')}")
       end
     end
     local_recipe = Recipe.create(
@@ -62,7 +62,7 @@ def get_recipes(url)
       cuisine: recipe["cuisines"].join(", "),
       course: recipe["dishTypes"].join(", "),
       description: recipe["summary"].gsub(/<\/?.>/, ""),
-      instructions: instructions_string,
+      instructions: instructions_array.join,
       servings: recipe["servings"],
       source: recipe["creditsText"],
       image: recipe["image"],
@@ -101,21 +101,21 @@ def get_recipes(url)
 
     ingredients = recipe["extendedIngredients"]
     ingredients.each do |ingredient|
-      existing_ingredients = Ingredient.where("name=?", ingredient["name"])
+      existing_ingredients = Ingredient.where("name=?", ingredient["nameClean"])
       if existing_ingredients.empty?
-        local_ingredient = Ingredient.create(name: ingredient["name"])
+        local_ingredient = Ingredient.create(name: ingredient["nameClean"])
       else
         local_ingredient = existing_ingredients.first
       end
       recipe_ingredient = RecipeIngredient.new(
-        quantity: ingredient["measures"]["metric"]["amount"],
+        quantity: ingredient["measures"]["metric"]["amount"].floor(1),
         units: ingredient["measures"]["metric"]["unitShort"]
       )
       recipe_ingredient.ingredient = local_ingredient
       recipe_ingredient.recipe = local_recipe
       recipe_ingredient.save!
-      puts "Ingredients added to recipe #{recipe_counter}"
     end
+    puts "Ingredients added to recipe #{recipe_counter}"
 
     recipe_counter += 1
   end
@@ -124,19 +124,31 @@ end
 url = URI("https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/complexSearch?query=pasta&cuisine=italian&instructionsRequired=true&fillIngredients=true&addRecipeInformation=true&ignorePantry=true&number=30&limitLicense=false")
 
 # 30 pasta results no ingredients passed
+puts "Pasta time"
+puts "_____________"
+puts "_____________"
 get_recipes(url)
 
 url = URI("https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/complexSearch?query=rice&instructionsRequired=true&fillIngredients=true&addRecipeInformation=true&ignorePantry=true&number=40&limitLicense=false")
 
 # 40 rice recipes
+puts "Rice rice baby"
+puts "_____________"
+puts "_____________"
 get_recipes(url)
 
 url = URI("https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/complexSearch?query=chicken&instructionsRequired=true&fillIngredients=true&addRecipeInformation=true&ignorePantry=true&number=40&limitLicense=false")
 
 # 40 chicken recipes
-
+puts "Chicken, cluck, cluck"
+puts "_____________"
+puts "_____________"
 get_recipes(url)
 
 puts "Deleting negative cooktime recipes"
 bad_seeds = Recipe.where("cooktime<0")
+bad_seeds.each(&:destroy)
+
+puts "Deleting empty ingredients"
+bad_seeds = Ingredient.select { |ingredient| ingredient.name.nil? }
 bad_seeds.each(&:destroy)
