@@ -16,5 +16,6 @@ Rails.application.routes.draw do
     resources :posts, only: [:new, :create]
   end
   resources :bookmarks, only: [:index, :new, :destroy]
-  resources :posts, only: [:index, :edit, :update, :delete]
+  resources :posts, only: [:index, :edit, :update, :destroy]
+
 end
