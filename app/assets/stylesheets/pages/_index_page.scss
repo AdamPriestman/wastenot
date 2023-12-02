@@ -21,7 +21,6 @@
   padding: 16px;
   width: 100%;
   transition: right, 0.5s;
-  // opacity: 1;
   h3 {
     margin-top: 0px;
     margin-bottom: 0px;
@@ -37,8 +36,6 @@
 
 .closed {
   right: -1455px;
-  opacity: 0;
-  background-color: blue !important;
 }
 
 .no-results {
