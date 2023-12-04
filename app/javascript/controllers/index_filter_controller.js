@@ -12,63 +12,6 @@ static values = {
     this.cooktimeValueTarget.innerText = `<${this.cooktimeInputTarget.value} minutes`
   }
 
-  filterIndex(event) {
-    let selectedFilters = {}
-    if (event.target === this.cooktimeInputTarget) {
-      this.cooktimeValueTarget.innerText = `<${event.target.value} minutes`
-      selectedFilters["cooktime"] =  event.target.value
-      selectedFilters["servings"] =  this.servingsInputTarget.value
-    } else if (event.target === this.servingsInputTarget) {
-      if (event.target.value >= 8) {
-        this.servingsLabelTarget.innerText = "8+"
-      } else {
-        this.servingsLabelTarget.innerText = event.target.value
-      }
-      selectedFilters["servings"] = event.target.value
-      selectedFilters["cooktime"] =  this.cooktimeInputTarget.value
-    } else {
-      selectedFilters["servings"] =  this.servingsInputTarget.value
-      selectedFilters["cooktime"] =  this.cooktimeInputTarget.value
-      const checkboxes = this.checkboxTargets
-      checkboxes.forEach((checkbox) => {
-        if (checkbox.checked) {
-          selectedFilters[`${checkbox.value}`] = true
-        }
-      })
-    }
-
-    console.log(selectedFilters)
-    console.log("-----Applied filters-----")
-
-    if (selectedFilters) {
-      this.fetchResults(selectedFilters);
-    } else {
-      this.fetchResults();
-    }
-  }
-
-
-  fetchResults(filters) {
-
-    const formData = new FormData()
-    formData.append("filtersObj", filters)
-    // console.log(formData)
-    fetch("recipes/filter", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/text",
-        "X-CSRF-Token": document.querySelector("meta[name=csrf-token]").content,
-      },
-      body: formData,
-    })
-      .then((response) => response.text())
-      .then((data) => {
-        // console.log(data)
-        this.listTarget.outerHTML = data;
-      })
-      .catch(error => console.error(error));
-  }
-
   update(event) {
     let selectedFilters = {}
     if (event.target === this.cooktimeInputTarget) {
@@ -106,17 +49,17 @@ static values = {
     }
 
 
-    // console.log(this.ingredientsValue["ingredient1"])
-    if (this.ingredientsValue["ingredient1"] === 0) {
-      this.ingredientsValue["ingredient1"] = ""
-    } else if (this.ingredientsValue["ingredient2"] === 0) {
-      console.log("ingredient 2 is 0")
-      this.ingredientsValue["ingredient2"] = ""
-      console.log(this.ingredientsValue["ingredient2"])
-    } else if (this.ingredientsValue["ingredient3"] === 0) {
-      this.ingredientsValue["ingredient3"] = ""
-    }
-    console.log(this.ingredientsValue)
+    // // console.log(this.ingredientsValue["ingredient1"])
+    // if (this.ingredientsValue["ingredient1"] === 0) {
+    //   this.ingredientsValue["ingredient1"] = ""
+    // } else if (this.ingredientsValue["ingredient2"] === 0) {
+    //   console.log("ingredient 2 is 0")
+    //   this.ingredientsValue["ingredient2"] = ""
+    //   console.log(this.ingredientsValue["ingredient2"])
+    // } else if (this.ingredientsValue["ingredient3"] === 0) {
+    //   this.ingredientsValue["ingredient3"] = ""
+    // }
+    // console.log(this.ingredientsValue)
 
 
 
