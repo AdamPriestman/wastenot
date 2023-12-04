@@ -49,15 +49,11 @@ export default class extends Controller {
   addIngredientTwo() {
     this.ingredientButtonTwoTarget.classList.add("d-none")
     this.ingredientFormTwoTarget.classList.remove("d-none")
-    const ingredientTwo = document.getElementById("ingredient2")
-    ingredientTwo.disabled = false
   }
 
   addIngredientThree() {
     this.ingredientButtonThreeTarget.classList.add("d-none")
     this.ingredientFormThreeTarget.classList.remove("d-none")
-    const ingredientThree = document.getElementById("ingredient3")
-    ingredientThree.disabled = false
   }
 
   revealButtonTwo() {
@@ -70,7 +66,8 @@ export default class extends Controller {
 
   removeIngredientTwo() {
     const ingredientTwo = document.getElementById("ingredient2")
-    ingredientTwo.disabled = true
+    ingredientTwo.selectedIndex = -1
+    ingredientTwo.tomselect.clear()
     this.ingredientFormTwoTarget.classList.add("d-none")
     this.revealButtonTwo()
     this.ingredientButtonThreeTarget.classList.add("d-none")
@@ -78,7 +75,8 @@ export default class extends Controller {
 
   removeIngredientThree() {
     const ingredientThree = document.getElementById("ingredient3")
-    ingredientThree.disabled = true
+    ingredientThree.selectedIndex = -1
+    ingredientThree.tomselect.clear()
     this.ingredientFormThreeTarget.classList.add("d-none")
     if (this.ingredientButtonTwoTarget.classList.contains("d-none")) {
       this.revealButtonThree();
