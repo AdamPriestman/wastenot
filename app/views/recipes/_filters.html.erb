@@ -2,10 +2,10 @@
   <div class="filter-center">
     <%= form_with url: recipes_path, method: :get, class: "d-flex flex-column", data: {index_filter_target: "form"} do |f| %>
       <h3>Cooktime</h3>
-      <input type="range" id="cooktime" name="cooktime" min="0" max="100" data-index-filter-target="cooktimeInput" data-index-filter-target="recipeFilter" data-action="input->index-filter#update">
+      <input type="range" id="cooktime" name="cooktime" min="0" max="100" data-index-filter-target="cooktimeInput" data-action="input->index-filter#update">
       <p data-index-filter-target="cooktimeValue" class="mb-3"></p>
       <h3>Servings</h3>
-      <input type="range" id="servings" name="servings" min="1" max="8" data-index-filter-target="servingsInput" data-index-filter-target="recipeFilter" data-action="input->index-filter#update">
+      <input type="range" id="servings" name="servings" min="1" max="8" data-index-filter-target="servingsInput" data-action="input->index-filter#update">
       <p data-index-filter-target="servingsLabel"></p>
       <div class="checkbox-field">
         <label for="vegan">Vegan</label>
@@ -23,7 +23,6 @@
         <label for="dairy-free">Dairy Free</label>
         <input type="checkbox" name="dairyFree" value="dairy_free" class="checkbox" data-action="click->index-filter#update" data-index-filter-target="dairyCheckbox">
       </div>
-      <%# <p data-index-filter-target="ingredientOne" class="d-none"></p> %>
     <% end %>
   </div>
 </div>

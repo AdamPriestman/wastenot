@@ -5,7 +5,7 @@ export default class extends Controller {
   static targets = ["sortCheckbox"]
 
   connect() {
-    console.log("sort controller connected")
+    // console.log("sort controller connected")
   }
 
   sortIndex(event) {
@@ -29,9 +29,7 @@ export default class extends Controller {
   renderResults(data) {
     console.log(data)
     this.resultTargets.forEach((result) => {
-      const shouldShow = (data.includes(parseInt(result.dataset.id, 10)));
-      shouldShow ? result.style.display = "block" : result.style.display = "none";
-      // console.log(result)
+      console.log(result)
     });
   }
 }

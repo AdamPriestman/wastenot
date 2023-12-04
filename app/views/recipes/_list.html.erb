@@ -1,8 +1,10 @@
 <div class="recipes" data-index-filter-target="list">
-  <%= recipes.count %>
+  <p>(<%= recipes.count %> results)</p>
   <% recipes.each do |recipe| %>
-    <%= link_to recipe_path(recipe), class: "text-decoration-none", data: {modal_target: "card"} do %>
-      <%= render "recipe_card", recipe: recipe %>
-    <% end %>
+    <div data-index-filter-target="result">
+      <%= link_to recipe_path(recipe), class: "text-decoration-none", data: {modal_target: "card"} do %>
+        <%= render "recipe_card", recipe: recipe %>
+      <% end %>
+    </div>
   <% end %>
 </div>
