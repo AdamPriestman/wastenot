@@ -4,11 +4,15 @@
     <h2><%= recipe.title %></h2>
     <div class="card-details">
       <p class="card-description"><%= recipe.description.truncate(100) %></p>
-      <div class="rating_bookmark" data-controller="toggle">
+      <div class="rating_bookmark" data-controller="toggle" data-controller="add_bookmark">
         <p>4.2 ⭐️</p>
         <%# need to add link to bookmark%>
-        <i class="fa-regular fa-bookmark" data-toggle-target="bookmarkFalse" data-action="click->toggle#create_bookmarkbookmark"></i>
-        <i class="fa-solid fa-bookmark d-none" data-toggle-target="bookmarkTrue" data-action="click->toggle#delete_bookmark"></i>
+        <%# <i class="fa-regular fa-bookmark" data-toggle-target="bookmarkFalse" data-action="click->toggle#create_bookmark"></i>
+        <i class="fa-solid fa-bookmark d-none" data-toggle-target="bookmarkTrue" data-action="click->toggle#delete_bookmark"></i> %>
+         <%= link_to recipe_bookmarks_path(@recipe), data: { turbo_method: :post } do  %>
+        <i class="fa-regular fa-bookmark" data-add_bookmark-target="bookmarkFalse" data-action="click->add_bookmark#create_bookmark"></i>
+        <%# <i class="fa-solid fa-bookmark d-none" data-toggle-target="bookmarkTrue" data-action="click->toggle#delete_bookmark"></i> %>
+        <% end %>
       </div>
     </div>
   </div>

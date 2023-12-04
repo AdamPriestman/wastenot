@@ -13,9 +13,9 @@ class BookmarksController < ApplicationController
     @bookmark = Bookmark.new
     @bookmark.user = current_user
     @bookmark.recipe = @recipe
-      if @bookmark.save
-        redirect_to recipe_path(@recipe)
-      end
+    if @bookmark.save
+      redirect_to recipe_path(@recipe)
+    end
   end
 
   def destroy
