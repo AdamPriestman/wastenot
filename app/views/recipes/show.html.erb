@@ -18,7 +18,15 @@
       <h1><%= @recipe.title %></h1>
       <div class="d-flex justify-content-between">
         <div class="col-sm-6 col-lg-6">
-          <p class="fw-bold"><%= "Rating" %> <%= @recipe.average_rating %> ⭐️</p>
+          <p class=""> Average Rating <%=  @recipe.average_rating %>
+            <%  @recipe.average_rating.to_i.times do  %>
+              <img width="20" height="20" class="star" src="https://img.icons8.com/fluency/20/star--v1.png" alt="star--v1"/>
+            <% end %>
+            <% if  @recipe.average_rating - @recipe.average_rating.to_i > 0 %>
+              <img width="20" height="20" class="star" src="https://img.icons8.com/color/20/star-half-empty.png" alt="star-half-empty"/>
+            <% end %>
+          </p>
+
         </div>
         <%# linked the boookmark icon to the bookmark path %>
         <div class="col-sm-6 col-lg-6">
