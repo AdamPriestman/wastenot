@@ -7,11 +7,11 @@ class RecipesController < ApplicationController
     @ingredients = Ingredient.all
 
     if params[:cooktime].present?
-      @recipes = Recipe.where("cooktime <= #{params[:cooktime]}")
+      @recipes = @recipes.select { |recipe| recipe.cooktime <= params[:cooktime].to_i }
     end
 
     if params[:servings].present? && params[:servings].to_i < 8
-      @recipes = Recipe.where("servings <= #{params[:servings]}")
+      @recipes = @recipes.select { |recipe| recipe.servings <= params[:servings].to_i }
     end
 
     if params[:ingredient1].present?
