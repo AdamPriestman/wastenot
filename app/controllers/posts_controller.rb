@@ -15,9 +15,9 @@ class PostsController < ApplicationController
     @post.recipe = @recipe
     @post.user = current_user
     # db seed has average_rating seeded now. No posts on any of the recipes yet.
-    @recipe.average_rating = @post.compute_average_rating
+    # @recipe.average_rating = @recipe.compute_average_rating
     # redirects to index page of the post
-    if @post.save
+    if @post.save!
       redirect_to posts_path
     else
       flash[:alert] = "Something went wrong."

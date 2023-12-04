@@ -12,7 +12,8 @@ class Recipe < ApplicationRecord
     posts.each do |post|
       ratings_array << post.rating
     end
-    ratings_array.sum / ratings_array.length
+    average_rating = ratings_array.sum / ratings_array.length.to_f
+    self.update(average_rating: average_rating)
   end
 
 end
