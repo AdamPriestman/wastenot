@@ -24,10 +24,7 @@
   width: 300px;
   margin: 0 auto;
   padding-bottom: 50px;
-}
-
-#carouselExampleSlidesOnly {
-  padding-bottom: 16px;
+  text-align: center;
 }
 
 .carousel-item {
@@ -64,6 +61,27 @@
   }
 }
 
-.home-community-text{
+.how-it-works {
+  width: 300px;
+  margin: 0 auto;
+  padding-top: 20px;
   text-align: center;
+  h2 {
+    font-size: 20px;
+  }
+  img {
+    width: 80px;
+    margin-top: 16px;
+    margin-bottom: 16px;
+  }
+  .step-card {
+    margin-bottom: 32px;
+  }
 }
+
+.community-page-render {
+  margin: 0 30px;
+}
+// .below-banner-content {
+//   background-color: #90D080;
+// }
