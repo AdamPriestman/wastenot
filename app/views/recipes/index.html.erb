@@ -8,7 +8,7 @@
       <% if @recipes.empty? %>
         <div class="no-results">
           <h3>Sorry, no recipes found, try a different search</h3>
-          <%= link_to "Back to search", search_path, class: "btn btn-primary" %>
+          <%= link_to "Back to search", search_path, class: "btn btn-primary no-results-button" %>
         </div>
       <% end %>
 

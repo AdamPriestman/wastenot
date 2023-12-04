@@ -21,34 +21,31 @@ class RecipesController < ApplicationController
     end
 
     if params[:ingredient1].present?
-      @ingredient = Ingredient.find(params[:ingredient1])
-      @recipes = @recipes.select { |recipe| recipe.ingredients.include?(@ingredient) }
+      @recipes = find_based_on_ingredient(params[:ingredient1])
     end
 
     if params[:ingredient2].present?
-      @ingredient = Ingredient.find(params[:ingredient2])
-      @recipes = @recipes.select { |recipe| recipe.ingredients.include?(@ingredient) }
+      @recipes = find_based_on_ingredient(params[:ingredient2])
     end
 
     if params[:ingredient3].present?
-      @ingredient = Ingredient.find(params[:ingredient3])
-      @recipes = @recipes.select { |recipe| recipe.ingredients.include?(@ingredient) }
+      @recipes = find_based_on_ingredient(params[:ingredient3])
     end
 
     if params[:vegan] == "1"
-      @recipes = @recipes.select { |recipe| recipe.vegan? }
+      @recipes = @recipes.select(&:vegan?)
     end
 
     if params[:vegetarian] == "1"
-      @recipes = @recipes.select { |recipe| recipe.vegetarian? }
+      @recipes = @recipes.select(&:vegetarian?)
     end
 
     if params[:gluten_free] == "1"
-      @recipes = @recipes.select { |recipe| recipe.gluten_free? }
+      @recipes = @recipes.select(&:gluten_free?)
     end
 
     if params[:dairy_free] == "1"
-      @recipes = @recipes.select { |recipe| recipe.dairy_free? }
+      @recipes = @recipes.select(&:dairy_free?)
     end
 
     respond_to do |format|
@@ -130,5 +127,15 @@ class RecipesController < ApplicationController
 
   def set_recipe
     @recipe = Recipe.find(params[:id])
+  end
+
+  def find_based_on_ingredient(ingredient_id)
+    @ingredient = Ingredient.find(ingredient_id)
+    @similar_ingredients = Ingredient.where("name ILIKE :ingredient", ingredient: "%#{@ingredient.name}%")
+    @recipes.select do |recipe|
+      recipe.ingredients.any? do |ingredient|
+        @similar_ingredients.include?(ingredient)
+      end
+    end
   end
 end
