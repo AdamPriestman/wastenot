@@ -2,7 +2,7 @@
   <%= form_with url: recipes_path, method: :get, class: "d-flex flex-column" do |f| %>
     <h3>Ingredients</h3>
     <div class="d-flex flex-column" data-search-form-target="ingredientInput">
-      <div class="d-flex flex-column" data-action="change->search-form#revealButtonTwo">
+      <div class="d-flex flex-column" data-action="change->search-form#revealButtonTwo", data-search-form-target="selectTest">
         <%= f.select :ingredient1, ingredients.order(:name).map { |ingredient| [ingredient.name, ingredient.id]}, prompt: "Choose your ingredient" %>
       </div>
       <div class="d-flex flex-column d-none" data-search-form-target="ingredientFormTwo" data-action="change->search-form#revealButtonThree">
@@ -38,5 +38,9 @@
       <%= f.label :dairy_free, "Dairy Free", class: "mx-2" %>
     </div>
     <%= submit_tag "Search", name: "", class: "btn btn-primary mt-4" %>
+    <%# <p data-index-filter-target="servingsLabel" class="d-none"></p>
+    <p data-index-filter-target="servingsInput" class="d-none"></p>
+    <p data-index-filter-target="cooktimeInput" class="d-none"></p>
+    <p data-index-filter-target="cooktimeValue" class="d-none"></p> %>
   <% end %>
 </div>

@@ -5,6 +5,12 @@ class RecipesController < ApplicationController
   def index
     @recipes = Recipe.all
     @ingredients = Ingredient.all
+    @ingredients_values = {
+      ingredient1: params[:ingredient1].to_i,
+      ingredient2: params[:ingredient2].to_i,
+      ingredient3: params[:ingredient3].to_i
+    }
+
 
     if params[:cooktime].present?
       @recipes = Recipe.where("cooktime <= #{params[:cooktime]}")
@@ -44,9 +50,16 @@ class RecipesController < ApplicationController
     if params[:dairy_free] == "1"
       @recipes = @recipes.select { |recipe| recipe.dairy_free? }
     end
+
+    respond_to do |format|
+      format.html
+      format.text { render partial: "recipes/list", locals: { recipes: @recipes }, formats: [:html] }
+    end
   end
 
   def filter
+    # @recipes = Recipe.all
+    # p params
     filters = filter_params || []
     # p filters
 
@@ -61,23 +74,43 @@ class RecipesController < ApplicationController
 
     case queries.length
     when 1
-      @filtered_ids = Recipe.where("#{queries[0]}")
+      @recipes = Recipe.where(queries[0])
     when 2
-      @filtered_ids = Recipe.where("#{queries[0]}").and(Recipe.where("#{queries[1]}")).pluck(:id)
+      @recipes = Recipe.where(queries[0]).and(Recipe.where(queries[1]))
     when 3
-      @filtered_ids = Recipe.where("#{queries[0]}").and(Recipe.where("#{queries[1]}")).and(Recipe.where("#{queries[2]}")).pluck(:id)
+      @recipes = Recipe.where(queries[0]).and(Recipe.where(queries[1])).and(Recipe.where(queries[2]))
     when 4
-      @filtered_ids = Recipe.where("#{queries[0]}").and(Recipe.where("#{queries[1]}")).and(Recipe.where("#{queries[2]}")).and(Recipe.where("#{queries[3]}")).pluck(:id)
+      @recipes = Recipe.where(queries[0]).and(Recipe.where(queries[1])).and(Recipe.where(queries[2])).and(Recipe.where(queries[3]))
     when 5
-      @filtered_ids = Recipe.where("#{queries[0]}").and(Recipe.where("#{queries[1]}")).and(Recipe.where("#{queries[2]}")).and(Recipe.where("#{queries[3]}")).and(Recipe.where("#{queries[4]}")).pluck(:id)
+      @recipes = Recipe.where(queries[0]).and(Recipe.where(queries[1])).and(Recipe.where(queries[2])).and(Recipe.where(queries[3])).and(Recipe.where(queries[4]))
     when 6
-      @filtered_ids = Recipe.where("#{queries[0]}").and(Recipe.where("#{queries[1]}")).and(Recipe.where("#{queries[2]}")).and(Recipe.where("#{queries[3]}")).and(Recipe.where("#{queries[4]}"))..and(Recipe.where("#{queries[5]}")).pluck(:id)
+      @recipes = Recipe.where(queries[0]).and(Recipe.where(queries[1])).and(Recipe.where(queries[2])).and(Recipe.where(queries[3])).and(Recipe.where(queries[4])).and(Recipe.where(queries[5]))
     end
 
-    respond_to do |format|
-      format.json { render json: @filtered_ids }
-    end
+
   end
+
+  # def sort
+  #   @recipes = Recipe.all
+  #   p params
+  #   sortValue = sort_params
+
+  #   p sortValue
+  #   case sortValue[:sortValue]
+  #   when 'alphabetical'
+  #     @recipes = @recipes.order(title: :asc)
+  #     p @recipes.first
+  #     p "aplha"
+  #   when 'rating'
+  #     @recipes = @recipes.order(average_rating: :desc)
+  #   else
+  #     p "error"
+  #   end
+
+  #   respond_to do |format|
+  #     format.json { render json: @recipes }
+  #   end
+  # end
 
   def show
     @recipes = Recipe.all
@@ -86,8 +119,13 @@ class RecipesController < ApplicationController
 
   private
 
+  def sort_params
+    params.require(:sortCriteria).permit(:sortValue)
+  end
+
   def filter_params
     params.require(:filtersObj).permit(:cooktime, :servings, :vegan, :vegetarian, :gluten_free, :dairy_free)
+
   end
 
   def set_recipe

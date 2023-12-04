@@ -1,4 +1,4 @@
-<div class="container" data-controller="modal index-filter  ">
+<div class="container" data-controller="modal index-filter sort-index" data-index-filter-ingredients-value="<%= @ingredients_values.to_json %>">
   <div class="filter_icons">
     <i class="fa-solid fa-arrow-down-wide-short" data-action="click->modal#sort"></i>
     <i class="fa-solid fa-filter" data-action="click->modal#filters"></i>
@@ -11,13 +11,8 @@
           <%= link_to "Back to search", search_path, class: "btn btn-primary" %>
         </div>
       <% end %>
-      <% @recipes.each do |recipe| %>
-        <div data-index-filter-target="result" data-id=<%= recipe.id %>>
-          <%= link_to recipe_path(recipe), class: "text-decoration-none", data: {modal_target: "card"} do %>
-            <%= render "recipe_card", recipe:recipe %>
-          <% end %>
-        </div>
-      <% end %>
+
+      <%= render "recipes/list", recipes: @recipes %>
     </div>
   </div>
   <div class="filters closed" data-modal-target="filters">
@@ -26,5 +21,12 @@
       <i class="fa-solid fa-xmark" data-action="click->modal#closeFilters"></i>
     </div>
     <%= render "filters", ingredients:@ingredients %>
+  </div>
+  <div class="sort closed" data-modal-target="sort">
+    <div class="d-flex justify-content-between align-items-center">
+      <h3 class="my-0">Sort by</h3>
+      <i class="fa-solid fa-xmark" data-action="click->modal#closeSort"></i>
+    </div>
+    <%= render "sort", ingredients:@ingredients %>
   </div>
 </div>
