@@ -25,21 +25,35 @@
       border-radius: 50%;
   }
 
-  select {
-    border-radius: 10px;
-    padding: 10px;
-    font-size: 20px;
-    margin-bottom: 8px;
-  }
-
   .btn-primary {
     border-radius: 10px;
     font-size: 20px;
     font-weight: 700;
+    color: white;
   }
 
   .btn-secondary {
     font-size: 16px;
     border-radius: 10px;
+    margin-top: 12px;
+  }
+
+  .ts-control {
+    margin-top: 12px;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+
+  .ts-dropdown {
+    font-size: 16px;
+  }
+
+  .ts-wrapper {
+    flex-grow: 1;
+  }
+
+  .fa-x {
+    margin-top: 12px;
+    padding: 12px;
   }
 }

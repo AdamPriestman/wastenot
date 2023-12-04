@@ -2,14 +2,16 @@
   <%= form_with url: recipes_path, method: :get, class: "d-flex flex-column" do |f| %>
     <h3>Ingredients</h3>
     <div class="d-flex flex-column" data-search-form-target="ingredientInput">
-      <div class="d-flex flex-column" data-action="change->search-form#revealButtonTwo">
+      <div class="d-flex flex-column" data-action="change->search-form#revealButtonTwo:once">
         <%= f.select :ingredient1, ingredients.order(:name).map { |ingredient| [ingredient.name, ingredient.id]}, prompt: "Choose your ingredient" %>
       </div>
-      <div class="d-flex flex-column d-none" data-search-form-target="ingredientFormTwo" data-action="change->search-form#revealButtonThree">
+      <div class="d-none d-flex" data-search-form-target="ingredientFormTwo" data-action="change->search-form#revealButtonThree">
         <%= f.select :ingredient2, ingredients.order(:name).map { |ingredient| [ingredient.name, ingredient.id]}, prompt: "Choose your ingredient" %>
+        <i class="fa-solid fa-x" data-action="click->search-form#removeIngredientTwo"></i>
       </div>
-      <div class="d-flex flex-column d-none" data-search-form-target="ingredientFormThree">
+      <div class="d-flex d-none" data-search-form-target="ingredientFormThree">
         <%= f.select :ingredient3, ingredients.order(:name).map { |ingredient| [ingredient.name, ingredient.id]}, prompt: "Choose your ingredient" %>
+        <i class="fa-solid fa-x" data-action="click->search-form#removeIngredientThree"></i>
       </div>
     </div>
     <p class="btn btn-secondary d-none" data-action="click->search-form#addIngredientTwo" data-search-form-target="ingredientButtonTwo">Add another ingredient</p>
