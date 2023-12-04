@@ -8,6 +8,7 @@ export default class extends Controller {
   connect() {
     this.servingsValueTarget.innerText = this.servingsInputTarget.value
     this.cooktimeValueTarget.innerText = `<${this.cooktimeInputTarget.value} minutes`
+
     new TomSelect("#ingredient1",{
       create: false,
       sortField: {
@@ -46,12 +47,12 @@ export default class extends Controller {
   }
 
   addIngredientTwo() {
-    this.ingredientButtonTwoTarget.outerHTML = ""
+    this.ingredientButtonTwoTarget.classList.add("d-none")
     this.ingredientFormTwoTarget.classList.remove("d-none")
   }
 
   addIngredientThree() {
-    this.ingredientButtonThreeTarget.outerHTML = ""
+    this.ingredientButtonThreeTarget.classList.add("d-none")
     this.ingredientFormThreeTarget.classList.remove("d-none")
   }
 
@@ -61,5 +62,22 @@ export default class extends Controller {
 
   revealButtonThree() {
     this.ingredientButtonThreeTarget.classList.remove("d-none")
+  }
+
+  removeIngredientTwo() {
+    const ingredientTwo = document.getElementById("ingredient2")
+    ingredientTwo.tomselect.clear()
+    this.ingredientFormTwoTarget.classList.add("d-none")
+    this.revealButtonTwo()
+    this.ingredientButtonThreeTarget.classList.add("d-none")
+  }
+
+  removeIngredientThree() {
+    const ingredientThree = document.getElementById("ingredient3")
+    ingredientThree.tomselect.clear()
+    this.ingredientFormThreeTarget.classList.add("d-none")
+    if (this.ingredientButtonTwoTarget.classList.contains("d-none")) {
+      this.revealButtonThree();
+    }
   }
 }
