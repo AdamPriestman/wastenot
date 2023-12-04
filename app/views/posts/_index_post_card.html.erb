@@ -10,6 +10,8 @@
             <%= cl_image_tag post.photo.key, class: "responsive"%>
 
             <div class="d-flex justify-content-end">
+
+
               <%= link_to recipe_path(post.recipe) do  %>
                 <i class="fa-solid fa-link"></i>
               <% end %>
