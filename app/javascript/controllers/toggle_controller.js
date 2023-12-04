@@ -4,7 +4,7 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
   static targets = ["bookmarkFalse", "bookmarkTrue"]
   connect() {
-    // console.log("connected")
+   //  console.log("connected")
   }
 
   // create_bookmark(event){

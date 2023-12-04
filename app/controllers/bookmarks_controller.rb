@@ -13,8 +13,12 @@ class BookmarksController < ApplicationController
     @bookmark = Bookmark.new
     @bookmark.user = current_user
     @bookmark.recipe = @recipe
-    if @bookmark.save
-      redirect_to recipe_path(@recipe)
+    raise
+    respond_to do |format|
+      if @bookmark.save
+        format.html { redirect_to recipe_path(@recipe) }
+        format.text { render partial: "recipes/icon_btn", locals: { recipe: @recipe }, formats: [:html] }
+      end
     end
   end
 

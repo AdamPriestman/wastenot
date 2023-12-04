@@ -1,0 +1,5 @@
+<% if current_user.bookmarks.include?(recipe) %>
+  <i class="fa-regular fa-bookmark" data-action="click->add-bookmark#create_bookmark"></i>
+<% else %>
+  <i class="fa-solid fa-bookmark" data-action="click->add-bookmark#create_bookmark"></i>
+<% end %>

@@ -1,6 +1,6 @@
 <div class="container">
 
-
+<div data-controller="add-bookmark">
   <% if @bookmarks.any?  %>
     <% @bookmarks.each do |bookmark| %>
       <%= render "bookmark_card", bookmark:bookmark %>
@@ -8,7 +8,7 @@
   <% else %>
     <p>...No bookmarks yet</p>
   <% end %>
-
+</div>
 
 
 </div>
