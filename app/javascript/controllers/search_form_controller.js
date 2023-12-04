@@ -66,7 +66,6 @@ export default class extends Controller {
 
   removeIngredientTwo() {
     const ingredientTwo = document.getElementById("ingredient2")
-    ingredientTwo.selectedIndex = -1
     ingredientTwo.tomselect.clear()
     this.ingredientFormTwoTarget.classList.add("d-none")
     this.revealButtonTwo()
@@ -75,7 +74,6 @@ export default class extends Controller {
 
   removeIngredientThree() {
     const ingredientThree = document.getElementById("ingredient3")
-    ingredientThree.selectedIndex = -1
     ingredientThree.tomselect.clear()
     this.ingredientFormThreeTarget.classList.add("d-none")
     if (this.ingredientButtonTwoTarget.classList.contains("d-none")) {
