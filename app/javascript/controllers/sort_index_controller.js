@@ -10,7 +10,7 @@ export default class extends Controller {
 
   sortIndex(event) {
     console.log(event.target.value)
-    const sortBy = {sortValue: event.target.value}
+    const sortBy = event.target.value
 
     fetch("recipes/sort", {
       method: "POST",
@@ -32,4 +32,6 @@ export default class extends Controller {
       console.log(result)
     });
   }
+
+
 }

@@ -58,9 +58,9 @@ class RecipesController < ApplicationController
     end
   end
 
-  # def sort
-
-  # end
+  def sort
+    raise
+  end
 
   def show
     @recipes = Recipe.all
