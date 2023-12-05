@@ -1,14 +1,14 @@
 <div class="container">
-
-<div data-controller="add-bookmark">
-  <% if @bookmarks.any?  %>
-    <% @bookmarks.each do |bookmark| %>
-      <%= render "bookmark_card", bookmark:bookmark %>
+<h2><strong>Saved Recipes</strong></h2>
+  <div data-controller="add-bookmark">
+    <% if @bookmarks.any? %>
+      <% @bookmarks.each do |bookmark| %>
+        <%= link_to recipe_path(bookmark.recipe), class: "link-in-bookmark-index text-decoration-none" do %>
+          <%= render "bookmark_card", bookmark: bookmark %>
+        <% end %>
+      <% end %>
+    <% else %>
+      <p>...No bookmarks yet</p>
     <% end %>
-  <% else %>
-    <p>...No bookmarks yet</p>
-  <% end %>
-</div>
-
-
+  </div>
 </div>
