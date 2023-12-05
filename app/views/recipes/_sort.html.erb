@@ -1,0 +1,14 @@
+<div class="filters-container">
+  <div class="filter-center">
+    <%= form_with url: recipes_path, method: :get, class: "d-flex flex-column" do |f| %>
+      <div class="input-field">
+        <label for="alphabetical">Alphabetical</label>
+        <input type="radio" id="alphabetical" name="sort_criteria" value="alphabetical" data-action="click->sort-index#sortIndex" data-sort-index-target="sortCheckbox">
+      </div>
+      <div class="input-field">
+        <label for="rating">Rating</label>
+        <input type="radio" id="rating" name="sort_criteria" value="rating" data-action="click->sort-index#sortIndex" data-sort-index-target="sortCheckbox">
+      </div>
+    <% end %>
+  </div>
+</div>

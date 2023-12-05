@@ -3,7 +3,7 @@ import TomSelect from "tom-select"
 
 // Connects to data-controller="search-form"
 export default class extends Controller {
-  static targets = ["servingsInput", "servingsValue", "cooktimeInput", "cooktimeValue", "ingredientInput", "ingredientFormTwo", "ingredientFormThree", "ingredientButtonTwo", "ingredientButtonThree"]
+  static targets = ["servingsInput", "servingsValue", "cooktimeInput", "cooktimeValue", "ingredientInput", "ingredientFormTwo", "ingredientFormThree", "ingredientButtonTwo", "ingredientButtonThree", "selectTest"]
 
   connect() {
     this.servingsValueTarget.innerText = this.servingsInputTarget.value
@@ -47,6 +47,14 @@ export default class extends Controller {
   }
 
   addIngredientTwo() {
+    let selectedIngredient
+    this.selectTestTarget.childNodes[2].childNodes[1].childNodes[0].childNodes.forEach(option => {
+      if (option.ariaSelected === "true") {
+        selectedIngredient = option.dataset.value
+      }
+    });
+    console.log(selectedIngredient)
+    this.ingredientButtonTwoTarget.outerHTML = ""
     this.ingredientButtonTwoTarget.classList.add("d-none")
     this.ingredientFormTwoTarget.classList.remove("d-none")
   }
