@@ -10,8 +10,8 @@
   margin: 16px auto;
   display: flex;
   align-items: center;
-  color: black;
-  background-color: #3ab81a;
+  color: #eae7e7;
+  background-color: #30A712;
   background: linear-gradient(to right bottom, #30A712, #90D080);
 
   .card-content {
@@ -43,7 +43,6 @@
   width: 120px;
   height: 100%;
   object-fit: cover;
-  padding: 8px;
 }
 
 .bookmark-card h2 {
