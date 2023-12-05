@@ -163,18 +163,6 @@ post.recipe = Recipe.all.sample
 post.photo.attach(io: photo, filename: "food.png", content_type: "image/png")
 post.save!
 
-photo = URI.open("https://graphics8.nytimes.com/images/2015/07/27/dining/27SPAGHETTI/27SPAGHETTI-superJumbo.jpg")
-post = Post.new(
-  title: "Great Taste, Minor Tweaks: Pasta Success!",
-  rating: 4,
-  description: "Pasta nails flavor! A tweak or two could enhance. Great taste, simple steps; a recipe ripe for personal touches and culinary exploration!"
-)
-
-post.user = User.all.sample
-post.recipe = Recipe.all.sample
-post.photo.attach(io: photo, filename: "food.png", content_type: "image/png")
-post.save!
-
 photo = URI.open("https://www.budgetsavvydiva.com/wp-content/uploads/2015/01/garlic-pasta-2.jpg")
 post = Post.new(
   title: "Simplicity Refined: Perfectly Balanced Pasta Harmony!",
