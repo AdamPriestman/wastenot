@@ -1,23 +1,17 @@
 <div class="show-container">
 <%# added icon link to post form %>
-  <div class="d-flex justify-content-between">
+  <div class="d-flex">
     <div class="col-sm-6 col-lg-6">
       <%= link_to recipes_path, :class => "back-link" do  %>
         <i class="fa-solid fa-arrow-left"></i>
-      <% end %>
-    </div>
-<%# icon to go back to the search %>
-    <div class="col-sm-6 col-lg-6">
-      <%= link_to new_recipe_post_path(@recipe), :class => "back-link" do  %>
-        <i class="fa-regular fa-comment"></i>
       <% end %>
     </div>
   </div>
 
     <div class="recipe-info-card row">
       <h1><%= @recipe.title %></h1>
-      <div class="d-flex justify-content-between">
-        <div class="col-sm-6 col-lg-6">
+      <div class="d-flex">
+        <div class="flex-grow-1 col-sm-6 col-lg-6">
           <p class=""> <strong>Average Rating <%=  @recipe.average_rating %> </strong>
             <%  @recipe.average_rating.to_i.times do  %>
               <img width="20" height="20" class="star" src="https://img.icons8.com/fluency/20/star--v1.png" alt="star--v1"/>
@@ -26,10 +20,14 @@
               <img width="20" height="20" class="star" src="https://img.icons8.com/color/20/star-half-empty.png" alt="star-half-empty"/>
             <% end %>
           </p>
-
         </div>
-
+        <%# moved create comment icon next to bookmark %>
         <div class="col-sm-6 col-lg-6">
+          <%= link_to new_recipe_post_path(@recipe), :class => "back-link" do  %>
+            <i class="fa-regular fa-comment"></i>
+          <% end %>
+        </div>
+        <div class="ps-3 col-sm-6 col-lg-6">
           <%= render 'icon_btn',  recipe: @recipe %>
         </div>
 
