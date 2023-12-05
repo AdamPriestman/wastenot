@@ -15,5 +15,4 @@ class Recipe < ApplicationRecord
     average_rating = ratings_array.sum / ratings_array.length.to_f
     self.update(average_rating: average_rating)
   end
-
 end
