@@ -1,3 +1,7 @@
+.link-in-bookmark-index {
+
+  color: #eae7e7;
+}
 .bookmark-card {
   height: 115px;
   border: 1px solid #d3d3d3;
@@ -7,8 +11,9 @@
   display: flex;
   align-items: center;
   color: black;
-  background-color: #30A712;
+  background-color: #3ab81a;
   background: linear-gradient(to right bottom, #30A712, #90D080);
+
   .card-content {
     margin: auto 16px auto 8px;
     display: flex;
