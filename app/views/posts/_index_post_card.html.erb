@@ -30,15 +30,19 @@
             <i class="fa-solid fa-link pe-2"></i>
           <% end %>
 
-
-          <%= link_to edit_post_path(post) do  %>
-            <i class="fa-regular fa-pen-to-square pe-2"></i>
+          <%# if post.user is the current user, display update & delete %>
+          <% if post.user == current_user %>
+            <%= link_to edit_post_path(post) do  %>
+              <i class="fa-regular fa-pen-to-square pe-2"></i>
+            <% end %>
+            <%= link_to post_path(post), data: { turbo_method: :delete } do  %>
+              <i class="fa-solid fa-trash-can"></i>
+            <% end %>
+          <% else %>
+            <%=  %>
           <% end %>
 
 
-          <%= link_to post_path(post), data: { turbo_method: :delete } do  %>
-            <i class="fa-solid fa-trash-can"></i>
-          <% end %>
         </div>
 
       <h6 class="post-title"><strong><%= post.title %></strong></h6>
