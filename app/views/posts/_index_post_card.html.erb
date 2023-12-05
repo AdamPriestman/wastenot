@@ -13,10 +13,13 @@
         <div><h6 class="fw-bold ps-1"><%= post.user.username %></h6></div>
       </div>
 
-      <div class="mb-2">
+      <div class="align-items-center mb-2">
         <%# User rating on the post %>
         <%  post.rating.to_i.times do  %>
           <img width="20" height="20" class="star" src="https://img.icons8.com/fluency/20/star--v1.png" alt="star--v1"/>
+        <% end %>
+        <%  (5 - post.rating).to_i.times do  %>
+          <%= image_tag "star.png",  width:"20", height:"20", class: "star", alt: "empty-star"%>
         <% end %>
       </div>
 
