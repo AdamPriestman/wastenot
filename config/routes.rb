@@ -12,9 +12,11 @@ Rails.application.routes.draw do
   get "search", to: "pages#search"
   resources :recipes, only: [:index, :show] do
     post 'filter', on: :collection
+    post 'sort', on: :collection
     resources :bookmarks, only: [:create]
     resources :posts, only: [:new, :create]
   end
   resources :bookmarks, only: [:index, :new, :destroy]
-  resources :posts, only: [:index, :edit, :update, :delete]
+  resources :posts, only: [:index, :edit, :update, :destroy]
+
 end

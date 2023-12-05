@@ -1,0 +1,14 @@
+<div class="container mt-3">
+  <%= link_to posts_path, :class => "back-link" do  %>
+    <i class="fa-solid fa-arrow-left"></i>
+  <% end %>
+  <h1><%= @recipe.title %></h1>
+  <h5 class="pt-2 pb-2">Edit your post</h5>
+  <%= simple_form_for [@post] do |f| %>
+    <%= f.input :title, label: 'Your post title!' %>
+    <%= f.input :photo, label: 'Upload your food picture', as: :file %>
+        <%= f.input :rating, collection: (1..5).to_a, label: "Rate the recipe", input_html: {data: {controller: "star-rating"}} %>
+    <%= f.input :description, label: 'Describe your recipe experience' %>
+    <%= f.submit %>
+  <% end %>
+</div>

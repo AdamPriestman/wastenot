@@ -1,10 +1,10 @@
-<h1>User Posts</h1>
-<ul class="list-group">
-  <% @posts.each do |post| %>
-    <li class="list-group-item"><%= post.user %></li>
-    <li class="list-group-item"><%= post.title %></li>
-    <li class="list-group-item"><%= post.rating %></li>
-    <li class="list-group-item"><%= post.description %></li>
-  <% end %>
-</ul>
-<br>
+<div class="community-container posts-index ">
+  <div class="posts">
+    <h2>Delicious discoveries in our community feed!</h2>
+    <div class="all-the-posts">
+      <% @posts.each do |post| %>
+        <%= render "index_post_card", post:post %>
+      <% end %>
+    </div>
+  </div>
+</div>
