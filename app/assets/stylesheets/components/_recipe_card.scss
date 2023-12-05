@@ -6,7 +6,7 @@
   margin: 16px auto;
   display: flex;
   align-items: center;
-  color: black;
+  color: #eae7e7;
   background-color: #30A712;
   background: linear-gradient(to right bottom, #30A712, #90D080);
   .card-content {
@@ -34,9 +34,13 @@
   width: 120px;
   height: 100%;
   object-fit: cover;
-  padding: 8px;
 }
 
+.diet-icons {
+  width: 25px !important;
+  height: 25px !important;
+  // margin: 4px;
+}
 .recipe-card h2 {
   font-size: 20px;
   margin-top: 0px;

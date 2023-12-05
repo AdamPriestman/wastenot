@@ -15,9 +15,25 @@
     </div>
   </div>
 </div>
-  <div class= "home-community-text">
-    <p>Join us, share your twist on recipes, and post pictures with the community!</p>
+<div class="below-banner-content">
+  <div class = "how-it-works">
+    <div class="step-card">
+      <h2>Enter Your Ingredients</h2>
+      <%= image_tag "ingredients.png" %>
+      <p>Input ingredients you have on hand and fine-tune your search with dietary preferences or cooktime</p>
+    </div>
+    <div class="step-card">
+      <h2>Find Recipes</h2>
+      <%= image_tag "recipes.png" %>
+      <p>Discover matching recipes and bookmark your favourites</p>
+    </div>
+    <div class="step-card">
+      <h2>Share Your Experience</h2>
+      <%= image_tag "reviews.png" %>
+      <p>Post reviews and photos of your culinary creations on our community feed</p>
+    </div>
   </div>
   <div class="community-page-render">
-    <%# To be added after the creation of community page %>
+    <%= render "posts/index_post_card", post:@post %>
   </div>
+</div>

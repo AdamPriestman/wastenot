@@ -1,7 +1,23 @@
 <div class="recipe-card" >
   <%= cl_image_tag recipe.photo.key %>
   <div class="card-content">
-    <h2><%= recipe.title %></h2>
+    <div class="d-flex justify-content-between w-100 align-items-center">
+      <h2><%= recipe.title %></h2>
+      <div class="dietary-type text-end mb-2">
+        <% if recipe.vegan? %>
+          <%= image_tag "vegan.png", width: 10, height: 10, class:"diet-icons" %>
+        <% end %>
+        <% if recipe.vegetarian? %>
+          <%= image_tag "vegetarian.png", width: 10, height: 10, class:"diet-icons" %>
+        <% end %>
+        <% if recipe.gluten_free? %>
+          <%= image_tag "gluten-free.png", width: 10, height: 10, class:"diet-icons" %>
+        <% end %>
+        <% if recipe.dairy_free? %>
+          <%= image_tag "dairy-free.png", width: 10, height: 10, class:"diet-icons" %>
+        <% end %>
+      </div>
+    </div>
     <div class="card-details">
       <p class="card-description"><%= recipe.description.truncate(100) %></p>
       <div class="rating_bookmark">
