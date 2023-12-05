@@ -61,7 +61,7 @@ def get_recipes(url)
       cooktime: recipe["cookingMinutes"],
       cuisine: recipe["cuisines"].join(", "),
       course: recipe["dishTypes"].join(", "),
-      description: recipe["summary"].gsub(/<\/?.>/, ""),
+      description: recipe["summary"].gsub(/<\/?.>/, "").gsub(/<a href="[^>]+">/, ""),
       instructions: instructions_array.join,
       servings: recipe["servings"],
       source: recipe["creditsText"],
