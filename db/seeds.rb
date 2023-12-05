@@ -51,8 +51,8 @@ def get_recipes(url)
     instructions = recipe["analyzedInstructions"]
     instructions.each do |recipe_instructions|
       steps = recipe_instructions["steps"]
-      steps.each do |step|
-        instructions_array.push("#{step['number']}.#{step['step'].gsub(/<\/?.>/, '')}")
+      steps.each_with_index do |step, index|
+        instructions_array.push("~#{index + 1}. #{step['step'].gsub(/<\/?.>/, '').gsub(/<a href="[^>]+">/, "")}")
       end
     end
     local_recipe = Recipe.create(
@@ -150,6 +150,7 @@ post.user = User.all.sample
 post.recipe = Recipe.all.sample
 post.photo.attach(io: photo, filename: "food.png", content_type: "image/png")
 post.save!
+post.recipe.compute_average_rating
 
 photo = URI.open("https://graphics8.nytimes.com/images/2015/07/27/dining/27SPAGHETTI/27SPAGHETTI-superJumbo.jpg")
 post = Post.new(
@@ -162,6 +163,7 @@ post.user = User.all.sample
 post.recipe = Recipe.all.sample
 post.photo.attach(io: photo, filename: "food.png", content_type: "image/png")
 post.save!
+post.recipe.compute_average_rating
 
 photo = URI.open("https://www.budgetsavvydiva.com/wp-content/uploads/2015/01/garlic-pasta-2.jpg")
 post = Post.new(
@@ -174,6 +176,7 @@ post.user = User.all.sample
 post.recipe = Recipe.all.sample
 post.photo.attach(io: photo, filename: "food.png", content_type: "image/png")
 post.save!
+post.recipe.compute_average_rating
 
 url = URI("https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/complexSearch?query=rice&instructionsRequired=true&fillIngredients=true&addRecipeInformation=true&ignorePantry=true&number=40&limitLicense=false")
 
