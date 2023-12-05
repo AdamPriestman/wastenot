@@ -34,6 +34,31 @@
 
 }
 
+.sort {
+  display: block;
+  z-index: 3;
+  top: 68px;
+  height: 100%;
+  position: fixed;
+  background: linear-gradient(to right bottom, rgba(48, 167, 18, 0.95), rgba(144, 208, 128, 0.95));
+  right: 0px;
+  top: 69px;
+  padding: 16px;
+  width: 100%;
+  transition: right, 0.5s;
+  h3 {
+    margin-top: 0px;
+    margin-bottom: 0px;
+  }
+
+  .input-field {
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 24px 0px 24px;
+  }
+
+}
+
 .closed {
   right: -1455px;
 }
@@ -41,4 +66,9 @@
 .no-results {
   margin: 100px auto;
   text-align: center;
+}
+
+.no-results-button {
+  color: white;
+  border-radius: 5px;
 }
