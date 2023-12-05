@@ -14,9 +14,10 @@ export default class extends Controller {
   changeNavbar() {
     let lastScroll = this.scrollValue;
     let currentScroll = window.scrollY;
-    if (currentScroll < lastScroll) {
+    console.log(currentScroll)
+    if (currentScroll < lastScroll && currentScroll > 70) {
       this.topNavbarTarget.style.top = "0";
-    } else {
+    } if (currentScroll > lastScroll && currentScroll > 70) {
       this.topNavbarTarget.style.top = "-70px";
     }
     this.scrollValue = currentScroll;
