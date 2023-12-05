@@ -1,30 +1,15 @@
-<div class="recipe-card" data-controller="add-bookmark" >
+<div class="recipe-card" >
   <%= cl_image_tag recipe.photo.key %>
   <div class="card-content">
     <h2><%= recipe.title %></h2>
-    <p class= "d-none" data-add-bookmark-target="id"><%= recipe.id %></p>
     <div class="card-details">
       <p class="card-description"><%= recipe.description.truncate(100) %></p>
-<<<<<<< HEAD
-      <%# <div class="rating_bookmark" data-controller="add-bookmark" data-controller="toggle"> %>
       <div class="rating_bookmark">
-        <p>4.2 ⭐️</p>
-=======
-      <div class="rating_bookmark" data-controller="toggle">
         <p><%= recipe.average_rating %> ⭐️</p>
->>>>>>> master
-        <%# need to add link to bookmark%>
-        <%# <i class="fa-regular fa-bookmark" data-toggle-target="bookmarkFalse" data-action="click->toggle#create_bookmark"></i>
-        <i class="fa-solid fa-bookmark d-none" data-toggle-target="bookmarkTrue" data-action="click->toggle#delete_bookmark"></i> %>
-         <%# <%= link_to recipe_bookmarks_path(recipe), data: { turbo_method: :post } do  %>
-        <div class="icon-btn" data-add-bookmark-target="icon">
+        <div class="icon-btn"  >
           <%= render 'icon_btn',  recipe: recipe %>
         </div>
-        <%# <i class="fa-solid fa-bookmark d-none" data-toggle-target="bookmarkTrue" data-action="click->toggle#delete_bookmark"></i> %>
-        <%# <% end %>
       </div>
     </div>
   </div>
 </div>
-
-<%# data-action="click->add-bookmark#create_bookmark" data-add-bookmark-target="bookmarkFalse" %>

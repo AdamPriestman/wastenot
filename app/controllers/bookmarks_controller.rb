@@ -13,7 +13,6 @@ class BookmarksController < ApplicationController
     @bookmark = Bookmark.new
     @bookmark.user = current_user
     @bookmark.recipe = @recipe
-    raise
     respond_to do |format|
       if @bookmark.save
         format.html { redirect_to recipe_path(@recipe) }
@@ -25,6 +24,10 @@ class BookmarksController < ApplicationController
   def destroy
     @bookmark = Bookmark.find(params[:id])
     @bookmark.destroy
-    redirect_to bookmarks_path(@bookmark), status: :see_other
+    @recipe = @bookmark.recipe
+    respond_to do |format|
+    format.html { redirect_to bookmarks_path(@bookmark), status: :see_other}
+    format.text { render partial: "recipes/icon_btn", locals: { recipe: @recipe }, formats: [:html] }
+    end
   end
 end
