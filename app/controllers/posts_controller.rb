@@ -3,8 +3,8 @@ class PostsController < ApplicationController
   before_action :set_post, only: %i[edit update destroy]
 
   def index
-    # displays the post in desceding order of time posted
-    @posts = Post.all.order(created_at: :desc)
+    # displays the post in desceding order of time posted/updated
+    @posts = Post.all.order(updated_at: :desc, created_at: :desc)
   end
 
   def new
