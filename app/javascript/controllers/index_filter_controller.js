@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="index-filter"
 export default class extends Controller {
-static targets = ["servingsInput", "cooktimeInput", "servingsLabel", "cooktimeValue", "result", "list", "form", "veganCheckbox", "vegetarianCheckbox", "glutenCheckbox", "dairyCheckbox"]
+static targets = ["servingsInput", "cooktimeInput", "servingsLabel", "cooktimeValue", "result", "list", "form", "veganCheckbox", "vegetarianCheckbox", "glutenCheckbox", "dairyCheckbox", "radioCheckbox"]
 static values = {
   ingredients: Object
 }
@@ -52,8 +52,19 @@ static values = {
       this.dairyCheckboxTarget.value = 0
     }
 
-    const url = `${this.formTarget.action}?ingredient1=${(this.ingredientsValue["ingredient1"] === 0) ? "" : this.ingredientsValue["ingredient1"]}&ingredient2=${(this.ingredientsValue["ingredient2"] === 0) ? "" : this.ingredientsValue["ingredient2"]}&ingredient3=${(this.ingredientsValue["ingredient3"] === 0)  ? "" : this.ingredientsValue["ingredient3"]}&cooktime=${this.cooktimeInputTarget.value}&servings=${this.servingsInputTarget.value}&vegan=${this.veganCheckboxTarget.value}&vegetarian=${this.vegetarianCheckboxTarget.value}&gluten_free=${this.glutenCheckboxTarget.value}&dairy_free=${this.dairyCheckboxTarget.value}`
-    // console.log(url)
+    // console.log(this.radioCheckboxTargets)
+    let sortBy = ""
+    this.radioCheckboxTargets.forEach((radio) => {
+      if (radio.checked) {
+        sortBy = radio.value
+      }
+    })
+    console.log(sortBy)
+
+
+
+    const url = `${this.formTarget.action}?ingredient1=${(this.ingredientsValue["ingredient1"] === 0) ? "" : this.ingredientsValue["ingredient1"]}&ingredient2=${(this.ingredientsValue["ingredient2"] === 0) ? "" : this.ingredientsValue["ingredient2"]}&ingredient3=${(this.ingredientsValue["ingredient3"] === 0)  ? "" : this.ingredientsValue["ingredient3"]}&cooktime=${this.cooktimeInputTarget.value}&servings=${this.servingsInputTarget.value}&vegan=${this.veganCheckboxTarget.value}&vegetarian=${this.vegetarianCheckboxTarget.value}&gluten_free=${this.glutenCheckboxTarget.value}&dairy_free=${this.dairyCheckboxTarget.value}&sortBy=${sortBy}`
+
     fetch(url, {headers: {"Accept": "text/plain"}})
       .then(response => response.text())
       .then ((data) => {

@@ -11,6 +11,20 @@ class RecipesController < ApplicationController
       ingredient3: params[:ingredient3].to_i
     }
 
+    if params[:sortBy].present?
+      case params[:sortBy]
+      when "alphabeticalasc"
+        @recipes = @recipes.order(:title)
+      when "alphabeticaldesc"
+        @recipes = @recipes.order(title: :desc)
+      when "ratingdesc"
+        @recipes = @recipes.order(average_rating: :desc)
+      when "ratingasc"
+        @recipes = @recipes.order(:average_rating)
+      end
+    end
+    p params
+
     if params[:cooktime].present? && params[:cooktime].to_i < 100
       @recipes = @recipes.select { |recipe| recipe.cooktime <= params[:cooktime].to_i }
       # redis = Redis.sadd("filtered_recipes", @recipes)
@@ -52,15 +66,12 @@ class RecipesController < ApplicationController
       @recipes = @recipes.select(&:dairy_free?)
     end
 
+
     respond_to do |format|
       format.html
       format.text { render partial: "recipes/list", locals: { recipes: @recipes }, formats: [:html] }
     end
   end
-
-  # def sort
-
-  # end
 
   def show
     @recipes = Recipe.all
@@ -69,13 +80,8 @@ class RecipesController < ApplicationController
 
   private
 
-  def sort_params
-    params.require(:sortCriteria).permit(:sortValue)
-  end
-
   def filter_params
-    params.require(:filtersObj).permit(:cooktime, :servings, :vegan, :vegetarian, :gluten_free, :dairy_free)
-
+    params.require(:filtersObj).permit(:cooktime, :servings, :vegan, :vegetarian, :gluten_free, :dairy_free, :sortBy)
   end
 
   def set_recipe
