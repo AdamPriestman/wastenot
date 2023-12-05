@@ -1,11 +1,27 @@
 <div class="bookmark-card">
   <%= cl_image_tag bookmark.recipe.photo.key %>
   <div class="card-content">
+    <div class="d-flex justify-content-between w-100 align-items-center">
     <h2><%= bookmark.recipe.title %></h2>
+    <div class="dietary-type text-end mb-2">
+        <% if bookmark.recipe.vegan? %>
+          <%= image_tag "vegan.png", width: 10, height: 10, class:"diet-icons" %>
+        <% end %>
+        <% if bookmark.recipe.vegetarian? %>
+          <%= image_tag "vegetarian.png", width: 10, height: 10, class:"diet-icons" %>
+        <% end %>
+        <% if bookmark.recipe.gluten_free? %>
+          <%= image_tag "gluten-free.png", width: 10, height: 10, class:"diet-icons" %>
+        <% end %>
+        <% if bookmark.recipe.dairy_free? %>
+          <%= image_tag "dairy-free.png", width: 10, height: 10, class:"diet-icons" %>
+        <% end %>
+      </div>
+    </div>
     <div class="card-details">
       <p class="card-description"><%= bookmark.recipe.description.truncate(100) %></p>
-      <div class="rating_bookmark" data-controller="toggle">
-        <p>4.2 ⭐️</p>
+      <div class="rating_bookmark">
+        <p><%= bookmark.recipe.average_rating %> ⭐️</p>
         <%= link_to bookmark_path(bookmark), data: { turbo_method: :delete , turbo_confirm: "Are you sure?"} do %>
         <i class="fa-solid fa-trash"></i>
         <% end %>
