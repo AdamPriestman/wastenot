@@ -7,6 +7,7 @@
       <h3>Servings</h3>
       <input type="range" id="servings" name="servings" min="1" max="8" data-index-filter-target="servingsInput" data-action="input->index-filter#update">
       <p data-index-filter-target="servingsLabel"></p>
+      <h3>Dietary requirements</h3>
       <div class="checkbox-field">
         <label for="vegan">Vegan</label>
         <input type="checkbox" name="vegan" value="vegan" class="checkbox" data-action="click->index-filter#update" data-index-filter-target="veganCheckbox">
@@ -22,6 +23,23 @@
       <div class="checkbox-field">
         <label for="dairy-free">Dairy Free</label>
         <input type="checkbox" name="dairyFree" value="dairy_free" class="checkbox" data-action="click->index-filter#update" data-index-filter-target="dairyCheckbox">
+      </div>
+      <h3>Sort by</h3>
+      <div class="checkbox-field">
+        <label for="alphabetical">Alphabetical (a-z)</label>
+        <input type="radio" id="alphabetical" name="sort_criteria" value="alphabetical" data-action="click->index-filter#update" data-sort-index-target="sortCheckbox">
+      </div>
+      <div class="checkbox-field">
+        <label for="alphabetical">Alphabetical (z-a)</label>
+        <input type="radio" id="alphabetical" name="sort_criteria" value="alphabetical" data-action="click->index-filter#update" data-sort-index-target="sortCheckbox">
+      </div>
+      <div class="checkbox-field">
+        <label for="rating">Rating (high to low)</label>
+        <input type="radio" id="rating" name="sort_criteria" value="rating" data-action="click->index-filter#update" data-sort-index-target="sortCheckbox">
+      </div>
+      <div class="checkbox-field">
+        <label for="rating">Rating (low to high)</label>
+        <input type="radio" id="rating" name="sort_criteria" value="rating" data-action="click->index-filter#update" data-sort-index-target="sortCheckbox">
       </div>
     <% end %>
   </div>
