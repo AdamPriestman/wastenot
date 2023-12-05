@@ -111,7 +111,9 @@
         </h2>
         <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordion">
           <div class="accordion-body">
-            <p> <%= @recipe.instructions %> </p>
+            <% @recipe.instructions.split("~").each do |step| %>
+              <p><%= step %></p>
+            <% end %>
           </div>
         </div>
       </div>

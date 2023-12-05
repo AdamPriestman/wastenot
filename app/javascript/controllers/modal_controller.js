@@ -21,19 +21,4 @@ export default class extends Controller {
       element.style.pointerEvents = "auto";
     });
   }
-
-  sort() {
-    console.log("sort button clicked")
-    this.sortTarget.classList.toggle("closed")
-    this.cardTargets.forEach(element => {
-      element.style.pointerEvents = "none";
-    });
-  }
-
-  closeSort() {
-    this.sortTarget.classList.toggle("closed")
-    this.cardTargets.forEach(element => {
-      element.style.pointerEvents = "auto";
-    });
-  }
 }

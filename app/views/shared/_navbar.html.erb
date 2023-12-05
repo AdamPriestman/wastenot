@@ -1,16 +1,16 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-wastenot">
-  <div class="container-fluid">
+  <div class="container-fluid" data-controller="navbar-icon">
     <%= link_to root_path, class: "nav-link" do %>
-      <i class="fa-solid fa-house"></i>
+      <i class="fa-solid fa-house iconnav" data-navbar-icon-target="home"></i>
     <% end %>
     <%= link_to posts_path, class: "nav-link" do %>
-      <i class="fa-solid fa-users"></i>
+      <i class="fa-solid fa-users iconnav" data-navbar-icon-target="feed"></i>
     <% end %>
     <%= link_to search_path, class: "nav-link" do %>
-      <i class="fa-solid fa-magnifying-glass"></i>
+      <i class="fa-solid fa-magnifying-glass iconnav" data-navbar-icon-target="search"></i>
     <% end %>
     <%= link_to bookmarks_path, class: "nav-link" do %>
-      <i class="fa-solid fa-bookmark"></i>
+      <i class="fa-solid fa-bookmark iconnav" data-navbar-icon-target="bookmark"></i>
     <% end %>
   </div>
 </div>
