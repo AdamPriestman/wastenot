@@ -19,12 +19,12 @@
     font-size: 14px;
     color: white;
     line-height: 10px;
-    // text-shadow: 0 0 5px gray;
+    text-shadow: 0 0 5px gray;
     padding: 15px;
-    padding-top: 15px;
+    // padding-top: 15px;
     background-color: rgb(109,211,119);
     border-radius: 5px;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
   }
 
   .info{
@@ -69,4 +69,12 @@
 
     }
   }
+}
+.star{
+  vertical-align: sub;
+}
+.accordion-button{
+  text-shadow: 0 0 5px gray;
+  color: white;
+  background-color: rgb(109,211,119);
 }

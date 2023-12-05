@@ -1,6 +1,10 @@
 <div class="community-container posts-index ">
   <div class="posts">
     <h2>Delicious discoveries in our community feed!</h2>
-    <%= render "index_post_card", posts:@posts %>
+    <div class="all-the-posts">
+      <% @posts.each do |post| %>
+        <%= render "index_post_card", post:post %>
+      <% end %>
+    </div>
   </div>
 </div>

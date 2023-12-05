@@ -1,34 +1,32 @@
-<div class="all-the-posts">
-  <% @posts.each do |post| %>
-    <div class="posts-container">
-      <div class="post-card-category">
-        <div class="card-content">
-          <div class="post-info">
-            <h6 class="fw-bold"><%= image_tag "post_user.png", class: "post-avatar" %>  <%= post.user.username %></h6>
-          </div>
-
-            <%= cl_image_tag post.photo.key, class: "responsive"%>
-
-            <div class="d-flex justify-content-end">
-              <%= link_to recipe_path(post.recipe) do  %>
-                <i class="fa-solid fa-link"></i>
-              <% end %>
-
-
-              <%= link_to edit_post_path(post) do  %>
-                <i class="fa-regular fa-pen-to-square"></i>
-              <% end %>
-
-
-              <%= link_to post_path(post), data: { turbo_method: :delete } do  %>
-                <i class="fa-solid fa-trash-can"></i>
-              <% end %>
-            </div>
-
-          <p class="post-info fw-bold"><%= post.title %></p>
-          <p class="post-info"><%= post.description %></p>
-        </div>
+<div class="posts-container">
+  <div class="post-card-category">
+    <div class="card-content">
+      <div class="post-info">
+        <h6 class="fw-bold"><%= image_tag "post_user.png", class: "post-avatar" %>  <%= post.user.username %></h6>
       </div>
+
+        <%= cl_image_tag post.photo.key, class: "responsive"%>
+
+        <div class="d-flex justify-content-end">
+
+
+          <%= link_to recipe_path(post.recipe) do  %>
+            <i class="fa-solid fa-link pe-2"></i>
+          <% end %>
+
+
+          <%= link_to edit_post_path(post) do  %>
+            <i class="fa-regular fa-pen-to-square pe-2"></i>
+          <% end %>
+
+
+          <%= link_to post_path(post), data: { turbo_method: :delete } do  %>
+            <i class="fa-solid fa-trash-can"></i>
+          <% end %>
+        </div>
+
+      <h6 class="post-title"><strong><%= post.title %></strong></h6>
+      <p><em><%= post.description %></em></p>
     </div>
-  <% end %>
+  </div>
 </div>

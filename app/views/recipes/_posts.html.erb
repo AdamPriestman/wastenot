@@ -1,0 +1,19 @@
+<div class="other-recipes-cards">
+    <h5>Users' posts on this recipe </h5>
+      <div class="cards d-flex justify-content-between">
+
+        <% unless recipe.posts.empty? %>
+          <%  recipe.posts.each do |post| %>
+            <%= link_to recipe_path(recipe.posts) do %>
+              <div class="card-category d-flex flex-column col-sm-4 col-lg-4">
+                <%= cl_image_tag post.photo.key, :class => "responsive" %>
+                <div><%= post.title %></div>
+              </div>
+            <% end %>
+          <% end %>
+        <% else %>
+          <p><%= "No User posts on this recipe yet." %></p>
+        <% end %>
+
+      </div>
+    </div>
