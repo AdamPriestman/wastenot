@@ -31,6 +31,8 @@ class PostsController < ApplicationController
 
   def update
     @post.update(post_params)
+    @post.recipe = @recipe
+    @post.user = current_user
     redirect_to posts_path
   end
 

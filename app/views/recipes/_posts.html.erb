@@ -1,10 +1,10 @@
 <div class="other-recipes-cards">
     <h5>Users' posts on this recipe </h5>
-      <div class="cards d-flex justify-content-between">
+      <div class="cards d-flex justify-content-start">
 
         <% unless recipe.posts.empty? %>
           <%  recipe.posts.each do |post| %>
-            <%= link_to recipe_path(recipe.posts) do %>
+            <%= link_to posts_path(post) do %>
               <div class="card-category-post d-flex flex-column col-sm-4 col-lg-4">
                 <%= cl_image_tag post.photo.key, :class => "responsive" %>
                 <div class="overflow-auto">

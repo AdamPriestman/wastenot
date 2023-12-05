@@ -2,6 +2,7 @@
   <div class="posts">
     <h2>Delicious discoveries in our community feed!</h2>
     <div class="all-the-posts">
+      <%# displays the post in desceding order of time posted %>
       <% @posts.each do |post| %>
         <%= render "index_post_card", post:post %>
       <% end %>
