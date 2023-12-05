@@ -1,6 +1,9 @@
 .search-container {
   margin-top: 80px;
   width: 320px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   h1 {
     font-size: 32px;
     font-weight: bold;
