@@ -13,8 +13,15 @@
         <div><h6 class="fw-bold ps-1"><%= post.user.username %></h6></div>
       </div>
 
+      <div class="mb-2">
+        <%# User rating on the post %>
+        <%  post.rating.to_i.times do  %>
+          <img width="20" height="20" class="star" src="https://img.icons8.com/fluency/20/star--v1.png" alt="star--v1"/>
+        <% end %>
+      </div>
 
         <%= cl_image_tag post.photo.key, class: "responsive"%>
+
 
         <div class="d-flex justify-content-end">
 
