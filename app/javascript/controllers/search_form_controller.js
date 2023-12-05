@@ -43,7 +43,11 @@ export default class extends Controller {
   }
 
   displayCooktime(event) {
-    this.cooktimeValueTarget.innerText = `<${event.target.value} minutes`
+    if (event.target.value === "100"){
+      this.cooktimeValueTarget.innerText = `100+ minutes`
+    } else {
+      this.cooktimeValueTarget.innerText = `<${event.target.value} minutes`
+    }
   }
 
   addIngredientTwo() {

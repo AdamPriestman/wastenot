@@ -1,10 +1,17 @@
 <div class="recipes" data-index-filter-target="list">
-  <p class="list-count">(<%= recipes.count %> results)</p>
-  <% recipes.each do |recipe| %>
-    <div data-index-filter-target="result">
-      <%= link_to recipe_path(recipe), class: "text-decoration-none", data: {modal_target: "card"} do %>
-        <%= render "recipe_card", recipe: recipe %>
-      <% end %>
+  <% if recipes.empty? %>
+    <div class="no-results" data-index-filter-target="noResults">
+      <h3>Sorry, no recipes found, try a different search</h3>
+      <%= link_to "Back to search", search_path, class: "btn btn-primary no-results-button" %>
     </div>
+  <% else %>
+    <p class="list-count" data-index-filter-target="listCount">(<%= recipes.count %> results)</p>
+    <% recipes.each do |recipe| %>
+      <div data-index-filter-target="result">
+        <%= link_to recipe_path(recipe), class: "text-decoration-none", data: {modal_target: "card"} do %>
+          <%= render "recipe_card", recipe: recipe %>
+        <% end %>
+      </div>
+    <% end %>
   <% end %>
 </div>
