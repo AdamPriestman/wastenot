@@ -1,6 +1,5 @@
 <div class="container" data-controller="modal index-filter sort-index" data-index-filter-ingredients-value="<%= @ingredients_values.to_json %>">
   <div class="filter_icons">
-    <i class="fa-solid fa-arrow-down-wide-short" data-action="click->modal#sort"></i>
     <i class="fa-solid fa-filter" data-action="click->modal#filters"></i>
   </div>
   <div class="d-flex justify-content-center">
@@ -21,12 +20,5 @@
       <i class="fa-solid fa-xmark" data-action="click->modal#closeFilters"></i>
     </div>
     <%= render "filters", ingredients:@ingredients %>
-  </div>
-  <div class="sort closed" data-modal-target="sort">
-    <div class="d-flex justify-content-between align-items-center">
-      <h3 class="my-0">Sort by</h3>
-      <i class="fa-solid fa-xmark" data-action="click->modal#closeSort"></i>
-    </div>
-    <%= render "sort", ingredients:@ingredients %>
   </div>
 </div>
