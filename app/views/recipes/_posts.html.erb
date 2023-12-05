@@ -4,7 +4,8 @@
 
         <% unless recipe.posts.empty? %>
           <%  recipe.posts.each do |post| %>
-            <%= link_to posts_path(post) do %>
+            <%# anchor tag added so that clicking on the post in show page takes you to tha specific post in posts index page %>
+            <%= link_to posts_path(post, anchor: "post_#{post.id}") do %>
               <div class="card-category-post d-flex flex-column col-sm-4 col-lg-4">
                 <%= cl_image_tag post.photo.key, :class => "responsive" %>
                 <div class="overflow-auto">
