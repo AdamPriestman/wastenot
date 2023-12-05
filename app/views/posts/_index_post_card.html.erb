@@ -5,7 +5,7 @@
         <div>
         <%# PROFILE PIC: if user who made has pp then that will display otherwise generic picture will display %>
           <% if post.user.photo.key? %>
-              <%= cl_image_tag post.user.photo.key, class: "post-avatar", id: "navbarDropdown" %>
+              <%= cl_image_tag post.user.photo.key, class: "post-avatar"%>
            <% else %>
               <%= image_tag "post_user.png", class: "post-avatar" %>
           <% end %>
