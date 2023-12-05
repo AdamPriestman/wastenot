@@ -1,4 +1,4 @@
-<div class="recipe-card">
+<div class="recipe-card" >
   <%= cl_image_tag recipe.photo.key %>
   <div class="card-content">
     <div class="d-flex justify-content-between w-100 align-items-center">
@@ -20,11 +20,11 @@
     </div>
     <div class="card-details">
       <p class="card-description"><%= recipe.description.truncate(100) %></p>
-      <div class="rating_bookmark" data-controller="toggle">
+      <div class="rating_bookmark">
         <p><%= recipe.average_rating %> ⭐️</p>
-        <%# need to add link to bookmark%>
-        <i class="fa-regular fa-bookmark" data-toggle-target="bookmarkFalse" data-action="click->toggle#bookmark"></i>
-        <i class="fa-solid fa-bookmark d-none" data-toggle-target="bookmarkTrue" data-action="click->toggle#bookmark"></i>
+        <div class="icon-btn"  >
+          <%= render 'icon_btn',  recipe: recipe %>
+        </div>
       </div>
     </div>
   </div>

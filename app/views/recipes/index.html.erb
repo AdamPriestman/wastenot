@@ -3,7 +3,7 @@
   <i class="fa-solid fa-filter filterIcon" data-action="click->modal#filters"></i>
   <%# </div> %>
   <div class="d-flex justify-content-center">
-    <div>
+    <div data-controller="add-bookmark">
       <% if @recipes.empty? %>
         <div class="no-results">
           <h3>Sorry, no recipes found, try a different search</h3>
