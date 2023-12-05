@@ -2,6 +2,7 @@ class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:home, :search]
 
   def home
+    @post = Post.all.sample
   end
 
   def search

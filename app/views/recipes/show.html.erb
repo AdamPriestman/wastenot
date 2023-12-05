@@ -18,7 +18,15 @@
       <h1><%= @recipe.title %></h1>
       <div class="d-flex justify-content-between">
         <div class="col-sm-6 col-lg-6">
-          <p class="fw-bold"><%= "Rating" %> <%= @recipe.average_rating %> ⭐️</p>
+          <p class=""> <strong>Average Rating <%=  @recipe.average_rating %> </strong>
+            <%  @recipe.average_rating.to_i.times do  %>
+              <img width="20" height="20" class="star" src="https://img.icons8.com/fluency/20/star--v1.png" alt="star--v1"/>
+            <% end %>
+            <% if  @recipe.average_rating - @recipe.average_rating.to_i > 0 %>
+              <img width="20" height="20" class="star" src="https://img.icons8.com/color/20/star-half-empty.png" alt="star-half-empty"/>
+            <% end %>
+          </p>
+
         </div>
         <%# linked the boookmark icon to the bookmark path %>
         <div class="col-sm-6 col-lg-6">
@@ -32,8 +40,21 @@
       <p><%= cl_image_tag @recipe.photo.key, :class => "responsive" %></p>
     </div>
 
-    <p class="pt-2"><%= "Recipe Description" %></p>
+    <%# dietary type %>
+    <% if @recipe.vegan? %>
+      <img width="20" height="20" src="/app/assets/images/vegan.png" alt="vegan"/>
+    <% end %>
+    <% if @recipe.vegetarian? %>
+      <img width="20" height="20" src="/app/assets/images/vegetable.png" alt="vegetarian"/>
+    <% end %>
+    <% if @recipe.gluten_free? %>
+      <img width="20" height="20" src="/app/assets/images/gluten-free.png" alt="gluten-free"/>
+    <% end %>
+    <% if @recipe.dairy_free? %>
+      <img width="20" height="20" src="/app/assets/images/dairy-free.png" alt="dairy-free"/>
+    <% end %>
 
+    <%# Recipe description as drop down, saved in partial %>
     <div class="recipe-key-details-card d-flex justify-content-between">
         <div class="col-sm-6 col-lg-6">
           <p class="left-align"> Preparation time: </p>
@@ -49,40 +70,53 @@
         </div>
     </div>
 
-    <%# <div class="Ingredient-card d-flex justify-content-between"> %>
-    <div>
-      <%# <div class="col-sm-9 col-lg-9"> %>
-        <p> Ingredients</p>
-        <div class="info">
-        <% @recipe.recipe_ingredients.each do |recipe_ingredient| %>
-          <div class="d-flex justify-content-between">
-            <p><%= recipe_ingredient.ingredient.name %></p>
-            <p><%= recipe_ingredient.quantity %> <%= recipe_ingredient.units %></p>
-          </div>
-        <% end %>
-        </div>
-      <%# </div> %>
-      <%# <div class="col-sm-3 col-lg-3">
-        <p> Nutritional info </p>
-        <p class="info"> protein </p>
-      </div> %>
-    </div>
-
     <%# accordion bootstrap for instruction. instruction not listed yet. still a string %>
     <div class="accordion" id="accordion">
-      <div class="accordion-item">
+
+      <div class="accordion-item mb-3">
         <h2 class="accordion-header" id="headingOne">
           <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-            Cooking Instructions
+            Recipe Description
           </button>
         </h2>
         <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordion">
+          <div class="accordion-body">
+            <p class="accordion-text"> <%= @recipe.description %> </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item mb-3">
+        <h2 class="accordion-header" id="headingTwo">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+            Ingredients
+          </button>
+        </h2>
+        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordion">
+          <div class="accordion-body">
+            <% @recipe.recipe_ingredients.each do |recipe_ingredient| %>
+              <p><%= recipe_ingredient.ingredient.name %>: <%= recipe_ingredient.quantity %> <%= recipe_ingredient.units %></p>
+            <% end %>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item mb-3">
+        <h2 class="accordion-header" id="headingThree">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+            Cooking Instructions
+          </button>
+        </h2>
+        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordion">
           <div class="accordion-body">
             <p> <%= @recipe.instructions %> </p>
           </div>
         </div>
       </div>
+
     </div>
+
+    <%= render "posts", recipe: @recipe %>
 
     <div class="other-recipes-cards">
     <h5>Other Recipes you might enjoy </h5>
