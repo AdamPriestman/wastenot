@@ -1,43 +1,43 @@
 <div data-controller="search-form">
   <%= form_with url: recipes_path, method: :get, class: "d-flex flex-column" do |f| %>
-    <h3>Ingredients</h3>
+    <h3 class="mt-0">Ingredients</h3>
     <div class="d-flex flex-column" data-search-form-target="ingredientInput">
       <div class="d-flex flex-column" data-action="change->search-form#revealButtonTwo:once", data-search-form-target="selectTest">
-        <%= f.select :ingredient1, ingredients.order(:name).map { |ingredient| [ingredient.name, ingredient.id]}, include_blank: "Choose your ingredient" %>
+        <%= f.select :ingredient1, ingredients.order(:name).map { |ingredient| [ingredient.name, ingredient.id]}, include_blank: "Choose your ingredient", class:"mt-0" %>
       </div>
       <div class="d-none d-flex" data-search-form-target="ingredientFormTwo" data-action="change->search-form#revealButtonThree">
-        <%= f.select :ingredient2, ingredients.order(:name).map { |ingredient| [ingredient.name, ingredient.id]}, include_blank: "Choose your ingredient" %>
+        <%= f.select :ingredient2, ingredients.order(:name).map { |ingredient| [ingredient.name, ingredient.id]}, include_blank: "Choose your ingredient", class:"mt-0" %>
         <i class="fa-solid fa-x" data-action="click->search-form#removeIngredientTwo"></i>
       </div>
       <div class="d-flex d-none" data-search-form-target="ingredientFormThree">
-        <%= f.select :ingredient3, ingredients.order(:name).map { |ingredient| [ingredient.name, ingredient.id]}, include_blank: "Choose your ingredient" %>
+        <%= f.select :ingredient3, ingredients.order(:name).map { |ingredient| [ingredient.name, ingredient.id]}, include_blank: "Choose your ingredient", class:"mt-0" %>
         <i class="fa-solid fa-x" data-action="click->search-form#removeIngredientThree"></i>
       </div>
     </div>
     <p class="btn btn-secondary d-none" data-action="click->search-form#addIngredientTwo" data-search-form-target="ingredientButtonTwo">Add another ingredient</p>
     <p class="btn btn-secondary d-none" data-action="click->search-form#addIngredientThree" data-search-form-target="ingredientButtonThree">Add another ingredient</p>
-    <h3>Cooktime</h3>
-    <input type="range" id="cooktime" name="cooktime" min="0" max="100" data-search-form-target="cooktimeInput" data-action="input->search-form#displayCooktime">
+    <h3 class="mt-0">Cooktime</h3>
+    <input type="range" id="cooktime" name="cooktime" class="my-1" min="0" max="100" data-search-form-target="cooktimeInput" data-action="input->search-form#displayCooktime">
     <p data-search-form-target="cooktimeValue" class="mb-3"></p>
-    <h3>Servings</h3>
-    <input type="range" id="servings" name="servings" min="1" max="8" data-search-form-target="servingsInput" data-action="input->search-form#displayServings">
+    <h3 class="mt-0">Servings</h3>
+    <input type="range" id="servings" name="servings" class="my-1" min="1" max="8" data-search-form-target="servingsInput" data-action="input->search-form#displayServings">
     <p data-search-form-target="servingsValue"></p>
-    <h3>Filters</h3>
-    <div class="d-flex">
+    <h3 class="mt-0">Filters</h3>
+    <div class="d-flex align-items-center">
       <%= f.check_box :vegan %>
-      <%= f.label :vegan, "Vegan", class: "mx-2" %>
+      <%= f.label :vegan, "Vegan", class: "mx-2 my-1" %>
     </div>
-    <div class="d-flex">
+    <div class="d-flex align-items-center">
       <%= f.check_box :vegetarian %>
-      <%= f.label :vegetarian, "Vegetarian", class: "mx-2" %>
+      <%= f.label :vegetarian, "Vegetarian", class: "mx-2 my-1" %>
     </div>
-    <div class="d-flex">
+    <div class="d-flex align-items-center">
       <%= f.check_box :gluten_free %>
-      <%= f.label :gluten_free, "Gluten Free", class: "mx-2" %>
+      <%= f.label :gluten_free, "Gluten Free", class: "mx-2 my-1" %>
     </div>
-    <div class="d-flex">
+    <div class="d-flex align-items-center">
       <%= f.check_box :dairy_free %>
-      <%= f.label :dairy_free, "Dairy Free", class: "mx-2" %>
+      <%= f.label :dairy_free, "Dairy Free", class: "mx-2 my-1" %>
     </div>
     <%= submit_tag "Search", name: "", class: "btn btn-primary mt-4" %>
   <% end %>

@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="index-filter"
 export default class extends Controller {
-static targets = ["servingsInput", "cooktimeInput", "servingsLabel", "cooktimeValue", "result", "list", "form", "veganCheckbox", "vegetarianCheckbox", "glutenCheckbox", "dairyCheckbox", "radioCheckbox"]
+static targets = ["servingsInput", "cooktimeInput", "servingsLabel", "cooktimeValue", "result", "list", "form", "veganCheckbox", "vegetarianCheckbox", "glutenCheckbox", "dairyCheckbox", "radioCheckbox", "noResults", "listCount"]
 static values = {
   ingredients: Object
 }
