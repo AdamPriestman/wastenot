@@ -6,6 +6,12 @@
         <i class="fa-solid fa-arrow-left"></i>
       <% end %>
     </div>
+<%# icon to go back to the search %>
+    <div class="col-sm-6 col-lg-6">
+      <%= link_to new_recipe_post_path(@recipe), :class => "back-link" do  %>
+        <i class="fa-regular fa-comment"></i>
+      <% end %>
+    </div>
   </div>
 
     <div class="recipe-info-card row">
