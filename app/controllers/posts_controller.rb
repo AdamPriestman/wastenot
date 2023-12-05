@@ -3,7 +3,8 @@ class PostsController < ApplicationController
   before_action :set_post, only: %i[edit update destroy]
 
   def index
-    @posts = Post.all
+    # displays the post in desceding order of time posted
+    @posts = Post.all.order(created_at: :desc)
   end
 
   def new
@@ -31,6 +32,8 @@ class PostsController < ApplicationController
 
   def update
     @post.update(post_params)
+    @post.recipe = @recipe
+    @post.user = current_user
     redirect_to posts_path
   end
 
