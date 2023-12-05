@@ -1,9 +1,18 @@
 <div class="posts-container">
   <div class="post-card-category">
     <div class="card-content">
-      <div class="post-info">
-        <h6 class="fw-bold"><%= image_tag "post_user.png", class: "post-avatar" %>  <%= post.user.username %></h6>
+      <div class="post-info d-flex justify-content-start mb-2 align-items-center">
+        <div>
+        <%# PROFILE PIC: if user who made has pp then that will display otherwise generic picture will display %>
+          <% if post.user.photo.key? %>
+              <%= cl_image_tag post.user.photo.key, class: "post-avatar", id: "navbarDropdown" %>
+           <% else %>
+              <%= image_tag "post_user.png", class: "post-avatar" %>
+          <% end %>
+        </div>
+        <div><h6 class="fw-bold ps-1"><%= post.user.username %></h6></div>
       </div>
+
 
         <%= cl_image_tag post.photo.key, class: "responsive"%>
 

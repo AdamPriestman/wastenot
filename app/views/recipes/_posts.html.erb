@@ -5,9 +5,11 @@
         <% unless recipe.posts.empty? %>
           <%  recipe.posts.each do |post| %>
             <%= link_to recipe_path(recipe.posts) do %>
-              <div class="card-category d-flex flex-column col-sm-4 col-lg-4">
+              <div class="card-category-post d-flex flex-column col-sm-4 col-lg-4">
                 <%= cl_image_tag post.photo.key, :class => "responsive" %>
-                <div><%= post.title %></div>
+                <div class="overflow-auto">
+                  <p><%= post.title %></p>
+                </div>
               </div>
             <% end %>
           <% end %>
