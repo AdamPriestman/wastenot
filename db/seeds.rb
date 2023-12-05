@@ -119,6 +119,14 @@ def get_recipes(url)
 
     recipe_counter += 1
   end
+
+  puts "Deleting negative cooktime recipes"
+  bad_seeds = Recipe.where("cooktime<0")
+  bad_seeds.each(&:destroy)
+
+  puts "Deleting empty ingredients"
+  bad_seeds = Ingredient.select { |ingredient| ingredient.name.nil? }
+  bad_seeds.each(&:destroy)
 end
 
 url = URI("https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/complexSearch?query=pasta&cuisine=italian&instructionsRequired=true&fillIngredients=true&addRecipeInformation=true&ignorePantry=true&number=30&limitLicense=false")
@@ -128,6 +136,44 @@ puts "Pasta time"
 puts "_____________"
 puts "_____________"
 get_recipes(url)
+
+puts "Creating posts about pasta recipes"
+
+photo = URI.open("https://assets.epicurious.com/photos/55f72d733c346243461d496e/master/pass/09112015_15minute_pastasauce_tomato.jpg")
+post = Post.new(
+  title: "Delicious Pasta Recipe",
+  rating: 5,
+  description: "Deliciously simple pasta recipe! The blend of fresh tomatoes, basil, and garlic created a burst of flavor. Easy-to-follow steps made cooking a breeze. A definite go-to for a satisfying meal!"
+)
+
+post.user = User.all.sample
+post.recipe = Recipe.all.sample
+post.photo.attach(io: photo, filename: "food.png", content_type: "image/png")
+post.save!
+
+photo = URI.open("https://graphics8.nytimes.com/images/2015/07/27/dining/27SPAGHETTI/27SPAGHETTI-superJumbo.jpg")
+post = Post.new(
+  title: "Great Taste, Minor Tweaks: Pasta Success!",
+  rating: 4,
+  description: "Pasta nails flavor! A tweak or two could enhance. Great taste, simple steps; a recipe ripe for personal touches and culinary exploration!"
+)
+
+post.user = User.all.sample
+post.recipe = Recipe.all.sample
+post.photo.attach(io: photo, filename: "food.png", content_type: "image/png")
+post.save!
+
+photo = URI.open("https://www.budgetsavvydiva.com/wp-content/uploads/2015/01/garlic-pasta-2.jpg")
+post = Post.new(
+  title: "Simplicity Refined: Perfectly Balanced Pasta Harmony!",
+  rating: 5,
+  description: "A flawless balance! This pasta dish achieves culinary harmony—simple yet deeply satisfying. Every element sings in perfect unison, a true delight!"
+)
+
+post.user = User.all.sample
+post.recipe = Recipe.all.sample
+post.photo.attach(io: photo, filename: "food.png", content_type: "image/png")
+post.save!
 
 url = URI("https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/complexSearch?query=rice&instructionsRequired=true&fillIngredients=true&addRecipeInformation=true&ignorePantry=true&number=40&limitLicense=false")
 
@@ -144,11 +190,3 @@ puts "Chicken, cluck, cluck"
 puts "_____________"
 puts "_____________"
 get_recipes(url)
-
-puts "Deleting negative cooktime recipes"
-bad_seeds = Recipe.where("cooktime<0")
-bad_seeds.each(&:destroy)
-
-puts "Deleting empty ingredients"
-bad_seeds = Ingredient.select { |ingredient| ingredient.name.nil? }
-bad_seeds.each(&:destroy)
