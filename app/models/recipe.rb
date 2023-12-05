@@ -1,7 +1,7 @@
 class Recipe < ApplicationRecord
   has_many :recipe_ingredients, dependent: :destroy
   has_many :bookmarks, dependent: :destroy
-  has_many :posts
+  has_many :posts, dependent: :destroy
   has_many :ingredients, through: :recipe_ingredients
   validates :title, :description, presence: true
   has_one_attached :photo
@@ -15,5 +15,4 @@ class Recipe < ApplicationRecord
     average_rating = ratings_array.sum / ratings_array.length.to_f
     self.update(average_rating: average_rating)
   end
-
 end

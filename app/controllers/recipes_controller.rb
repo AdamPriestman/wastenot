@@ -11,57 +11,28 @@ class RecipesController < ApplicationController
       ingredient3: params[:ingredient3].to_i
     }
 
-    # if params[:vegan].to_i == 0
-    #   params[:vegan] = false
-    # else
-    #   params[:vegan] = true
-    # end
-
-    # if params[:vegetarian].to_i == 0
-    #   params[:vegetarian] = false
-    # else
-    #   params[:vegetarian] = true
-    # end
-
-    # if params[:gluten_free].to_i == 0
-    #   params[:gluten_free] = false
-    # else
-    #   params[:gluten_free] = true
-    # end
-
-    # if params[:dairy_free].to_i == 0
-    #   params[:dairy_free] = false
-    # else
-    #   params[:dairy_free] = true
-    # end
-
-    # p params[:vegan]
-
-    # if params[:servings].to_i < 8
-    #   if params[:ingredient1].present? && params[:ingredient2].present? && params[:ingredient3].present?
-    #     @recipes = Recipe.where("ingredient1 = #{params['ingredient1']}").and(Recipe.where("ingredient2 = #{params['ingredient2']}")).and(Recipe.where("ingredient3 = #{params['ingredient3']}")).and(Recipe.where("cooktime <= #{params[:cooktime]}")).and(Recipe.where("servings <= #{params[:servings]}")).and(Recipe.where("vegan = #{params[:vegan]}")).and(Recipe.where("vegetarian = #{params[:vegetarian]}")).and(Recipe.where("gluten_free = #{params[:gluten_free]}")).and(Recipe.where("dairy_free = #{params[:dairy_free]}"))
-    #   elsif params[:ingredient1].present? && params[:ingredient2].present?
-    #     @recipes = Recipe.where("ingredient1 = #{params['ingredient1']}").and(Recipe.where("ingredient2 = #{params['ingredient2']}")).and(Recipe.where("cooktime <= #{params[:cooktime]}")).and(Recipe.where("servings <= #{params[:servings]}")).and(Recipe.where("vegan = #{params[:vegan]}")).and(Recipe.where("vegetarian = #{params[:vegetarian]}")).and(Recipe.where("gluten_free = #{params[:gluten_free]}")).and(Recipe.where("dairy_free = #{params[:dairy_free]}"))
-    #   elsif params[:ingredient1].present?
-    #     @recipes = Recipe.where("ingredient1 = #{params['ingredient1']}").and(Recipe.where("cooktime <= #{params[:cooktime]}")).and(Recipe.where("servings <= #{params[:servings]}")).and(Recipe.where("vegan = #{params[:vegan]}")).and(Recipe.where("vegetarian = #{params[:vegetarian]}")).and(Recipe.where("gluten_free = #{params[:gluten_free]}")).and(Recipe.where("dairy_free = #{params[:dairy_free]}"))
-    #   else
-    #     @recipes = Recipe.where("cooktime <= #{params[:cooktime]}").and(Recipe.where("servings <= #{params[:servings]}")).and(Recipe.where("vegan = #{params[:vegan]}")).and(Recipe.where("vegetarian = #{params[:vegetarian]}")).and(Recipe.where("gluten_free = #{params[:gluten_free]}")).and(Recipe.where("dairy_free = #{params[:dairy_free]}"))
-    #   end
-    # else
-    #   if params[:ingredient1].present? && params[:ingredient2].present? && params[:ingredient3].present?
-    #     @recipes = Recipe.where("ingredient1 = #{params['ingredient1']}").and(Recipe.where("ingredient2 = #{params['ingredient2']}")).and(Recipe.where("ingredient3 = #{params['ingredient3']}")).and(Recipe.where("cooktime <= #{params[:cooktime]}")).and(Recipe.where("vegan = #{params[:vegan]}")).and(Recipe.where("vegetarian = #{params[:vegetarian]}")).and(Recipe.where("gluten_free = #{params[:gluten_free]}")).and(Recipe.where("dairy_free = #{params[:dairy_free]}"))
-    #   elsif params[:ingredient1].present? && params[:ingredient2].present?
-    #     @recipes = Recipe.where("ingredient1 = #{params['ingredient1']}").and(Recipe.where("ingredient2 = #{params['ingredient2']}")).and(Recipe.where("cooktime <= #{params[:cooktime]}")).and(Recipe.where("vegan = #{params[:vegan]}")).and(Recipe.where("vegetarian = #{params[:vegetarian]}")).and(Recipe.where("gluten_free = #{params[:gluten_free]}")).and(Recipe.where("dairy_free = #{params[:dairy_free]}"))
-    #   elsif params[:ingredient1].present?
-    #     @recipes = Recipe.where("ingredient1 = #{params['ingredient1']}").and(Recipe.where("cooktime <= #{params[:cooktime]}")).and(Recipe.where("vegan = #{params[:vegan]}")).and(Recipe.where("vegetarian = #{params[:vegetarian]}")).and(Recipe.where("gluten_free = #{params[:gluten_free]}")).and(Recipe.where("dairy_free = #{params[:dairy_free]}"))
-    #   else
-    #     @recipes = Recipe.where("cooktime <= #{params[:cooktime]}").and(Recipe.where("vegan = #{params[:vegan]}")).and(Recipe.where("vegetarian = #{params[:vegetarian]}")).and(Recipe.where("gluten_free = #{params[:gluten_free]}")).and(Recipe.where("dairy_free = #{params[:dairy_free]}"))
-    #   end
-    # end
-
-    if params[:cooktime].present?
-      @recipes = @recipes.select { |recipe| recipe.cooktime <= params[:cooktime].to_i }
+    if params[:sortBy].present?
+      case params[:sortBy]
+      when "alphabeticalasc"
+        @recipes = @recipes.order(:title)
+      when "alphabeticaldesc"
+        @recipes = @recipes.order(title: :desc)
+      when "ratingdesc"
+        @recipes = @recipes.order(average_rating: :desc)
+      when "ratingasc"
+        @recipes = @recipes.order(:average_rating)
+      end
     end
+    p params
+
+    if params[:cooktime].present? && params[:cooktime].to_i < 100
+      @recipes = @recipes.select { |recipe| recipe.cooktime <= params[:cooktime].to_i }
+      # redis = Redis.sadd("filtered_recipes", @recipes)
+    end
+
+    # saved_redis = Redis.smembers("filtered_recipes")
+
+    # raise
 
     if params[:servings].present? && params[:servings].to_i < 8
       @recipes = @recipes.select { |recipe| recipe.servings <= params[:servings].to_i }
@@ -95,44 +66,12 @@ class RecipesController < ApplicationController
       @recipes = @recipes.select(&:dairy_free?)
     end
 
+
     respond_to do |format|
       format.html
       format.text { render partial: "recipes/list", locals: { recipes: @recipes }, formats: [:html] }
     end
   end
-
-  # def filter
-  #   # @recipes = Recipe.all
-  #   # p params
-  #   filters = filter_params || []
-  #   # p filters
-
-  #   queries = []
-  #   filters.each do |key, value|
-  #     if value.class == TrueClass
-  #       queries << "#{key} = #{value}" unless (key == "servings" && value == 8)
-  #     else
-  #       queries << "#{key} <= #{value}"
-  #     end
-  #   end
-
-  #   case queries.length
-  #   when 1
-  #     @recipes = Recipe.where(queries[0])
-  #   when 2
-  #     @recipes = Recipe.where(queries[0]).and(Recipe.where(queries[1]))
-  #   when 3
-  #     @recipes = Recipe.where(queries[0]).and(Recipe.where(queries[1])).and(Recipe.where(queries[2]))
-  #   when 4
-  #     @recipes = Recipe.where(queries[0]).and(Recipe.where(queries[1])).and(Recipe.where(queries[2])).and(Recipe.where(queries[3]))
-  #   when 5
-  #     @recipes = Recipe.where(queries[0]).and(Recipe.where(queries[1])).and(Recipe.where(queries[2])).and(Recipe.where(queries[3])).and(Recipe.where(queries[4]))
-  #   when 6
-  #     @recipes = Recipe.where(queries[0]).and(Recipe.where(queries[1])).and(Recipe.where(queries[2])).and(Recipe.where(queries[3])).and(Recipe.where(queries[4])).and(Recipe.where(queries[5]))
-  #   end
-
-
-  # end
 
   def show
     @recipes = Recipe.all
@@ -141,13 +80,8 @@ class RecipesController < ApplicationController
 
   private
 
-  def sort_params
-    params.require(:sortCriteria).permit(:sortValue)
-  end
-
   def filter_params
-    params.require(:filtersObj).permit(:cooktime, :servings, :vegan, :vegetarian, :gluten_free, :dairy_free)
-
+    params.require(:filtersObj).permit(:cooktime, :servings, :vegan, :vegetarian, :gluten_free, :dairy_free, :sortBy)
   end
 
   def set_recipe

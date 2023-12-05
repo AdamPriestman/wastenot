@@ -41,18 +41,20 @@
     </div>
 
     <%# dietary type %>
-    <% if @recipe.vegan? %>
-      <img width="20" height="20" src="/app/assets/images/vegan.png" alt="vegan"/>
-    <% end %>
-    <% if @recipe.vegetarian? %>
-      <img width="20" height="20" src="/app/assets/images/vegetable.png" alt="vegetarian"/>
-    <% end %>
-    <% if @recipe.gluten_free? %>
-      <img width="20" height="20" src="/app/assets/images/gluten-free.png" alt="gluten-free"/>
-    <% end %>
-    <% if @recipe.dairy_free? %>
-      <img width="20" height="20" src="/app/assets/images/dairy-free.png" alt="dairy-free"/>
-    <% end %>
+    <div class="dietary-type text-end mb-2">
+      <% if @recipe.vegan? %>
+        <%= image_tag("vegan.png", width: 25, height: 25) %>
+      <% end %>
+      <% if @recipe.vegetarian? %>
+        <%= image_tag("vegetarian.png", width: 35, height: 35) %>
+      <% end %>
+      <% if @recipe.gluten_free? %>
+        <%= image_tag("gluten-free.png", width: 25, height: 25) %>
+      <% end %>
+      <% if @recipe.dairy_free? %>
+        <%= image_tag("dairy-free.png", width: 25, height: 25) %>
+      <% end %>
+    </div>
 
     <%# Recipe description as drop down, saved in partial %>
     <div class="recipe-key-details-card d-flex justify-content-between">
@@ -109,7 +111,9 @@
         </h2>
         <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordion">
           <div class="accordion-body">
-            <p> <%= @recipe.instructions %> </p>
+            <% @recipe.instructions.split("~").each do |step| %>
+              <p><%= step %></p>
+            <% end %>
           </div>
         </div>
       </div>
