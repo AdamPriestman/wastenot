@@ -54,7 +54,6 @@ export default class extends Controller {
       }
     });
     console.log(selectedIngredient)
-    this.ingredientButtonTwoTarget.outerHTML = ""
     this.ingredientButtonTwoTarget.classList.add("d-none")
     this.ingredientFormTwoTarget.classList.remove("d-none")
   }
