@@ -1,11 +1,30 @@
-<div class="posts-container">
+<div id="post_<%= post.id %>" class="posts-container">
   <div class="post-card-category">
     <div class="card-content">
-      <div class="post-info">
-        <h6 class="fw-bold"><%= image_tag "post_user.png", class: "post-avatar" %>  <%= post.user.username %></h6>
+      <div class="post-info d-flex justify-content-start mb-2 align-items-center">
+        <div>
+        <%# PROFILE PIC: if user who made has pp then that will display otherwise generic picture will display %>
+          <% if post.user.photo.key? %>
+              <%= cl_image_tag post.user.photo.key, class: "post-avatar"%>
+           <% else %>
+              <%= image_tag "post_user.png", class: "post-avatar" %>
+          <% end %>
+        </div>
+        <div><h6 class="fw-bold ps-1"><%= post.user.username %></h6></div>
+      </div>
+
+      <div class="align-items-center mb-2">
+        <%# User rating on the post %>
+        <%  post.rating.to_i.times do  %>
+          <img width="20" height="20" class="star" src="https://img.icons8.com/fluency/20/star--v1.png" alt="star--v1"/>
+        <% end %>
+        <%  (5 - post.rating).to_i.times do  %>
+          <%= image_tag "star.png",  width:"20", height:"20", class: "star", alt: "empty-star"%>
+        <% end %>
       </div>
 
         <%= cl_image_tag post.photo.key, class: "responsive"%>
+
 
         <div class="d-flex justify-content-end">
 
@@ -14,19 +33,25 @@
             <i class="fa-solid fa-link pe-2"></i>
           <% end %>
 
-
-          <%= link_to edit_post_path(post) do  %>
-            <i class="fa-regular fa-pen-to-square pe-2"></i>
+          <%# if post.user is the current user, display update & delete %>
+          <% if post.user == current_user %>
+            <%= link_to edit_post_path(post) do  %>
+              <i class="fa-regular fa-pen-to-square pe-2"></i>
+            <% end %>
+            <%= link_to post_path(post), data: { turbo_method: :delete } do  %>
+              <i class="fa-solid fa-trash-can"></i>
+            <% end %>
+          <% else %>
+            <%=  %>
           <% end %>
 
 
-          <%= link_to post_path(post), data: { turbo_method: :delete } do  %>
-            <i class="fa-solid fa-trash-can"></i>
-          <% end %>
         </div>
 
       <h6 class="post-title"><strong><%= post.title %></strong></h6>
-      <p><em><%= post.description %></em></p>
+        <div class="overflow-auto">
+          <p><em><%= post.description %></em></p>
+        </div>
     </div>
   </div>
 </div>
