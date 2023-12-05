@@ -40,6 +40,20 @@
       <p><%= cl_image_tag @recipe.photo.key, :class => "responsive" %></p>
     </div>
 
+    <%# dietary type %>
+    <% if @recipe.vegan? %>
+      <img width="20" height="20" src="/app/assets/images/vegan.png" alt="vegan"/>
+    <% end %>
+    <% if @recipe.vegetarian? %>
+      <img width="20" height="20" src="/app/assets/images/vegetable.png" alt="vegetarian"/>
+    <% end %>
+    <% if @recipe.gluten_free? %>
+      <img width="20" height="20" src="/app/assets/images/gluten-free.png" alt="gluten-free"/>
+    <% end %>
+    <% if @recipe.dairy_free? %>
+      <img width="20" height="20" src="/app/assets/images/dairy-free.png" alt="dairy-free"/>
+    <% end %>
+
     <%# Recipe description as drop down, saved in partial %>
     <div class="recipe-key-details-card d-flex justify-content-between">
         <div class="col-sm-6 col-lg-6">
@@ -67,7 +81,7 @@
         </h2>
         <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordion">
           <div class="accordion-body">
-            <p> <%= @recipe.description %> </p>
+            <p class="accordion-text"> <%= @recipe.description %> </p>
           </div>
         </div>
       </div>
