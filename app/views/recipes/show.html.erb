@@ -12,7 +12,8 @@
       <h1><%= @recipe.title %></h1>
       <div class="d-flex">
         <div class="flex-grow-1 col-sm-6 col-lg-6">
-          <p class=""> <strong>Average Rating <%=  @recipe.average_rating %> </strong>
+          <%# average rating will be displayed in 1 decimal place %>
+          <p class=""> <strong>Average Rating <%=  @recipe.average_rating.round(1) %> </strong>
             <%  @recipe.average_rating.to_i.times do  %>
               <img width="20" height="20" class="star" src="https://img.icons8.com/fluency/20/star--v1.png" alt="star--v1"/>
             <% end %>
