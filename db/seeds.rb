@@ -194,10 +194,58 @@ puts "_____________"
 puts "_____________"
 get_recipes(url)
 
-url = URI("https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/complexSearch?query=mexican&instructionsRequired=true&fillIngredients=true&addRecipeInformation=true&ignorePantry=true&number=40&limitLicense=false")
+url = URI("https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/complexSearch?query=beef&instructionsRequired=true&fillIngredients=true&addRecipeInformation=true&ignorePantry=true&number=40&limitLicense=false")
 
-# 40 mexican recipes
-puts "Creating mexican recipes"
+# 40 beef recipes
+puts "So beefy"
+puts "_____________"
+puts "_____________"
+get_recipes(url)
+
+url = URI("https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/complexSearch?query=korean&instructionsRequired=true&fillIngredients=true&addRecipeInformation=true&ignorePantry=true&number=40&limitLicense=false")
+
+# 40 korean recipes
+puts "Creating korean recipes"
+puts "_____________"
+puts "_____________"
+get_recipes(url)
+
+url = URI("https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/complexSearch?query=apple&instructionsRequired=true&fillIngredients=true&addRecipeInformation=true&ignorePantry=true&number=10&limitLicense=false")
+
+# 10 apple recipes
+puts "Creating apple recipes"
+puts "_____________"
+puts "_____________"
+get_recipes(url)
+
+url = URI("https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/complexSearch?query=&cuisine=japanese&instructionsRequired=true&fillIngredients=true&addRecipeInformation=true&ignorePantry=true&number=40&limitLicense=false")
+
+# 30 japanese recipes
+puts "Creating japanese recipes"
+puts "_____________"
+puts "_____________"
+get_recipes(url)
+
+url = URI("https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/complexSearch?query=&cuisine=indian&instructionsRequired=true&fillIngredients=true&addRecipeInformation=true&ignorePantry=true&number=40&limitLicense=false")
+
+# 30 indian recipes
+puts "Creating indian recipes"
+puts "_____________"
+puts "_____________"
+get_recipes(url)
+
+url = URI("https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/complexSearch?query=&cuisine=turkish&instructionsRequired=true&fillIngredients=true&addRecipeInformation=true&ignorePantry=true&number=40&limitLicense=false")
+
+# 30 turkish recipes
+puts "Creating turkish recipes"
+puts "_____________"
+puts "_____________"
+get_recipes(url)
+
+url = URI("https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/complexSearch?query=&cuisine=french&instructionsRequired=true&fillIngredients=true&addRecipeInformation=true&ignorePantry=true&number=40&limitLicense=false")
+
+# 30 french recipes
+puts "Creating french recipes"
 puts "_____________"
 puts "_____________"
 get_recipes(url)
