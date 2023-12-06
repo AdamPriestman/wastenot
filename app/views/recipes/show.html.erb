@@ -38,16 +38,16 @@
     <%# dietary type %>
     <div class="dietary-type text-end mb-2">
       <% if @recipe.vegan? %>
-        <%= image_tag("vegan.png", width: 50, height: 50) %>
+        <%= image_tag("vegan.png", width: 25, height: 25) %>
       <% end %>
       <% if @recipe.vegetarian? %>
-        <%= image_tag("vegetarian.png", width: 50, height: 50) %>
+        <%= image_tag("vegetarian.png", width: 35, height: 35) %>
       <% end %>
       <% if @recipe.gluten_free? %>
-        <%= image_tag("gluten-free.png", width: 50, height: 50) %>
+        <%= image_tag("gluten-free.png", width: 25, height: 25) %>
       <% end %>
       <% if @recipe.dairy_free? %>
-        <%= image_tag("dairy-free.png", width: 50, height: 50) %>
+        <%= image_tag("dairy-free.png", width: 25, height: 25) %>
       <% end %>
     </div>
 
