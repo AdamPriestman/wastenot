@@ -1,5 +1,5 @@
 <% recipe_bookmark = Bookmark.find_by(user: current_user, recipe: recipe) %>
-<div data-controller="add-bookmark" data-add-bookmark-id-value="<%= recipe_bookmark.id if !recipe_bookmark.nil?%>" data-add-bookmark-recipe-value="<%= recipe.id%>">
+<div class="show_bookmark" data-controller="add-bookmark" data-add-bookmark-id-value="<%= recipe_bookmark.id if !recipe_bookmark.nil?%>" data-add-bookmark-recipe-value="<%= recipe.id%>">
   <% if current_user.bookmarks.any? { |bookmark| bookmark.recipe == recipe} %>
     <i class="fa-solid fa-bookmark" data-action="click->add-bookmark#delete_bookmark"></i>
   <% else %>
