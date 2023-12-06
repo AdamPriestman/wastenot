@@ -10,6 +10,6 @@ now!</h5>
     <%= f.input :photo, label: 'Upload your food picture', as: :file %>
     <%= f.input :rating, collection: (1..5).to_a, label: "Rate the recipe", input_html: {data: {controller: "star-rating"}} %>
     <%= f.input :description, label: 'Describe your recipe experience' %>
-    <%= f.submit "Submit your post" %>
+    <%= f.submit "Submit your post", class: "btn btn-primary text-white" %>
   <% end %>
 </div>
