@@ -15,4 +15,13 @@ class Recipe < ApplicationRecord
     average_rating = ratings_array.sum / ratings_array.length.to_f
     self.update(average_rating: average_rating)
   end
+
+  def icons_count
+    counter = 0
+    counter += 1 if self.vegan?
+    counter += 1 if self.vegetarian?
+    counter += 1 if self.gluten_free?
+    counter += 1 if self.dairy_free?
+    counter
+  end
 end
