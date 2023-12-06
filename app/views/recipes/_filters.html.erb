@@ -1,43 +1,43 @@
 <div class="filters-container">
   <div class="filter-center">
     <%= form_with url: recipes_path, method: :get, class: "d-flex flex-column", data: {index_filter_target: "form"} do |f| %>
-      <h3>Cooktime</h3>
-      <input type="range" id="cooktime" name="cooktime" min="0" max="100" value=<%= params[:cooktime] %> data-index-filter-target="cooktimeInput" data-action="input->index-filter#update">
+      <h3 class="mb-2">Cooktime</h3>
+      <input type="range" class="mt-2" id="cooktime" name="cooktime" min="0" max="100" value=<%= params[:cooktime] %> data-index-filter-target="cooktimeInput" data-action="input->index-filter#update">
       <p data-index-filter-target="cooktimeValue" class="mb-3"></p>
-      <h3>Servings</h3>
-      <input type="range" id="servings" name="servings" min="1" max="8" value=<%= params[:servings] %> data-index-filter-target="servingsInput" data-action="input->index-filter#update">
+      <h3 class="mb-2">Servings</h3>
+      <input type="range" class="mt-2" id="servings" name="servings" min="1" max="8" value=<%= params[:servings] %> data-index-filter-target="servingsInput" data-action="input->index-filter#update">
       <p data-index-filter-target="servingsLabel"></p>
-      <h3>Dietary requirements</h3>
-      <div class="checkbox-field">
+      <h3 class="mb-2">Dietary requirements</h3>
+      <div class="checkbox-field mb-1">
         <label for="vegan">Vegan</label>
         <input type="checkbox" name="vegan" value="vegan" class="checkbox" data-action="click->index-filter#update" data-index-filter-target="veganCheckbox">
       </div>
-      <div class="checkbox-field">
+      <div class="checkbox-field mb-1">
         <label for="vegetarian">Vegetarian</label>
         <input type="checkbox" name="vegetarian" value="vegetarian" class="checkbox" data-action="click->index-filter#update" data-index-filter-target="vegetarianCheckbox">
       </div>
-      <div class="checkbox-field">
+      <div class="checkbox-field mb-1">
         <label for="gluten-free">Gluten Free</label>
         <input type="checkbox" name="glutenFree" value="gluten_free" class="checkbox" data-action="click->index-filter#update" data-index-filter-target="glutenCheckbox">
       </div>
-      <div class="checkbox-field">
+      <div class="checkbox-field mb-1">
         <label for="dairy-free">Dairy Free</label>
         <input type="checkbox" name="dairyFree" value="dairy_free" class="checkbox" data-action="click->index-filter#update" data-index-filter-target="dairyCheckbox">
       </div>
-      <h3>Sort by</h3>
-      <div class="checkbox-field">
+      <h3 class="mb-2">Sort by</h3>
+      <div class="checkbox-field mb-1">
         <label for="alphabetical">Alphabetical (a-z)</label>
         <input type="radio" id="alphabetical" name="sort_criteria" value="alphabeticalasc" data-action="click->index-filter#update" data-index-filter-target="radioCheckbox">
       </div>
-      <div class="checkbox-field">
+      <div class="checkbox-field mb-1">
         <label for="alphabetical">Alphabetical (z-a)</label>
         <input type="radio" id="alphabetical" name="sort_criteria" value="alphabeticaldesc" data-action="click->index-filter#update" data-index-filter-target="radioCheckbox">
       </div>
-      <div class="checkbox-field">
+      <div class="checkbox-field mb-1">
         <label for="rating">Rating (high to low)</label>
         <input type="radio" id="rating" name="sort_criteria" value="ratingdesc" data-action="click->index-filter#update" data-index-filter-target="radioCheckbox">
       </div>
-      <div class="checkbox-field">
+      <div class="checkbox-field mb-1">
         <label for="rating">Rating (low to high)</label>
         <input type="radio" id="rating" name="sort_criteria" value="ratingasc" data-action="click->index-filter#update" data-index-filter-target="radioCheckbox">
       </div>
