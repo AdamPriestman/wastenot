@@ -34,6 +34,7 @@
         <p><%= bookmark.recipe.average_rating %> ⭐️</p>
         <%= link_to bookmark_path(bookmark), data: { turbo_method: :delete , turbo_confirm: "Are you sure?"} do %>
         <i class="fa-solid fa-trash"></i>
+        <%# <%= render 'recipes/icon_btn',  bookmark: bookmark %>
         <% end %>
       </div>
     </div>
