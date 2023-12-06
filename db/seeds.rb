@@ -193,3 +193,11 @@ puts "Chicken, cluck, cluck"
 puts "_____________"
 puts "_____________"
 get_recipes(url)
+
+url = URI("https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/complexSearch?cuisine=mexican&instructionsRequired=true&fillIngredients=false&addRecipeInformation=true&ignorePantry=true&number=40&limitLicense=false")
+
+# 40 mexican recipes
+puts "Creating mexican recipes"
+puts "_____________"
+puts "_____________"
+get_recipes(url)
