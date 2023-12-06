@@ -2,7 +2,7 @@
   <%= form_with url: recipes_path, method: :get, class: "d-flex flex-column" do |f| %>
     <h3 class="mt-0">Ingredients</h3>
     <div class="d-flex flex-column" data-search-form-target="ingredientInput">
-      <div class="d-flex flex-column" data-action="change->search-form#revealButtonTwo:once", data-search-form-target="selectTest">
+      <div class="d-flex" data-action="change->search-form#revealButtonTwo:once", data-search-form-target="selectTest">
         <%= f.select :ingredient1, ingredients.order(:name).map { |ingredient| [ingredient.name, ingredient.id]}, include_blank: "Choose your ingredient", class:"mt-0" %>
       </div>
       <div class="d-none d-flex" data-search-form-target="ingredientFormTwo" data-action="change->search-form#revealButtonThree">
@@ -16,7 +16,7 @@
     </div>
     <p class="btn btn-secondary d-none" data-action="click->search-form#addIngredientTwo" data-search-form-target="ingredientButtonTwo">Add another ingredient</p>
     <p class="btn btn-secondary d-none" data-action="click->search-form#addIngredientThree" data-search-form-target="ingredientButtonThree">Add another ingredient</p>
-    <h3 class="mt-0">Cooktime</h3>
+    <h3 class="mt-3">Cooktime</h3>
     <input type="range" id="cooktime" name="cooktime" class="my-1" min="0" max="100" data-search-form-target="cooktimeInput" data-action="input->search-form#displayCooktime">
     <p data-search-form-target="cooktimeValue" class="mb-3"></p>
     <h3 class="mt-0">Servings</h3>
