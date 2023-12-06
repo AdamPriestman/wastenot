@@ -125,21 +125,21 @@
         <%= link_to recipe_path(@other_recipes.first) do %>
           <div class="card-category d-flex flex-column col-sm-4 col-lg-4">
             <%= cl_image_tag @other_recipes.first.photo.key, :class => "responsive" %>
-            <div><%= @other_recipes.first.title %></div>
+            <div><%= @other_recipes.first.title.truncate(17) %></div>
           </div>
         <% end %>
 
         <%= link_to recipe_path(@other_recipes.second) do %>
           <div class="card-category d-flex flex-column col-sm-4 col-lg-4">
             <%= cl_image_tag @other_recipes.second.photo.key, :class => "responsive" %>
-            <div><%= @other_recipes.second.title %></div>
+            <div><%= @other_recipes.second.title.truncate(17) %></div>
           </div>
         <% end %>
 
         <%= link_to recipe_path(@other_recipes.third) do %>
           <div class="card-category d-flex flex-column col-sm-4 col-lg-4">
             <%= cl_image_tag @other_recipes.third.photo.key, :class => "responsive" %>
-            <div><%= @other_recipes.third.title %></div>
+            <div><%= @other_recipes.third.title.truncate(17) %></div>
           </div>
         <% end %>
       </div>
