@@ -2,7 +2,17 @@
   <%= cl_image_tag bookmark.recipe.photo.key %>
   <div class="card-content">
     <div class="d-flex justify-content-between w-100 align-items-center">
-    <h2><%= bookmark.recipe.title %></h2>
+     <% if bookmark.recipe.icons_count == 0 %>
+        <h2><%= bookmark.recipe.title.capitalize.truncate(23) %></h2>
+      <% elsif bookmark.recipe.icons_count == 1 %>
+        <h2><%= bookmark.recipe.title.capitalize.truncate(18) %></h2>
+      <% elsif bookmark.recipe.icons_count == 2 %>
+        <h2><%= bookmark.recipe.title.capitalize.truncate(15) %></h2>
+      <% elsif bookmark.recipe.icons_count == 3 %>
+        <h2><%= bookmark.recipe.title.capitalize.truncate(12) %></h2>
+      <% else %>
+        <h2><%= bookmark.recipe.title.capitalize.truncate(9) %></h2>
+      <% end %>
     <div class="dietary-type text-end mb-2">
         <% if bookmark.recipe.vegan? %>
           <%= image_tag "vegan.png", width: 10, height: 10, class:"diet-icons" %>
