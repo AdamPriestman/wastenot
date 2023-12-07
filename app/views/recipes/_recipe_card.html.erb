@@ -31,7 +31,14 @@
     <div class="card-details">
       <p class="card-description"><%= recipe.description.truncate(100) %></p>
       <div class="rating_bookmark">
-        <h5><%= recipe.average_rating.round(1) %> ⭐️</h5>
+        <p class="rating">
+            <%  recipe.average_rating.to_i.times do  %>
+              <img class="star" src="https://img.icons8.com/fluency/20/star--v1.png" alt="star--v1"/>
+            <% end %>
+            <% if  recipe.average_rating - recipe.average_rating.to_i > 0 %>
+              <img class="star" src="https://img.icons8.com/color/20/star-half-empty.png" alt="star-half-empty"/>
+            <% end %>
+          </p>
         <div class="icon-btn"  >
           <%= render 'icon_btn',  recipe: recipe %>
         </div>

@@ -7,7 +7,7 @@
   display: flex;
   align-items: center;
   color: #eae7e7;
-  background-color: #30A712;
+  background-color: $logo-text;
   background: linear-gradient(to right bottom, $logo-dark, $logo-text);
   .card-content {
     margin: auto 16px auto 8px;
@@ -21,6 +21,11 @@
     margin-bottom: 4px;
     height: 16px;
     align-items: center;
+  }
+  .star{
+    vertical-align: sub;
+    height: 14px;
+    width: 14px;
   }
 }
 
@@ -41,6 +46,7 @@
   margin-top: 0px;
   margin-bottom: 4px;
   padding-bottom: 8px;
+  font-weight: 600;
 }
 
 .recipe-card h5 {

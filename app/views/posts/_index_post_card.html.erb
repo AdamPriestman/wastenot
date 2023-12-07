@@ -2,16 +2,37 @@
   <div class="post-card-category">
     <div class="card-content">
 
-      <div class="post-info d-flex justify-content-start mb-2 align-items-center">
-        <div>
+      <div class="post-info d-flex justify-content-between mb-2 align-items-center">
+        <div class="d-flex align-items-center justify-content-start">
         <%# PROFILE PIC: if user who made has pp then that will display otherwise generic picture will display %>
           <% if post.user.photo.key? %>
               <%= cl_image_tag post.user.photo.key, class: "post-avatar"%>
           <% else %>
               <%= image_tag "post_user.png", class: "post-avatar" %>
           <% end %>
+          <h6 class="fw-bold ps-1 post-username"><%= post.user.username %></h6>
         </div>
-        <div><h6 class="fw-bold ps-1"><%= post.user.username %></h6></div>
+        <div class="d-flex justify-content-end mt-1 mb-1 align-items-center">
+
+
+          <%= link_to recipe_path(post.recipe) do  %>
+            <%= image_tag "recipe_white.png", class: "icon-img" %>
+          <% end %>
+
+          <%# if post.user is the current user, display update & delete %>
+          <% if post.user == current_user %>
+            <%= link_to edit_post_path(post) do  %>
+              <%= image_tag "editing.png", class: "icon-img" %>
+            <% end %>
+            <%= link_to post_path(post), data: { turbo_method: :delete } do  %>
+              <%= image_tag "bin.png", class: "icon-img" %>
+            <% end %>
+          <% else %>
+            <%=  %>
+          <% end %>
+
+
+        </div>
       </div>
 
       <div class="align-items-center mb-2">
@@ -27,30 +48,9 @@
         <%= cl_image_tag post.photo.key, class: "responsive"%>
 
 
-        <div class="d-flex justify-content-end mt-1 mb-1">
-
-
-          <%= link_to recipe_path(post.recipe) do  %>
-            <i class="icon fa-solid fa-link pe-2"></i>
-          <% end %>
-
-          <%# if post.user is the current user, display update & delete %>
-          <% if post.user == current_user %>
-            <%= link_to edit_post_path(post) do  %>
-              <i class="icon fa-regular fa-pen-to-square pe-2"></i>
-            <% end %>
-            <%= link_to post_path(post), data: { turbo_method: :delete } do  %>
-              <i class="icon fa-solid fa-trash-can"></i>
-            <% end %>
-          <% else %>
-            <%=  %>
-          <% end %>
-
-
-        </div>
 
       <h6 class="post-title"><strong><%= post.title %></strong></h6>
-        <div class="">
+        <div class="post-description">
           <p><em><%= post.description %></em></p>
         </div>
     </div>
