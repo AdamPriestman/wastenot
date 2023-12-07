@@ -8,7 +8,7 @@
   align-items: center;
   color: #eae7e7;
   background-color: #30A712;
-  background: linear-gradient(to right bottom, #30A712, #90D080);
+  background: linear-gradient(to right bottom, $logo-dark, $logo-text);
   .card-content {
     margin: auto 16px auto 8px;
     display: flex;

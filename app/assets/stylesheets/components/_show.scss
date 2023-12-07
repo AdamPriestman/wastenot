@@ -16,7 +16,7 @@
 
     .comment-icon {
       .fa-regular {
-        color: #30A712;
+        color: $primary;
       }
     }
   }
@@ -28,7 +28,7 @@
     text-shadow: 0 0 5px gray;
     padding: 15px;
     // padding-top: 15px;
-    background-color: rgb(109,211,119);
+    background-color: $logo-text;
     border-radius: 5px;
     margin-bottom: 20px;
   }
@@ -39,7 +39,7 @@
     font-size: 14px;
     color: white;
     line-height: 10px;
-    background-color: rgb(109,211,119);
+    background-color: $logo-text;
     padding: 15px;
     border-radius: 5px;
     margin-bottom: 15px;
@@ -52,8 +52,8 @@
   .card-category{
     background-size: cover;
     background-position: center;
-    background-color: rgb(109,211,119);
-    background: linear-gradient(to right bottom, #30A712, #b1c9ab);
+    background-color: $logo-text;
+    background: linear-gradient(to right bottom, $logo-dark, $logo-text);
     padding: 5px;
 
     height: 100px;
@@ -127,14 +127,14 @@
 .accordion-button{
   text-shadow: 0 0 5px gray;
   color: white;
-  background-color: rgb(109,211,119);
+  background-color: $logo-text;
 }
 a:link{
   text-decoration: none;
 }
 
 .green-bookmark {
-  color: #30A712;
+  color: $primary;
 }
 
 .copy_ingredients_button {
