@@ -21,8 +21,12 @@
 }
 
 .new-submit{
-  text-align: center;
-  margin-left: 135px;
+  // margin-left: 135px;
+  align-items: center;
+  border-radius: 10px;
+  font-size: 20px;
+  font-weight: 700;
+  color: white;
 }
 
 .recipe-title  {
@@ -43,10 +47,12 @@
 }
 
 .new_post {
-  input {
-    border: 3px solid #dee2e6 !important;
-    border-radius: 5px;
-  }
+  display: flex;
+  flex-direction: column;
+  // input {
+  //   border: 3px solid #dee2e6 !important;
+  //   border-radius: 5px;
+  // }
 }
 .post_description{
   textarea {
@@ -54,7 +60,9 @@
     border-radius: 5px;
   }
 }
-.fa-regular {
-  color: $primary !important;
-  font-size: 1.2rem !important;
+.fixy{
+  .fa-regular {
+    color: $primary !important;
+    font-size: 1.2rem !important;
+  }
 }

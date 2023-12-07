@@ -10,7 +10,11 @@
   }
 
   .back-link {
-    color: gray;
+    color: $primary;
+  }
+
+  .show_bookmark {
+    padding: 8px;
   }
 
   .recipe-info-card{
@@ -26,6 +30,7 @@
       .fa-regular {
         color: $primary;
       }
+      padding: 8px;
     }
   }
   .recipe-key-details-card{
@@ -144,9 +149,12 @@ a:link{
 .green-bookmark {
   color: $primary;
 }
-.fa-regular {
-  color: $primary !important;
-  font-size: 1.15rem !important;
+
+.back-css{
+  .fa-regular {
+    color: $primary !important;
+    font-size: 1.15rem !important;
+  }
 }
 .copy_ingredients_button {
   position: relative;
