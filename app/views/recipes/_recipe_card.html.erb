@@ -31,7 +31,7 @@
     <div class="card-details">
       <p class="card-description"><%= recipe.description.truncate(100) %></p>
       <div class="rating_bookmark">
-        <h5><%= recipe.average_rating %> ⭐️</h5>
+        <h5><%= recipe.average_rating.round(1) %> ⭐️</h5>
         <div class="icon-btn"  >
           <%= render 'icon_btn',  recipe: recipe %>
         </div>
