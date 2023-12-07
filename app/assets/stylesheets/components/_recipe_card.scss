@@ -15,6 +15,11 @@
     flex-direction: column;
     // justify-content: space-between;
   }
+
+  .card-description {
+    margin-bottom: 8px;
+  }
+
   .rating_bookmark {
     display: flex;
     justify-content: space-between;
@@ -22,6 +27,7 @@
     height: 16px;
     align-items: center;
   }
+
   .star{
     vertical-align: sub;
     height: 14px;
@@ -41,6 +47,7 @@
   height: 20px !important;
   // margin: 4px;
 }
+
 .recipe-card h2 {
   font-size: 20px;
   margin-top: 0px;
@@ -58,7 +65,7 @@
 .recipe-card p {
   font-size: 12px;
   margin-top: 0px;
-  // margin-bottom: 16px;
+  margin-bottom: 0px;
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;

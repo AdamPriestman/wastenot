@@ -7,7 +7,7 @@
   h1 {
     font-size: 32px;
     font-weight: bold;
-    margin-bottom: 10px;
+    margin-bottom: 16px;
   }
 
   h3 {
@@ -23,7 +23,7 @@
   }
   input[type='range']::-webkit-slider-thumb {
       -webkit-appearance: none !important;
-      background: $primary;
+      background: $secondary;
       height:15px;
       width:15px;
       border-radius: 50%;
@@ -40,6 +40,7 @@
     font-size: 16px;
     border-radius: 10px;
     margin-top: 12px;
+    color: white;
   }
 
   .ts-control {

@@ -84,7 +84,7 @@
   .card-category-post{
     background-size: cover;
     background-position: center;
-    background-color: white;
+    background-color: $logo-text;
     padding: 5px;
     // margin-inline: 10px;
     position: relative;
@@ -92,10 +92,10 @@
     height: 165px;
     width: 100px;
     padding-top: 10px;
-    display: inline;
-    // justify-content: center;
-    // align-items:center;
-    color: gray;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    color: white;
     font-size: 10px;
     text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
     border-radius: 5px;

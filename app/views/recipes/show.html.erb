@@ -2,9 +2,9 @@
 <%# added icon link to post form %>
   <div class="d-flex">
     <div class="col-sm-6 col-lg-6">
-      <%= link_to recipes_path, :class => "back-link" do  %>
+      <div data-controller="redirect" data-action="click->redirect#redirect" class="back-link">
         <i class="fa-solid fa-arrow-left"></i>
-      <% end %>
+      </div>
     </div>
   </div>
 
