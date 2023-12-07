@@ -1,40 +1,37 @@
-<div class="show-container container">
-<%# added icon link to post form %>
-  <div class="d-flex">
-    <div class="col-sm-6 col-lg-6">
-      <div data-controller="redirect" data-action="click->redirect#redirect" class="back-link">
-        <i class="fa-solid fa-arrow-left"></i>
-      </div>
-    </div>
-  </div>
+<div class="show-container container mt-3">
+<%# back button on same line as recipe title %>
 
-    <div class="recipe-info-card row">
-      <div class="d-flex align-items-center">
-        <div class="flex-grow-1"><h1><%= @recipe.title %></h1></div>
-        <div class="comment-icon pe-2">
-          <%= link_to new_recipe_post_path(@recipe), :class => "back-link" do  %>
-            <i class="fa-regular fa-comment"></i>
-          <% end %>
-        </div>
-        <div class="green-bookmark">
-          <%= render 'icon_btn',  recipe: @recipe %>
-        </div>
-      </div>
-
-      <div>
+  <div class="flex-grow-1"><h1><%= @recipe.title %></h1></div>
+      <%# moved create comment icon next to bookmark icon %>
+  <div class="recipe-info-card row">
+    <div class="d-flex align-items-center">
+      <div class="flex-grow-1">
           <p>
-            <%  @recipe.average_rating.to_i.times do  %>
-              <img width="20" height="20" class="star" src="https://img.icons8.com/fluency/20/star--v1.png" alt="star--v1"/>
-            <% end %>
-            <% if  @recipe.average_rating - @recipe.average_rating.to_i > 0 %>
-              <img width="20" height="20" class="star" src="https://img.icons8.com/color/20/star-half-empty.png" alt="star-half-empty"/>
-            <% end %>
-          </p>
+        <%  @recipe.average_rating.to_i.times do  %>
+          <img width="20" height="20" class="star" src="https://img.icons8.com/fluency/20/star--v1.png" alt="star--v1"/>
+        <% end %>
+        <% if  @recipe.average_rating - @recipe.average_rating.to_i > 0 %>
+          <img width="20" height="20" class="star" src="https://img.icons8.com/color/20/star-half-empty.png" alt="star-half-empty"/>
+        <% end %>
+      </p>
       </div>
-        <%# moved create comment icon next to bookmark icon %>
-
-      <p><%= cl_image_tag @recipe.photo.key, :class => "responsive" %></p>
+      <div class="back pe-2">
+        <div data-controller="redirect" data-action="click->redirect#redirect" class="back-link">
+          <i class="fa-regular fa-circle-left"></i>
+        </div>
+      </div>
+      <div class="comment-icon pe-2">
+        <%= link_to new_recipe_post_path(@recipe), :class => "back-link" do  %>
+          <i class="fa-regular fa-comment"></i>
+        <% end %>
+      </div>
+      <div class="green-bookmark">
+        <%= render 'icon_btn',  recipe: @recipe %>
+      </div>
     </div>
+
+    <p><%= cl_image_tag @recipe.photo.key, :class => "responsive" %></p>
+  </div>
 
     <%# dietary type %>
     <div class="dietary-type text-end mb-2">
