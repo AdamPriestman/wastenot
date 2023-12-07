@@ -1,17 +1,16 @@
 .filterIcon {
   position: sticky;
   left: 88%;
-  top: 13px;
+  top: 6px;
   padding-top: 10px;
-  margin-top: 8px;
   font-size: 150%;
   z-index: 2;
 }
 
 
-.index-container{
-  margin-top: -100px;
-}
+// .index-container{
+//   // position: absolute;
+// }
 
 .filters {
   display: block;
@@ -45,12 +44,13 @@
 .list-count {
   display: flex;
   position: sticky;
-  top: 15px;
+  margin-top: -26px;
   border-radius: 13px;
   box-shadow: rgba(0, 0, 0, 0.3) 1px 4px 25px;
   padding: 6px;
   background: white;
   padding-bottom: 8px;
+  top: 6px;
   p {
     font-size: 16px;
   }

@@ -3,7 +3,6 @@
 // }
 .posts-container{
   height: 100%;
-
   .post-card-category{
     // width: 300px;
     padding: 15px;
@@ -42,4 +41,13 @@
 }
 .icon{
   color: rgb(223, 39, 223);
+}
+
+.posts {
+  h2 {
+    font-size: 32px;
+    font-weight: bold;
+    margin-top: 8px;
+    margin-bottom: 16px;
+  }
 }
