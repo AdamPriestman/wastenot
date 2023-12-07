@@ -13,7 +13,7 @@
     margin: auto 16px auto 8px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    // justify-content: space-between;
   }
   .rating_bookmark {
     display: flex;
@@ -21,12 +21,6 @@
     margin-bottom: 4px;
     height: 16px;
     align-items: center;
-  }
-  .card-description {
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 3;
-    overflow: hidden;
   }
 }
 
@@ -46,14 +40,23 @@
   font-size: 20px;
   margin-top: 0px;
   margin-bottom: 4px;
-  // overflow: hidden;
-  // text-overflow: ellipsis;
-  // white-space: nowrap;
+  padding-bottom: 8px;
+}
+
+.recipe-card h5 {
+  font-size: 14px;
+  margin-top: 0px;
+  margin-bottom: 0px;
 }
 
 .recipe-card p {
   font-size: 12px;
-  margin-bottom: 4px;
   margin-top: 0px;
-  line-height: 140%;
+  // margin-bottom: 16px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  white-space: normal;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
