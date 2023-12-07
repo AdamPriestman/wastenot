@@ -6,9 +6,7 @@ export default class extends Controller {
   connect() {
     const link = window.location.href.split("/")
     const iconValue = (link[link.length - 1])
-    if (iconValue === ""){
-      this.homeTarget.classList.add("active")
-    } else if (iconValue === "posts"){
+    if (iconValue === "posts"){
       this.feedTarget.classList.add("active")
     } else if (iconValue === "search" ){
       this.searchTarget.classList.add("active")
