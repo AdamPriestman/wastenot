@@ -9,6 +9,19 @@ export default class extends Controller {
   }
 
   connect() {
+    const link = window.location.href.split("/")
+    const linkValue = link[link.length - 1]
+    if (linkValue === ""){
+      this.topNavbarTarget.classList.remove("d-none")
+    } else if (linkValue === "posts"){
+      this.topNavbarTarget.classList.remove("d-none")
+    } else if (linkValue === "search" ){
+      this.topNavbarTarget.classList.remove("d-none")
+    } else if (linkValue === "bookmarks"){
+      this.topNavbarTarget.classList.remove("d-none")
+    } else {
+      this.topNavbarTarget.classList.add("d-none")
+    }
   }
 
   changeNavbar() {

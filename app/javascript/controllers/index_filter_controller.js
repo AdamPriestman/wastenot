@@ -8,8 +8,18 @@ static values = {
 }
 
   connect() {
-    this.servingsLabelTarget.innerText = this.servingsInputTarget.value
-    this.cooktimeValueTarget.innerText = `${this.cooktimeInputTarget.value} minutes`
+    if (this.servingsInputTarget.value) {
+      console.log("there is a value")
+      console.log(this.servingsInputTarget.value)
+      this.servingsLabelTarget.innerText = `${this.servingsInputTarget.value}`
+      this.cooktimeValueTarget.innerText = `${this.cooktimeInputTarget.value} minutes`
+    } else {
+      console.log("its empty")
+      this.servingsLabelTarget.value = 3
+      this.servingsLabelTarget.innerText = "3"
+      this.cooktimeValueTarget.value = 50
+      this.cooktimeValueTarget.innerText = "50 minutes"
+    }
   }
 
   update(event) {
