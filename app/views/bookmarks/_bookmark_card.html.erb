@@ -32,9 +32,11 @@
       <p class="card-description"><%= bookmark.recipe.description.truncate(100) %></p>
       <div class="rating_bookmark">
         <p><%= bookmark.recipe.average_rating %> ⭐️</p>
+        <div class="mb-1">
         <%= link_to bookmark_path(bookmark), data: { turbo_method: :delete , turbo_confirm: "Are you sure?"} do %>
-        <i class="fa-solid fa-trash"></i>
+        <i class="fa-solid fa-bookmark"></i>
         <% end %>
+        </div>
       </div>
     </div>
   </div>
