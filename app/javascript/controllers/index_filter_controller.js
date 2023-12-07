@@ -8,12 +8,14 @@ static values = {
 }
 
   connect() {
+    const link = window.location.href.split("/")
+    const linkVal = link[link.length -1]
     if (this.servingsInputTarget.value) {
       console.log("there is a value")
       console.log(this.servingsInputTarget.value)
       this.servingsLabelTarget.innerText = `${this.servingsInputTarget.value}`
       this.cooktimeValueTarget.innerText = `${this.cooktimeInputTarget.value} minutes`
-    } else {
+    } else if (linkVal === "recipes") {
       console.log("its empty")
       this.servingsLabelTarget.value = 3
       this.servingsLabelTarget.innerText = "3"

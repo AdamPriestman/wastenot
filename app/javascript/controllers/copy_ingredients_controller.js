@@ -5,12 +5,12 @@ export default class extends Controller {
   static targets = ["ingredient", "copyButton"]
 
   connect() {
-    console.log("copy ingredients controller connected")
-    console.log(this.ingredientTarget.innerText)
+    // console.log("copy ingredients controller connected")
+    // console.log(this.ingredientTarget.innerText)
   }
 
   ingredientsList() {
-    console.log(this.ingredientTargets)
+    // console.log(this.ingredientTargets)
     let ingredients = []
     this.ingredientTargets.forEach((ingredient) => {
       ingredients.push(ingredient.innerText)

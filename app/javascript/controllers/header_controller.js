@@ -10,16 +10,27 @@ export default class extends Controller {
 
   connect() {
     const link = window.location.href.split("/")
-    const linkValue = link[link.length - 1]
+    const linkValue = link[link.length -1]
     if (linkValue === ""){
+      console.log(linkValue)
       this.topNavbarTarget.classList.remove("d-none")
     } else if (linkValue === "posts"){
+      console.log(linkValue)
       this.topNavbarTarget.classList.remove("d-none")
     } else if (linkValue === "search" ){
+      console.log(linkValue)
       this.topNavbarTarget.classList.remove("d-none")
     } else if (linkValue === "bookmarks"){
+      console.log(linkValue)
       this.topNavbarTarget.classList.remove("d-none")
+    } else if (parseInt(linkValue, 10)){
+      console.log(linkValue)
+      this.topNavbarTarget.classList.remove("d-none")
+    } else if (linkValue === "recipes") {
+      console.log(linkValue)
+      this.topNavbarTarget.classList.add("d-none")
     } else {
+      console.log(linkValue)
       this.topNavbarTarget.classList.add("d-none")
     }
   }
