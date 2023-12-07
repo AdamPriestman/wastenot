@@ -3,7 +3,7 @@
     <h5 class="pt-2 pb-2"> Edit  Post</h5>
     <%= link_to recipe_path(@recipe), :class => "back-link" do  %>
       <%# <i class="fa-solid fa-arrow-left"></i> %>
-      <i class="fa-solid fa-circle-arrow-left"></i>
+      <i class="fa-regular fa-circle-left"></i>
     <% end %>
   </div>
   <div class="recipe-image responsive" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cl_image_path @recipe.photo.key %>) ">

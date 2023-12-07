@@ -137,7 +137,10 @@ a:link{
 .green-bookmark {
   color: $primary;
 }
-
+.fa-regular {
+  color: $primary !important;
+  font-size: 1.15rem !important;
+}
 .copy_ingredients_button {
   position: relative;
   width: 100%;
