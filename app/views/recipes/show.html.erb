@@ -92,7 +92,7 @@
         </h2>
         <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordion">
           <div class="accordion-body">
-            <button class="btn btn-primary copy_ingredients_button" data-action="click->copy-ingredients#ingredientsList">Copy ingredients list</button>
+            <button class="btn btn-primary copy_ingredients_button" data-copy-ingredients-target="copyButton" data-action="click->copy-ingredients#ingredientsList">Copy ingredients list</button>
             <% @recipe.recipe_ingredients.each do |recipe_ingredient| %>
               <p data-copy-ingredients-target="ingredient"><%= recipe_ingredient.ingredient.name.capitalize %>: <%= recipe_ingredient.quantity %> <%= recipe_ingredient.units %></p>
             <% end %>
