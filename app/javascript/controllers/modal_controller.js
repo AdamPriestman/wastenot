@@ -4,7 +4,7 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
   static targets = ["filters", "filtersDiv", "card", "sort", "indexPage"]
   connect() {
-    console.log("modal controller connected")
+    // console.log("modal controller connected")
   }
 
   filters() {
