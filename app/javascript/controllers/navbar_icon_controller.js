@@ -12,6 +12,9 @@ export default class extends Controller {
       this.searchTarget.classList.add("active")
     } else if (iconValue === "bookmarks"){
       this.bookmarkTarget.classList.add("active")
+    } else if (iconValue === "") {
+      console.log("no icons green")
+      this.searchTarget.classList.remove("active")
     } else {
       this.searchTarget.classList.add("active")
     }
