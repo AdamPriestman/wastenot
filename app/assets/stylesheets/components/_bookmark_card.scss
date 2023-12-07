@@ -10,14 +10,18 @@
   display: flex;
   align-items: center;
   color: #eae7e7;
-  background-color: #30A712;
+  background-color: $logo-text;
   background: linear-gradient(to right bottom, $logo-dark, $logo-text);
 
   .card-content {
     margin: auto 16px auto 8px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    // justify-content: space-between;
+  }
+
+  .card-description {
+    margin-bottom: 10px;
   }
   .rating_bookmark {
     display: flex;
@@ -29,11 +33,10 @@
       color: #eae7e7;
     }
   }
-  .card-description {
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 3;
-    overflow: hidden;
+  .star{
+    vertical-align: sub;
+    height: 14px;
+    width: 14px;
   }
 }
 
@@ -44,21 +47,40 @@
   border-radius: 5px 0px 0px 5px;
 }
 
+.diet-icons {
+  width: 20px !important;
+  height: 20px !important;
+  // margin: 4px;
+}
+
 .bookmark-card h2 {
   font-size: 20px;
   margin-top: 0px;
   margin-bottom: 4px;
+  padding-bottom: 8px;
+  font-weight: 600;
+}
+
+.bookmark-card h5 {
+  font-size: 14px;
+  margin-top: 0px;
+  margin-bottom: 0px;
 }
 
 .bookmark-card p {
   font-size: 12px;
   margin-bottom: 4px;
   margin-top: 0px;
-  line-height: 140%;
 }
 
-.bookmark-title {
-  font-size: 32px;
-  font-weight: bold;
-  margin-bottom: 12px;
+.bookmark-card p {
+  font-size: 12px;
+  margin-top: 0px;
+  // margin-bottom: 16px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  white-space: normal;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
