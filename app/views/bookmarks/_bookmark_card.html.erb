@@ -33,10 +33,10 @@
       <div class="rating_bookmark">
         <p class="rating">
           <%  bookmark.recipe.average_rating.to_i.times do  %>
-            <img class="star" src="https://img.icons8.com/fluency/20/star--v1.png" alt="star--v1"/>
+            <%= image_tag "star--v1.png", class:"star" %>
           <% end %>
           <% if  bookmark.recipe.average_rating - bookmark.recipe.average_rating.to_i > 0 %>
-            <img class="star" src="https://img.icons8.com/color/20/star-half-empty.png" alt="star-half-empty"/>
+          <%= image_tag "star-half-empty.png", class:"star" %>
           <% end %>
         </p>
         <%= link_to bookmark_path(bookmark), data: { turbo_method: :delete , turbo_confirm: "Are you sure?"} do %>

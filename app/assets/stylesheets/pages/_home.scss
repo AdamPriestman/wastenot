@@ -33,7 +33,7 @@
 
 .landing-page-content {
   position: absolute;
-  margin: 100px auto 0;
+  margin: 70px auto 0;
   z-index: 1;
   text-align: center;
   color: white;
@@ -83,4 +83,12 @@
 
 .community-page-render {
   margin-bottom: 80px;
+}
+
+.brand-name {
+  color: white;
+  font-weight: 900;
+  letter-spacing: 4px;
+  font-size: 45px;
+  text-shadow: 2px 2px 3px grey;
 }

@@ -2,8 +2,19 @@
   // margin: 6px auto 50px;
   // width: 320px;
 
+  h1 {
+    font-size: 32px;
+    font-weight: bold;
+    margin-top: 8px;
+    margin-bottom: 16px;
+  }
+
   .back-link {
-    color: gray;
+    color: $primary;
+  }
+
+  .show_bookmark {
+    padding: 8px;
   }
 
   .recipe-info-card{
@@ -19,6 +30,7 @@
       .fa-regular {
         color: $primary;
       }
+      padding: 8px;
     }
   }
   .recipe-key-details-card{
@@ -55,8 +67,8 @@
     background-position: center;
     background-color: $logo-text;
     padding: 5px;
-
-    height: 100px;
+    padding-top: 10px;
+    height: 120px;
     width: 100px;
     display: flex;
     justify-content: center;
@@ -137,9 +149,12 @@ a:link{
 .green-bookmark {
   color: $primary;
 }
-.fa-regular {
-  color: $primary !important;
-  font-size: 1.15rem !important;
+
+.back-css{
+  .fa-regular {
+    color: $primary !important;
+    font-size: 1.15rem !important;
+  }
 }
 .copy_ingredients_button {
   position: relative;

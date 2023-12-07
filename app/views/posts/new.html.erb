@@ -1,19 +1,19 @@
 <div class="container mt-3">
   <div class="title-back d-flex justify-content-between align-items-center">
-    <h5 class="pt-2 pb-2"> New  Post</h5>
+    <h5 class="pt-2 pb-2 new-post-title"> New  Post</h5>
     <%= link_to recipe_path(@recipe), :class => "back-link" do  %>
       <%# <i class="fa-solid fa-arrow-left"></i> %>
-      <i class="fa-regular fa-circle-left"></i>
+      <i class="fixy fa-regular fa-circle-left"></i>
     <% end %>
   </div>
   <div class="recipe-image responsive" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cl_image_path @recipe.photo.key %>) ">
     <h1 class="recipe-title"><%= @recipe.title %></h1>
   </div>
   <%= simple_form_for [@recipe, @post] do |f| %>
-    <%= f.input :title, label: 'Title!' %>
-    <%= f.input :photo, label: 'Upload picture', as: :file %>
+    <%= f.input :title, label: 'Title' %>
+    <%= f.input :photo, label: 'Upload a photo', as: :file %>
     <%= f.input :rating, collection: (1..5).to_a, label: false, input_html: {data: {controller: "star-rating"}} %>
     <%= f.input :description %>
-    <%= f.submit "Submit", class: "btn btn-primary text-white" %>
+    <%= f.submit "Submit", class: "btn btn-primary text-white new-submit" %>
   <% end %>
 </div>

@@ -33,10 +33,12 @@
       <div class="rating_bookmark d-flex align-items-center">
         <p class="rating">
             <%  recipe.average_rating.to_i.times do  %>
-              <img class="star" src="https://img.icons8.com/fluency/20/star--v1.png" alt="star--v1"/>
+              <%= image_tag "star--v1.png", class:"star" %>
+              <%# <img class="star" src="https://img.icons8.com/fluency/20/star--v1.png" alt="star--v1"/> %>
             <% end %>
             <% if  recipe.average_rating - recipe.average_rating.to_i > 0 %>
-              <img class="star" src="https://img.icons8.com/color/20/star-half-empty.png" alt="star-half-empty"/>
+            <%= image_tag "star-half-empty.png", class:"star" %>
+              <%# <img class="star" src="https://img.icons8.com/color/20/star-half-empty.png" alt="star-half-empty"/> %>
             <% end %>
           </p>
         <div class="icon-btn"  >
