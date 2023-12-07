@@ -30,16 +30,16 @@
 
 
           <%= link_to recipe_path(post.recipe) do  %>
-            <i class="fa-solid fa-link pe-2"></i>
+            <i class="icon fa-solid fa-link pe-2"></i>
           <% end %>
 
           <%# if post.user is the current user, display update & delete %>
           <% if post.user == current_user %>
             <%= link_to edit_post_path(post) do  %>
-              <i class="fa-regular fa-pen-to-square pe-2"></i>
+              <i class="icon fa-regular fa-pen-to-square pe-2"></i>
             <% end %>
             <%= link_to post_path(post), data: { turbo_method: :delete } do  %>
-              <i class="fa-solid fa-trash-can"></i>
+              <i class="icon fa-solid fa-trash-can"></i>
             <% end %>
           <% else %>
             <%=  %>
