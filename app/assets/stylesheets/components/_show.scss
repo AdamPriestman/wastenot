@@ -10,7 +10,11 @@
   }
 
   .back-link {
-    color: gray;
+    color: $primary;
+  }
+
+  .show_bookmark {
+    padding: 8px;
   }
 
   .recipe-info-card{
@@ -26,6 +30,7 @@
       .fa-regular {
         color: $primary;
       }
+      padding: 8px;
     }
   }
   .recipe-key-details-card{
