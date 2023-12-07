@@ -15,23 +15,23 @@
       <% end %>
       <div class="dietary-type text-end mb-2">
         <% if recipe.vegan? %>
-          <%= image_tag "vegan.png", width: 8, height: 8, class:"diet-icons" %>
+          <%= image_tag "vegan1.png", width: 8, height: 8, class:"diet-icons" %>
         <% end %>
         <% if recipe.vegetarian? %>
-          <%= image_tag "vegetarian.png", width: 8, height: 8, class:"diet-icons" %>
+          <%= image_tag "vegetarian1.png", width: 8, height: 8, class:"diet-icons" %>
         <% end %>
         <% if recipe.gluten_free? %>
-          <%= image_tag "gluten-free.png", width: 8, height: 8, class:"diet-icons" %>
+          <%= image_tag "gluten-free1.png", width: 8, height: 8, class:"diet-icons" %>
         <% end %>
         <% if recipe.dairy_free? %>
-          <%= image_tag "dairy-free.png", width: 8, height: 8, class:"diet-icons" %>
+          <%= image_tag "dairy1.png", width: 8, height: 8, class:"diet-icons" %>
         <% end %>
       </div>
     </div>
     <div class="card-details">
       <p class="card-description"><%= recipe.description.truncate(100) %></p>
       <div class="rating_bookmark">
-        <h5><%= recipe.average_rating %> ⭐️</h5>
+        <h5><%= recipe.average_rating.round(1) %> ⭐️</h5>
         <div class="icon-btn"  >
           <%= render 'icon_btn',  recipe: recipe %>
         </div>
