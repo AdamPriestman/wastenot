@@ -1,17 +1,16 @@
-// .closeIcon {
-//   font-size: 125%;
-//   padding: 8px;
-//   margin-top: 8px;
-//   margin-bottom: -8px;
-//   font-size: 125%;
-// }
-
 .filterIcon {
-  position: absolute;
-  right: 14px;
+  position: sticky;
+  left: 88%;
+  top: 13px;
+  padding-top: 10px;
   margin-top: 8px;
   font-size: 150%;
   z-index: 2;
+}
+
+
+.index-container{
+  margin-top: -100px;
 }
 
 .filters {
@@ -44,8 +43,17 @@
 }
 
 .list-count {
-  position: relative;
-  top: 6px;
+  display: flex;
+  position: sticky;
+  top: 15px;
+  border-radius: 13px;
+  box-shadow: rgba(0, 0, 0, 0.3) 1px 4px 25px;
+  padding: 6px;
+  background: white;
+  padding-bottom: 8px;
+  p {
+    font-size: 16px;
+  }
 }
 
 .no-results {
@@ -56,4 +64,8 @@
 .no-results-button {
   color: white;
   border-radius: 5px;
+}
+
+.recipes {
+  margin-top: 0px;
 }

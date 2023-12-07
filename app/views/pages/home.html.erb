@@ -1,6 +1,6 @@
 <div>
   <div class="landing-page-content">
-      <h1><strong>Embark on a culinary journey, minimizing waste with diverse recipes using your home ingredients.</strong></h1>
+      <h1><strong>Embark on a culinary journey, minimising waste with diverse recipes using your home ingredients.</strong></h1>
       <div class="btn-home">
       <%= link_to "Build Your Recipe", search_path, class: "btn btn-primary home-search-btn" %></div>
   </div>
@@ -18,22 +18,19 @@
 <div class="below-banner-content">
   <div class = "how-it-works">
     <div class="step-card">
-      <h2>Enter Your Ingredients</h2>
-      <%= image_tag "ingredients.png" %>
+      <h2><strong>Enter Your Ingredients</strong></h2>
       <p>Input ingredients you have on hand and fine-tune your search with dietary preferences or cooktime</p>
+      <%= image_tag "ingredients.png" %>
     </div>
     <div class="step-card">
-      <h2>Find Recipes</h2>
-      <%= image_tag "recipes.png" %>
+      <h2><strong>Find Recipes</strong></h2>
       <p>Discover matching recipes and bookmark your favourites</p>
+      <%= image_tag "recipes.png" %>
     </div>
     <div class="step-card">
-      <h2>Share Your Experience</h2>
-      <%= image_tag "reviews.png" %>
+      <h2><strong>Share Your Experience</strong></h2>
       <p>Post reviews and photos of your culinary creations on our community feed</p>
+      <%= image_tag "reviews.png" %>
     </div>
-  </div>
-  <div class="community-page-render">
-    <%= render "posts/index_post_card", post:@post %>
   </div>
 </div>
