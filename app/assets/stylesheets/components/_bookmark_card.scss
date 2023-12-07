@@ -11,7 +11,7 @@
   align-items: center;
   color: #eae7e7;
   background-color: #30A712;
-  background: linear-gradient(to right bottom, #24800d, #90D080);
+  background: linear-gradient(to right bottom, $logo-dark, $logo-text);
 
   .card-content {
     margin: auto 16px auto 8px;
@@ -39,7 +39,7 @@
 
 .bookmark-card img {
   width: 120px;
-  height: 113px;
+  height: 114px;
   object-fit: cover;
   border-radius: 5px 0px 0px 5px;
 }
