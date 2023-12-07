@@ -39,7 +39,7 @@
         <%= image_tag("vegan.png", width: 25, height: 25) %>
       <% end %>
       <% if @recipe.vegetarian? %>
-        <%= image_tag("vegetarian.png", width: 35, height: 35) %>
+        <%= image_tag("vegetarian.png", width: 20, height: 20) %>
       <% end %>
       <% if @recipe.gluten_free? %>
         <%= image_tag("gluten-free.png", width: 25, height: 25) %>
@@ -119,7 +119,7 @@
     <%= render "posts", recipe: @recipe %>
 
     <div class="other-recipes-cards">
-    <h5>Other Recipes you might enjoy </h5>
+    <h5>Other recipes you might enjoy </h5>
       <div class="cards d-flex justify-content-between">
 
         <%= link_to recipe_path(@other_recipes.first) do %>

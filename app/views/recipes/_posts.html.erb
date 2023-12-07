@@ -1,6 +1,6 @@
 <div class="other-recipes-cards">
-    <h5>Users' posts on this recipe </h5>
-      <div class="cards d-flex justify-content-between">
+    <h5>See what others think </h5>
+      <div class="cards d-flex <%= 'justify-content-between' if recipe.posts.length > 2 %> ">
 
         <% unless recipe.posts.empty? %>
           <%  recipe.posts.each do |post| %>
