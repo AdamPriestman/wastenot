@@ -9,11 +9,20 @@
   </div>
 
     <div class="recipe-info-card row">
-      <h1><%= @recipe.title %></h1>
-      <div class="d-flex">
-        <div class="flex-grow-1 col-sm-6 col-lg-6">
-          <%# average rating will be displayed in 1 decimal place %>
-          <p class=""> <strong>Average Rating <%=  @recipe.average_rating.round(1) %> </strong>
+      <div class="d-flex align-items-center">
+        <div class="flex-grow-1"><h1><%= @recipe.title %></h1></div>
+        <div class="comment-icon pe-2">
+          <%= link_to new_recipe_post_path(@recipe), :class => "back-link" do  %>
+            <i class="fa-regular fa-comment"></i>
+          <% end %>
+        </div>
+        <div class="green-bookmark">
+          <%= render 'icon_btn',  recipe: @recipe %>
+        </div>
+      </div>
+
+      <div>
+          <p>
             <%  @recipe.average_rating.to_i.times do  %>
               <img width="20" height="20" class="star" src="https://img.icons8.com/fluency/20/star--v1.png" alt="star--v1"/>
             <% end %>
@@ -21,18 +30,9 @@
               <img width="20" height="20" class="star" src="https://img.icons8.com/color/20/star-half-empty.png" alt="star-half-empty"/>
             <% end %>
           </p>
-        </div>
-        <%# moved create comment icon next to bookmark icon %>
-        <div class="comment-icon col-sm-6 col-lg-6">
-          <%= link_to new_recipe_post_path(@recipe), :class => "back-link" do  %>
-            <i class="fa-regular fa-comment"></i>
-          <% end %>
-        </div>
-        <div class="ps-3 col-sm-6 col-lg-6 green-bookmark">
-          <%= render 'icon_btn',  recipe: @recipe %>
-        </div>
-
       </div>
+        <%# moved create comment icon next to bookmark icon %>
+
       <p><%= cl_image_tag @recipe.photo.key, :class => "responsive" %></p>
     </div>
 
