@@ -1,6 +1,6 @@
 <div class="other-recipes-cards">
     <h5>Users' posts on this recipe </h5>
-      <div class="cards d-flex justify-content-start">
+      <div class="cards d-flex justify-content-between">
 
         <% unless recipe.posts.empty? %>
           <%  recipe.posts.each do |post| %>
@@ -15,8 +15,8 @@
                       <%= image_tag "post_user.png", class: "post-user-avatar" %>
                   <% end %>
 
-              <div class="overflow-auto mt-3 text-start">
-                <p><%= post.title %></p>
+              <div class="mt-3 text-start">
+                <p><%= post.title.truncate(16) %></p>
               </div>
               </div>
             <% end %>
