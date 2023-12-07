@@ -15,6 +15,8 @@ export default class extends Controller {
     } else if (iconValue === "") {
       console.log("no icons green")
       this.searchTarget.classList.remove("active")
+      this.feedTarget.classList.remove("active")
+      this.bookmarkTarget.classList.remove("active")
     } else {
       this.searchTarget.classList.add("active")
     }
