@@ -13,7 +13,7 @@
       <% else %>
         <h2><%= bookmark.recipe.title.capitalize.truncate(9) %></h2>
       <% end %>
-    <div class="dietary-type text-end mb-2">
+      <div class="dietary-type text-end mb-2">
         <% if bookmark.recipe.vegan? %>
           <%= image_tag "vegan1.png", class:"diet-icons" %>
         <% end %>
@@ -42,7 +42,7 @@
         <%= link_to bookmark_path(bookmark), data: { turbo_method: :delete , turbo_confirm: "Are you sure?"} do %>
           <i class="fa-solid fa-bookmark"></i>
         <% end %>
-        </div>
+        <%# </div> %>
       </div>
     </div>
   </div>
