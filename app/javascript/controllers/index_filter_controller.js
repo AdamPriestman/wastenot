@@ -11,12 +11,12 @@ static values = {
     const link = window.location.href.split("/")
     const linkVal = link[link.length -1]
     if (this.servingsInputTarget.value) {
-      console.log("there is a value")
-      console.log(this.servingsInputTarget.value)
+      // console.log("there is a value")
+      // console.log(this.servingsInputTarget.value)
       this.servingsLabelTarget.innerText = `${this.servingsInputTarget.value}`
       this.cooktimeValueTarget.innerText = `${this.cooktimeInputTarget.value} minutes`
     } else if (linkVal === "recipes") {
-      console.log("its empty")
+      // console.log("its empty")
       this.servingsLabelTarget.value = 3
       this.servingsLabelTarget.innerText = "3"
       this.cooktimeValueTarget.value = 50
@@ -72,7 +72,7 @@ static values = {
     })
 
     const url = `${this.formTarget.action}?ingredient1=${(this.ingredientsValue["ingredient1"] === 0) ? "" : this.ingredientsValue["ingredient1"]}&ingredient2=${(this.ingredientsValue["ingredient2"] === 0) ? "" : this.ingredientsValue["ingredient2"]}&ingredient3=${(this.ingredientsValue["ingredient3"] === 0)  ? "" : this.ingredientsValue["ingredient3"]}&cooktime=${this.cooktimeInputTarget.value}&servings=${this.servingsInputTarget.value}&vegan=${this.veganCheckboxTarget.value}&vegetarian=${this.vegetarianCheckboxTarget.value}&gluten_free=${this.glutenCheckboxTarget.value}&dairy_free=${this.dairyCheckboxTarget.value}&sortBy=${sortBy}`
-
+    localStorage.setItem("filteredUrl", url)
     fetch(url, {headers: {"Accept": "text/plain"}})
       .then(response => response.text())
       .then ((data) => {

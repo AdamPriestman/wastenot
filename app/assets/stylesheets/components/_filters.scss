@@ -15,12 +15,12 @@
   input[type='range'] {
     appearance: none;
     -webkit-appearance: none !important;
-    background: #b1f5a0;
+    background: $logo-text;
     height:7px;
   }
   input[type='range']::-webkit-slider-thumb {
       -webkit-appearance: none !important;
-      background: #30A712;
+      background: white;
       height:15px;
       width:15px;
       border-radius: 50%;

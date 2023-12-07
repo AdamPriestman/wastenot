@@ -15,23 +15,30 @@
       <% end %>
       <div class="dietary-type text-end mb-2">
         <% if recipe.vegan? %>
-          <%= image_tag "vegan1.png", width: 8, height: 8, class:"diet-icons" %>
+          <%= image_tag "vegan1.png", class:"diet-icons" %>
         <% end %>
         <% if recipe.vegetarian? %>
-          <%= image_tag "vegetarian1.png", width: 8, height: 8, class:"diet-icons" %>
+          <%= image_tag "vegetarian1.png", class:"diet-icons" %>
         <% end %>
         <% if recipe.gluten_free? %>
-          <%= image_tag "gluten-free1.png", width: 8, height: 8, class:"diet-icons" %>
+          <%= image_tag "gluten-free1.png", class:"diet-icons" %>
         <% end %>
         <% if recipe.dairy_free? %>
-          <%= image_tag "dairy1.png", width: 8, height: 8, class:"diet-icons" %>
+          <%= image_tag "dairy1.png", class:"diet-icons" %>
         <% end %>
       </div>
     </div>
     <div class="card-details">
       <p class="card-description"><%= recipe.description.truncate(100) %></p>
-      <div class="rating_bookmark">
-        <h5><%= recipe.average_rating.round(1) %> ⭐️</h5>
+      <div class="rating_bookmark d-flex align-items-center">
+        <p class="rating">
+            <%  recipe.average_rating.to_i.times do  %>
+              <img class="star" src="https://img.icons8.com/fluency/20/star--v1.png" alt="star--v1"/>
+            <% end %>
+            <% if  recipe.average_rating - recipe.average_rating.to_i > 0 %>
+              <img class="star" src="https://img.icons8.com/color/20/star-half-empty.png" alt="star-half-empty"/>
+            <% end %>
+          </p>
         <div class="icon-btn"  >
           <%= render 'icon_btn',  recipe: recipe %>
         </div>

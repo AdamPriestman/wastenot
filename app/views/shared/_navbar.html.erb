@@ -1,7 +1,17 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-wastenot">
-  <div class="container-fluid" data-controller="navbar-icon">
-    <%= link_to root_path, class: "nav-link" do %>
-      <i class="fa-solid fa-house iconnav" data-navbar-icon-target="home"></i>
+  <div class="container-fluid d-flex align-items-center" data-controller="navbar-icon">
+    <% if user_signed_in? %>
+      <%= link_to destroy_user_session_path, data: {turbo_method: :delete} do %>
+        <% if current_user.photo.attached? %>
+          <img class="avatar-navbar" src="<%= cl_image_path current_user.photo.key %>" />
+        <% else %>
+          <img class="avatar-navbar" src="https://www.clipartkey.com/mpngs/m/209-2095552_profile-picture-placeholder-png.png" />
+        <% end %>
+      <% end %>
+    <% else %>
+      <%= link_to new_user_session_path, class: "nav-link" do %>
+        <i class="fa-solid fa-right-to-bracket iconnav"></i>
+      <% end %>
     <% end %>
     <%= link_to posts_path, class: "nav-link" do %>
       <i class="fa-solid fa-users iconnav" data-navbar-icon-target="feed"></i>
